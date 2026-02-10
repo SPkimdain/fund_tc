@@ -1,0 +1,17 @@
+Description: make build reproducible
+ Stops build hostname and directory from being recorded in the artifact.
+Author: Sascha Steinbiss <sascha@steinbiss.name>
+Forwarded: https://github.com/alexdobin/STAR/pull/1164
+--- a/source/Makefile
++++ b/source/Makefile
+@@ -25,9 +25,7 @@
+     BUILD_DATE ?= $(shell date "$(DATE_FMT)")
+ endif
+ 
+-BUILD_PLACE ?= $(HOSTNAME):$(shell pwd)
+-
+-COMPTIMEPLACE := -D'COMPILATION_TIME_PLACE="$(BUILD_DATE) $(BUILD_PLACE)"'
++COMPTIMEPLACE := -D'COMPILATION_TIME_PLACE="$(BUILD_DATE) <place not set in Debian package>"'
+ 
+ 
+ GIT_CHECK := $(shell git status 1> /dev/null 2> /dev/null && echo 0)

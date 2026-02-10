@@ -1,0 +1,4 @@
+Test-Command: debian/tests/run_test.sh STAR
+Depends: @
+Restrictions: allow-stderr
+

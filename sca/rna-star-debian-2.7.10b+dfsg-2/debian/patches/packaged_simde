@@ -1,0 +1,14 @@
+Author: Michael R. Crusoe <crusoe@debian.org>
+Description: Use packaged SIMDe header, not the code-copy
+Forwarded: not-needed
+--- rna-star.orig/source/opal/opal.cpp
++++ rna-star/source/opal/opal.cpp
+@@ -7,7 +7,7 @@
+ 
+ extern "C" {
+ #define SIMDE_ENABLE_NATIVE_ALIASES
+-#include <simde_avx2.h> // AVX2 and lower
++#include <simde/x86/avx2.h> // AVX2 and lower
+ }
+ 
+ #include "opal.h"

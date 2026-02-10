@@ -1,0 +1,14 @@
+Note: The file doc/STARmanual.pdf was auto generated from extras/doc-latex
+
+Patches:
+
+    donotuse_own_htslib.patch
+        htslib ships as an independent package
+
+    compilationstuff.patch
+        should be adopted by upstream for compatibility with latest compilers
+
+    mips_shm_noreserve.patch
+	adjustment of parameters for compatibility with MIPS platform
+
+ -- Andreas Tille <tille@debian.org>  Thu, 29 Jan 2015 14:18:44 +0100

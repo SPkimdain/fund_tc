@@ -1,0 +1,5 @@
+version=4
+
+# Versions ending with a letter are patches, not early releases
+opts="repacksuffix=+dfsg,dversionmangle=s/\+dfsg//g,repack,compression=xz" \
+  https://github.com/alexdobin/STAR/tags .*/.*/(?:STAR_?)?(\d[\d.a-z]+)\.(?:tar(?:\.gz|\.bz2)?|tgz)

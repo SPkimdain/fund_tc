@@ -1,0 +1,401 @@
+rna-star (2.7.10b+dfsg-2) unstable; urgency=medium
+
+  * Team upload.
+  * debian/patches/packaged_simde: Use packaged SIMDe header, not the
+    code-copy.
+  * Standards-Version: 4.6.2 (routine-update)
+
+ -- Michael R. Crusoe <crusoe@debian.org>  Sun, 22 Jan 2023 15:33:29 +0100
+
+rna-star (2.7.10b+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Sascha Steinbiss <satta@debian.org>  Tue, 27 Dec 2022 02:18:32 +0100
+
+rna-star (2.7.10a+dfsg-4) unstable; urgency=medium
+
+  * Fix watch file
+  * Standards-Version: 4.6.1 (routine-update)
+
+ -- Andreas Tille <tille@debian.org>  Wed, 12 Oct 2022 07:41:46 +0200
+
+rna-star (2.7.10a+dfsg-3) unstable; urgency=medium
+
+  * Add patch to fix gcc-12 FTBFS (Closes: #1013030)
+
+ -- Nilesh Patra <nilesh@debian.org>  Fri, 24 Jun 2022 19:46:55 +0000
+
+rna-star (2.7.10a+dfsg-2) unstable; urgency=medium
+
+  * Team upload.
+
+  [ Lance Lin ]
+  * Remove build-depends on vim-common (Closes: #1007987)
+
+  [ Andreas Tille ]
+  * Fix watchfile to detect new versions on github
+  * Standards-Version: 4.6.0 (routine-update)
+  * DEP3
+
+ -- Lance Lin <LQi254@protonmail.com>  Wed, 6 Apr 2022 19:19:25 +0700
+
+rna-star (2.7.10a+dfsg-1) unstable; urgency=medium
+
+  * New upstream version 2.7.10a+dfsg
+  * Refresh patches
+  * Skip seeking GIT_BRANCH_COMMIT_DIFF
+
+ -- Nilesh Patra <nilesh@debian.org>  Sun, 16 Jan 2022 22:05:44 +0530
+
+rna-star (2.7.9a+dfsg-3) unstable; urgency=medium
+
+  * d/salsa-ci.yml: Reprotest is enabled, disable blhc and i386 build
+  * Clean pre-each build so as to build all files for each SIMD level
+
+ -- Nilesh Patra <nilesh@debian.org>  Wed, 18 Aug 2021 15:43:45 +0530
+
+rna-star (2.7.9a+dfsg-2) unstable; urgency=medium
+
+  * d/p/do-not-enforce-avx2.patch: Remove usage of
+    -mavx2 by default (Closes: #992270)
+  * d/salsa-ci.yml: Disable reprotest and build on i386
+
+ -- Nilesh Patra <nilesh@debian.org>  Wed, 18 Aug 2021 12:20:57 +0530
+
+rna-star (2.7.9a+dfsg-1) unstable; urgency=medium
+
+  [ Steffen Möller ]
+  * Update metadata - added ref to guix
+
+  [ Nilesh Patra ]
+  * d/watch: Fix watch regex
+  * New upstream version 2.7.9a+dfsg
+  * Refresh d/p/donotuse_own_htslib.patch
+  * Refresh d/p/reproducible.patch
+  * Drop d/p/simde.patch: Merged upstream
+  * d/salsa-ci.yml: Do not build salsa CI on i386, do not run blhc
+
+ -- Nilesh Patra <nilesh@debian.org>  Sun, 15 Aug 2021 23:18:21 +0530
+
+rna-star (2.7.8a+dfsg-2) unstable; urgency=high
+
+  * Team upload.
+
+  [ Nilesh Patra ]
+  * debian/{rules,control,patches/simde.patch}: use libsimde-dev to enable
+    building on non-x86 systems.
+    Removed "-march=native" architecture baseline violation. Closes: #983723
+
+  [ Michael R. Crusoe ]
+  * debian/{rules,clean: specify the source directory, and simplify
+  * debian/patches/reproducible.patch: Reproducibly include the build
+    time using SOURCE_DATE_EPOCH. Also forwarded upstream
+  * On amd64: build STAR for each SIMD level from AVX2 on down.
+  * Build and ship STARlong as well
+
+ -- Michael R. Crusoe <crusoe@debian.org>  Mon, 01 Mar 2021 20:14:32 +0100
+
+rna-star (2.7.8a+dfsg-1) unstable; urgency=medium
+
+  * New upstream version
+  * Upstream did not remove opal/opal.o after build - extended cleaning
+
+ -- Steffen Moeller <moeller@debian.org>  Tue, 23 Feb 2021 19:15:39 +0100
+
+rna-star (2.7.7a+dfsg-1) unstable; urgency=medium
+
+  * New upstream version
+  * Standards-Version: 4.5.1 (routine-update)
+  * Switch watch version to 4
+
+ -- Nilesh Patra <npatra974@gmail.com>  Wed, 06 Jan 2021 16:28:02 +0530
+
+rna-star (2.7.6a+dfsg-1) unstable; urgency=medium
+
+  * New upstream version
+
+ -- Andreas Tille <tille@debian.org>  Fri, 02 Oct 2020 14:49:32 +0200
+
+rna-star (2.7.5c+dfsg-3) unstable; urgency=medium
+
+  * Source upload to enable testing migration.
+  * Confirmed autopkgtest fixed.
+    Closes: #970340
+
+ -- Sascha Steinbiss <satta@debian.org>  Wed, 16 Sep 2020 08:56:26 +0200
+
+rna-star (2.7.5c+dfsg-2) unstable; urgency=medium
+
+  * Fix autopkgtest by allowing output to stderr.
+
+ -- Sascha Steinbiss <satta@debian.org>  Tue, 15 Sep 2020 15:45:46 +0200
+
+rna-star (2.7.5c+dfsg-1) unstable; urgency=medium
+
+  * New upstream version
+
+ -- Steffen Moeller <moeller@debian.org>  Fri, 21 Aug 2020 21:47:38 +0200
+
+rna-star (2.7.5a+20200629git1552aa0-1) unstable; urgency=medium
+
+  * Upstream kindly fixed the FTBFS reported before
+
+ -- Steffen Moeller <moeller@debian.org>  Tue, 07 Jul 2020 19:09:25 +0200
+
+rna-star (2.7.5a+dfsg-1) UNRELEASED; urgency=medium
+
+  * New upstream version
+  * TODO: FTBFS - informed upstream on
+    - https://github.com/alexdobin/STAR/pull/956
+    - https://github.com/alexdobin/STAR/issues/957
+
+ -- Steffen Moeller <moeller@debian.org>  Sat, 27 Jun 2020 17:10:17 +0200
+
+rna-star (2.7.4a+dfsg-1) unstable; urgency=medium
+
+  * New upstream version
+  * Standards-Version: 4.5.0 (routine-update)
+  * debhelper-compat 13 (routine-update)
+  * Add salsa-ci file (routine-update)
+  * Rules-Requires-Root: no (routine-update)
+  * Set upstream metadata fields: Bug-Database, Bug-Submit, Repository,
+    Repository-Browse.
+
+ -- Steffen Moeller <moeller@debian.org>  Sat, 06 Jun 2020 20:31:10 +0200
+
+rna-star (2.7.3a+dfsg-2) unstable; urgency=medium
+
+  * Team upload.
+  * debhelper-compat 12
+  * Otherwise no change build to pick up libhts3
+
+ -- Michael R. Crusoe <michael.crusoe@gmail.com>  Tue, 17 Dec 2019 16:01:10 +0100
+
+rna-star (2.7.3a+dfsg-1) unstable; urgency=medium
+
+  * New upstream version.
+  * Bump Standards-Version.
+  * Use debhelper 12.
+
+ -- Sascha Steinbiss <satta@debian.org>  Thu, 10 Oct 2019 00:26:31 +0200
+
+rna-star (2.7.2b+dfsg-1) unstable; urgency=medium
+
+  * New upstream version.
+
+ -- Steffen Moeller <moeller@debian.org>  Thu, 26 Sep 2019 18:51:51 +0200
+
+rna-star (2.7.1a+dfsg-2) unstable; urgency=medium
+
+  [ Helmut Grohne ]
+  * Fix FTCBFS: Let dh_auto_build pass cross tools to make.
+    Closes: #932066
+
+ -- Sascha Steinbiss <satta@debian.org>  Wed, 17 Jul 2019 23:19:13 +0200
+
+rna-star (2.7.1a+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Refresh patches.
+
+ -- Sascha Steinbiss <satta@debian.org>  Mon, 08 Jul 2019 17:28:41 +0200
+
+rna-star (2.7.0a+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+    This release introduces STARsolo for: mapping, demultiplexing and
+    gene quantification for single cell RNA-seq.
+
+  * Removed xxd-generated source/parametersDefault.xdd from source tree
+  * Added xxd to build-dependencies
+  * Standards-Version: 4.3.0 - no changes required
+
+ -- Steffen Moeller <moeller@debian.org>  Tue, 29 Jan 2019 22:58:57 +0100
+
+rna-star (2.6.1d+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Remove patch applied upstream.
+
+ -- Sascha Steinbiss <satta@debian.org>  Sat, 22 Dec 2018 21:03:02 +0000
+
+rna-star (2.6.1c+dfsg-1) unstable; urgency=medium
+
+  * New upstream version.
+
+ -- Steffen Moeller <moeller@debian.org>  Tue, 23 Oct 2018 13:28:51 +0200
+
+rna-star (2.6.1b+dfsg-1) unstable; urgency=medium
+
+  * New upstream version.
+  * Bump Standards-Version.
+
+ -- Steffen Moeller <moeller@debian.org>  Tue, 18 Sep 2018 18:53:06 +0200
+
+rna-star (2.6.1a+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Fix spelling via patches.
+
+ -- Sascha Steinbiss <satta@debian.org>  Sat, 18 Aug 2018 16:14:17 +0200
+
+rna-star (2.6.0c+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Sascha Steinbiss <satta@debian.org>  Wed, 16 May 2018 08:39:24 +0200
+
+rna-star (2.6.0b+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Sascha Steinbiss <satta@debian.org>  Mon, 07 May 2018 15:09:13 +0200
+
+rna-star (2.6.0a+dfsg-1) unstable; urgency=medium
+
+  [ Sascha Steinbiss ]
+  * New upstream release.
+  * Remove absent files from Files-Excluded.
+  * Update copyright date.
+  * Drop patch applied by upstream.
+  * Adjust VCS entries.
+  * Use debhelper 11.
+  * Bump Standards-Version.
+  * Update version number in man page.
+
+  [ Steffen Moeller ]
+  * Add SciCrunch IDs.
+
+ -- Sascha Steinbiss <satta@debian.org>  Thu, 26 Apr 2018 10:14:15 +0200
+
+rna-star (2.5.4b+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Respect nocheck flag in test override.
+
+ -- Sascha Steinbiss <satta@debian.org>  Sun, 11 Feb 2018 13:37:19 +0100
+
+rna-star (2.5.4a+dfsg-1) unstable; urgency=medium
+
+  [ Sascha Steinbiss ]
+  * New upstream release.
+  * d/control: Remove obsolete Testsuite entry.
+  * d/rules: Remove trailing whitespace.
+  * d/copyright: Use secure copyright format URL.
+  * Spelling fixes.
+
+  [ Steffen Moeller ]
+  * debian/upstream/metadata:
+    - Updated registry IDs
+    - yamllint cleanliness
+
+ -- Sascha Steinbiss <satta@debian.org>  Fri, 26 Jan 2018 11:32:21 +0100
+
+rna-star (2.5.3a+dfsg-3) unstable; urgency=medium
+
+  [ Steffen Moeller ]
+  * debian/upstream/metadata: Added refs to bio.tools
+    and OMICtools
+
+  [ Sascha Steinbiss ]
+  * Remove s390x from supported archs list.
+    Closes: #868742
+
+ -- Sascha Steinbiss <satta@debian.org>  Thu, 10 Aug 2017 16:05:13 +0200
+
+rna-star (2.5.3a+dfsg-2) unstable; urgency=medium
+
+  * Upload to unstable.
+
+ -- Sascha Steinbiss <satta@debian.org>  Sun, 18 Jun 2017 21:22:06 +0200
+
+rna-star (2.5.3a+dfsg-1) experimental; urgency=medium
+
+  * New upstream release.
+
+ -- Sascha Steinbiss <satta@debian.org>  Wed, 31 May 2017 17:41:43 +0200
+
+rna-star (2.5.2b+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Remove x32 from archs.
+
+ -- Sascha Steinbiss <satta@debian.org>  Tue, 23 Aug 2016 12:27:14 +0000
+
+rna-star (2.5.2a+dfsg-4) unstable; urgency=medium
+
+  * enable rna-star for s390x
+    Closes: #830662
+
+ -- Andreas Tille <tille@debian.org>  Sun, 10 Jul 2016 08:15:53 +0200
+
+rna-star (2.5.2a+dfsg-3) unstable; urgency=medium
+
+  * Limit architectures to amd64 as supported by upstream.
+  * Add myself to Uploaders.
+  * Add tests (autopkgtest and build time)
+
+ -- Sascha Steinbiss <sascha@steinbiss.name>  Sun, 22 May 2016 12:34:12 +0000
+
+rna-star (2.5.2a+dfsg-2) unstable; urgency=medium
+
+  * Team upload.
+  * Make build reproducible.
+    - Stop recording build environment in binary.
+  * Enable full hardening.
+
+ -- Sascha Steinbiss <sascha@steinbiss.name>  Sat, 21 May 2016 20:53:28 +0000
+
+rna-star (2.5.2a+dfsg-1) unstable; urgency=medium
+
+  * New upstream version
+  * Use xz compression option in d/watch
+  * cme fix dpkg-control
+  * Fix homepage
+
+ -- Andreas Tille <tille@debian.org>  Thu, 19 May 2016 18:06:56 +0200
+
+rna-star (2.5.1b+dfsg-1) unstable; urgency=medium
+
+  * New upstream version.
+  * Adjusted debian/watch to accept missing "STAR_" prefix.
+  * Bumped policy compliance to 3.9.7.
+  * Added debian/upstream/edam file.
+  * Moved hunk from compilationstuff.patch to donotuse_own_htslib.patch
+    to collect upstream-independent bits source/Makefile.
+  * Introduced short reference on patches in debian/README.source.
+
+ -- Steffen Moeller <moeller@debian.org>  Tue, 23 Feb 2016 17:36:18 +0100
+
+rna-star (2.5.0a+dfsg-1) unstable; urgency=medium
+
+  * Packaging moved from svn to git
+  * New upstream version
+
+ -- Andreas Tille <tille@debian.org>  Thu, 31 Dec 2015 12:41:06 +0100
+
+rna-star (2.4.2a+dfsg-1) unstable; urgency=medium
+
+  [ Charles Plessy ]
+  * Remove large GENCODE file, found in later upstream versions.
+
+  [ Andreas Tille ]
+  * New upstream version
+
+ -- Andreas Tille <tille@debian.org>  Mon, 06 Jul 2015 19:28:49 +0200
+
+rna-star (2.4.0k-1) unstable; urgency=medium
+
+  * New upstream version (adapted patches)
+  * Solve build issue on mipsel (thanks to Jurica Stanojkovic
+    <Jurica.Stanojkovic@imgtec.com> for the patch)
+    Closes: #781828
+
+ -- Andreas Tille <tille@debian.org>  Sat, 04 Apr 2015 10:35:14 +0200
+
+rna-star (2.4.0i-1) unstable; urgency=low
+
+  * Initial release (Closes: #776655)
+
+ -- Andreas Tille <tille@debian.org>  Thu, 29 Jan 2015 14:18:44 +0100

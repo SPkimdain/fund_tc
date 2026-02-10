@@ -1,0 +1,64 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+include /usr/share/dpkg/default.mk
+
+export CCFLAGS=-flto $(CXXFLAGS) $(CPPFLAGS) -std=c++0x
+# export LDFLAGS+=-flto -pthread -lhts -lz
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+
+AMD64_SIMD_LEVELS=avx2 avx sse4.1 ssse3 sse3
+binprefix=$(CURDIR)/debian/$(DEB_SOURCE)/usr/bin
+libexecdir=$(CURDIR)/debian/$(DEB_SOURCE)/usr/lib/$(DEB_SOURCE)/bin
+export DEB_CFLAGS_MAINT_APPEND+=-O3
+export DEB_CXXFLAGS_MAINT_APPEND+=-O3
+# package already builds with -fopenmp, so no need to add that for SIMDe
+
+%:
+	dh $@ --sourcedirectory=source
+
+override_dh_auto_build:
+ifeq ($(DEB_HOST_ARCH),amd64)
+	mkdir --parents $(libexecdir)
+	$(foreach SIMD,$(AMD64_SIMD_LEVELS),dh_auto_clean ; dh_auto_build -- SFX=-$(SIMD) CCFLAGS_common_add="-flto $(CCFLAGS)" CXXFLAGS="$(CXXFLAGS) -m$(SIMD)" LDFLAGS_add="$(LDFLAGS)" STAR-$(SIMD) STARlong-$(SIMD) && ) true
+	dh_auto_clean ; dh_auto_build -- SFX=-plain CCFLAGS_common_add="-flto $(CCFLAGS)" CCFLAGS="$(CCFLAGS)" LDFLAGS_add="$(LDFLAGS)" STAR-plain STARlong-plain
+	cp source/STAR-plain source/STARlong-plain $(libexecdir)/
+else
+	dh_auto_build -- CCFLAGS_common_add="-flto $(CCFLAGS)" CCFLAGS="$(CCFLAGS)" LDFLAGS_add="$(LDFLAGS)" STAR STARlong
+endif
+
+override_dh_auto_install:
+ifeq ($(DEB_HOST_ARCH),amd64)
+	mkdir --parents $(binprefix)
+	$(foreach SIMD,$(AMD64_SIMD_LEVELS) plain,dh_install source/STAR-$(SIMD) source/STARlong-$(SIMD) /usr/lib/$(DEB_SOURCE)/bin && ) true
+	dh_install debian/bin/simd-dispatch /usr/lib/$(DEB_SOURCE)/
+	set -e && cd $(binprefix) && for prog in STAR STARlong ; do ln -s \
+		../lib/$(DEB_SOURCE)/simd-dispatch $${prog} ; done
+else
+	dh_install source/STAR source/STARlong usr/bin/
+endif
+
+override_dh_auto_clean:
+	cd source && ${MAKE} clean
+
+override_dh_compress:
+	dh_compress --exclude=.pdf
+
+override_dh_auto_test:
+ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
+ifeq ($(DEB_HOST_ARCH),amd64)
+	set -i; for SIMD in $(AMD64_SIMD_LEVELS) ; do \
+		if lscpu | grep -q $${SIMD} ; then \
+		debian/tests/run_test.sh $(CURDIR)/source/STAR-$${SIMD} ; \
+		fi ; done
+	debian/tests/run_test.sh $(libexecdir)/STAR-plain
+else
+	debian/tests/run_test.sh $(CURDIR)/source/STAR
+endif
+endif
+
+override_dh_gencontrol:
+	dh_gencontrol -- -Vsimde:Built-Using="$(shell dpkg-query -f '$${source:Package} (= $${source:Version}), ' -W "libsimde-dev")"

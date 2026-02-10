@@ -1,0 +1,18 @@
+Author: Jurica Stanojkovic <Jurica.Stanojkovic@imgtec.com>
+Last-Changed: Fri, 3 Apr 2015 14:04:58 +0000
+Bugs-Debian: http://bugs.debian.org/781828
+Description: resolves build issue for mipsel, until this issue gets fixed in glibc
+
+--- a/source/IncludeDefine.h
++++ b/source/IncludeDefine.h
+@@ -44,6 +44,10 @@
+ #define SHM_NORESERVE 010000
+ #endif
+ 
++#if defined(__mips__) && !defined(SHM_NORESERVE)
++#define SHM_NORESERVE 010000
++#endif
++
+ typedef int8_t int8;
+ typedef uint8_t uint8;
+ 

@@ -1,0 +1,30 @@
+Bug-Database: https://github.com/alexdobin/STAR/issues
+Bug-Submit: https://github.com/alexdobin/STAR/issues/new
+Reference:
+  Author: >
+    Alexander Dobin and Carrie A. Davis and Felix Schlesinger and Jorg
+    Drenkow and Chris Zaleski and Sonali Jha and Philippe Batut and Mark
+    Chaisson and Thomas R. Gingeras
+  Title: "STAR: ultrafast universal RNA-seq aligner"
+  Journal: Bioinformatics
+  Year: 2012
+  Volume: 29
+  Number: 1
+  Pages: 15-21
+  DOI: 10.1093/bioinformatics/bts635
+  PMID: 23104886
+  URL: http://bioinformatics.oxfordjournals.org/content/29/1/15
+  eprint: http://bioinformatics.oxfordjournals.org/content/29/1/15.full.pdf+html
+Registry:
+  - Name: OMICtools
+    Entry: OMICS_01254
+  - Name: bio.tools
+    Entry: star
+  - Name: SciCrunch
+    Entry: SCR_015899
+  - Name: conda:bioconda
+    Entry: star
+  - Name: guix
+    Entry: star
+Repository: https://github.com/alexdobin/STAR.git
+Repository-Browse: https://github.com/alexdobin/STAR

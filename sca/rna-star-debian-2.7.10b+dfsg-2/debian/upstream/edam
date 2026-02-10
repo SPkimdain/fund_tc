@@ -1,0 +1,24 @@
+---
+ontology: EDAM (1.33)
+topic:
+  - Sequence analysis
+scopes:
+  - name: summary
+    function:
+      - Genome alignment
+    input:
+      - data: Raw sequence
+        formats:
+          - FASTQ
+      - data: DNA sequence (raw)
+        formats:
+          - FASTA
+      - data: Annotation track
+        formats:
+          - GTF
+    output:
+      - data: Sequence alignment (nucleic acid)
+        formats:
+          - SAM
+          - BAM
+      - data: Report

@@ -1,0 +1,38 @@
+Source: rna-star
+Maintainer: Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>
+Uploaders: Steffen Moeller <moeller@debian.org>,
+           Andreas Tille <tille@debian.org>,
+           Sascha Steinbiss <satta@debian.org>,
+Section: science
+Priority: optional
+Build-Depends: debhelper-compat (= 13),
+               libhts-dev,
+               xxd,
+               zlib1g-dev,
+               libsimde-dev
+Standards-Version: 4.6.2
+Vcs-Browser: https://salsa.debian.org/med-team/rna-star
+Vcs-Git: https://salsa.debian.org/med-team/rna-star.git
+Homepage: https://github.com/alexdobin/STAR/
+Rules-Requires-Root: no
+
+Package: rna-star
+Architecture: amd64 arm64 ppc64el mips64el
+Depends: ${misc:Depends},
+         ${shlibs:Depends}
+Built-Using: ${simde:Built-Using}
+Description: ultrafast universal RNA-seq aligner
+ Spliced Transcripts Alignment to a Reference (STAR) software based on a
+ previously undescribed RNA-seq alignment algorithm that uses sequential
+ maximum mappable seed search in uncompressed suffix arrays followed by
+ seed clustering and stitching procedure. STAR outperforms other aligners
+ by a factor of >50 in mapping speed, aligning to the human genome 550
+ million 2 × 76 bp paired-end reads per hour on a modest 12-core server,
+ while at the same time improving alignment sensitivity and precision. In
+ addition to unbiased de novo detection of canonical junctions, STAR can
+ discover non-canonical splices and chimeric (fusion) transcripts, and is
+ also capable of mapping full-length RNA sequences. Using Roche 454
+ sequencing of reverse transcription polymerase chain reaction amplicons,
+ the authors experimentally validated 1960 novel intergenic splice
+ junctions with an 80-90% success rate, corroborating the high precision
+ of the STAR mapping strategy.

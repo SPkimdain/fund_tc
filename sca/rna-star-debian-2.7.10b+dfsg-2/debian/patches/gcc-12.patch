@@ -1,0 +1,21 @@
+Description: Add missing array header include
+Author: Nilesh Patra <nilesh@debian.org>
+Forwarded: not-needed, already fixed
+Last-Update: 2022-06-24
+--- a/source/SoloCommon.h
++++ b/source/SoloCommon.h
+@@ -3,6 +3,7 @@
+ 
+ #include <array>
+ #include <unordered_map>
++#include <array>
+ 
+ typedef struct{
+     uint64 cb; 
+@@ -77,4 +78,4 @@
+ 
+ };
+ 
+-#endif
+\ No newline at end of file
++#endif

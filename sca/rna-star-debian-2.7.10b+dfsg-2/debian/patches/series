@@ -1,0 +1,7 @@
+donotuse_own_htslib.patch
+mips_shm_noreserve.patch
+reproducible.patch
+mathRoutinesNotInScope.patch
+do-not-enforce-avx2.patch
+gcc-12.patch
+packaged_simde
