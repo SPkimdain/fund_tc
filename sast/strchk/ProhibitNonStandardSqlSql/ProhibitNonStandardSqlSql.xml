@@ -1,0 +1,11 @@
+<select id="getTruncatedDates" resultType="map">
+    SELECT
+    DATE_TRUNC('year', NOW()) AS year,  //@violation
+    DATE_TRUNC('month', NOW()) AS month, //@violation
+    DATE_TRUNC('day', NOW()) AS day,  //@violation
+    DATE_TRUNC('hour', NOW()) AS hour,  //@violation
+    DATE_TRUNC('minute', NOW()) AS minute,  //@violation
+    date_trunc('second', NOW()) AS second  //@violation
+</select>
+
+

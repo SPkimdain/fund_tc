@@ -1,0 +1,3 @@
+java -Xverify:none ApplicationName      // @violation
+
+java -Xverify:all ApplicationName       // good

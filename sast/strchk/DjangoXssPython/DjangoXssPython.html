@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+    <body>
+        <div class="content">
+            {% autoescape off %}    // @violation
+                // autoescape off로 해당 블록내의 데이터는 XSS 공격에
+                // 노출될 수 있음.
+                {{ content }}
+            {% endautoescape %}
+        </div>
+        <div class="content2">
+            //safe 필터 사용으로 XSS 공격에 노출될 수 있음.
+            {{ content | safe }}    // @violation
+        </div>
+    </body>
+</html>

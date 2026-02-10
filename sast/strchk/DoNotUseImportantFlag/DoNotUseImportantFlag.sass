@@ -1,0 +1,23 @@
+$primary-color: #3498db
+$secondary-color: #e74c3c
+$text-color: #ffffff
+
+.button
+  background-color: $primary-color !important //@violation
+  color: $text-color
+  padding: 10px 20px
+  border-radius: 5px
+
+  &.secondary
+    background-color: $secondary-color
+
+  &:hover
+    background-color: darken($primary-color, 10%) !important  //@violation
+    color: $text-color !important  //@violation
+
+.alert
+  background-color: yellow
+  border: 2px solid red !important  //@violation
+  padding: 15px
+  color: black !important  //@violation
+  

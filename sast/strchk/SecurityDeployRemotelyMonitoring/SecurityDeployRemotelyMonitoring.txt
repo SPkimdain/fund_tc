@@ -1,0 +1,5 @@
+${JDK_PATH}/bin/java -agentlib:libname=options ApplicationName                                      // @violation
+${JDK_PATH}/bin/java -agentlib:jdwp=transport=dt_shmem,address=mysharedmemory ApplicationName       // @violation
+${JDK_PATH}/bin/java -Dcom.sun.management.jmxremote.port=8000 ApplicationName                       // @violation
+
+${JDK_PATH}/bin/java -Djava.security.manager ApplicationName                                        // good

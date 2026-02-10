@@ -1,0 +1,7 @@
+.button {
+    -ms-transform: translateX(50px); //@violation
+    transform: translateX(50px);
+    background-color: white;
+    color: #3498db;
+    padding: 10px 20px;
+}

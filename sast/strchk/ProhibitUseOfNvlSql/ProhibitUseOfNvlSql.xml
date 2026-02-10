@@ -1,0 +1,8 @@
+<select id="test" resultType="map">
+    case
+    when nvl(tjc021.hous_typ_cd,tjh021.hous_typ_cd) = '3' then '20300' //@violation
+    when nvl2(tjc021.hous_typ_cd,tjh021.hous_typ_cd) = '2' then '20200' //@violation
+    when nvl(tjc021.hous_typ_cd,tjh021.hous_typ_cd) = '1' then '20100' //@violation
+    else ''
+    end
+</select>

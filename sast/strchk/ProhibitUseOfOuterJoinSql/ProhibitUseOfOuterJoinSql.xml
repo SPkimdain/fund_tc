@@ -1,0 +1,18 @@
+<select id="getTruncatedDates" resultType="map">
+    select
+    pol_no as pol_no
+    , pao_grp_kd_cd as pao_grp_kd_cd
+    , pao_grp_seq as pao_grp_seq
+    , endr_no as endr_no
+    , sppo_kd_cd as sppo_kd_cd
+    , sppo_resd_reg_no as sppo_resd_reg_no
+    , sppo_age as sppo_age
+    , sppo_nm as sppo_nm
+    , sppo_occp_cd as sppo_occp_cd
+    , sppo_occp_pgrs_cd as sppo_occp_pgrs_cd
+    from ltcontract.tjh130) new_tjc130
+    on      new_tje910.pol_no = new_tjc130.pol_no(+) //@violation
+    and      new_tje910.pao_grp_kd_cd = new_tjc130.pao_grp_kd_cd(+) //@violation
+    and      new_tje910.pao_grp_seq = new_tjc130.pao_grp_seq(+) //@violation
+    and      new_tje910.endr_no = new_tjc130.endr_no(+) //@violation
+</select>

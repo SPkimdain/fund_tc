@@ -1,0 +1,8 @@
+<select id="test" resultType="map">
+    select
+    decode( regexp_instr(sc.rln_med_intt_cd,'[^0-9]'), 0, sc.rln_med_intt_cd, '00000000') //@violation
+    DECODE(aaa) //@violation
+    from aclown.acl_med_intt_m sc
+    where sc.med_intt_no = tje435.med_intt_no
+    and sc.med_intt_ono = tje435.med_intt_ono
+</select>

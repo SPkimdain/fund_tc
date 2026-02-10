@@ -1,0 +1,8 @@
+$color: #ed5b46;
+$borderRadius: 5px;
+
+div {
+	
+    background-color: $color;
+    -moz-border-radius: $borderRadius; //@violation 
+}
