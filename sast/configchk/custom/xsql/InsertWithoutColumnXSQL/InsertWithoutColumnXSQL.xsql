@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="dms.ep.XCE001">
+	<insert id="register" parameterClass="map" resultClass="hmap" fetchSize="50" ><![CDATA[/* ATH_고객기본 등록 | SI210106 (최수민), 2021-08-25 13:36:21 */
+INSERT INTO ATHOWN.TATHCA_INDXAAM <!-- @violation -->
+    VALUES ( #CSNO#
+    , #LTCY_CUST)DVSN_CD#
+    , #CUST_RNM_CRTI_DVSN_CD#)]]>
+    </insert>
+
+	<insert id="register" parameterClass="map" resultClass="hmap" fetchSize="50" ><![CDATA[/* ATH_고객기본 등록 | SI210106 (최수민), 2021-08-25 13:36:21 */
+/*INSERT INTO ATHOWN.TATHCA_INDXAAM */
+    VALUES ( #CSNO#
+    , #LTCY_CUST)DVSN_CD#
+    , #CUST_RNM_CRTI_DVSN_CD#)]]>
+    </insert>
+</sqlMap>

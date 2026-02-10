@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="${__NAMESPACE__}">
+    <insert id="register" parameterClass="map"><![CDATA[/* ATH_고객기본 등록 | SI210106 (최수민), 2021-08-25 13:36:21 */
+    INSERT
+        INTO ATXOWN.TATHCA_INDXAAM <!-- @violation -->
+        ( CSNO              /* 고객 번호 */
+        , LTCY_CUST_DVSN_CD /* 잠재고객구분코드 */ )
+        VALUES
+        ( #CSNO#
+        , #LTCY_CUST_DVSN_CD# )]]>
+    </insert>
+
+    <update id="update" paramterClass="map"><![CDATA[/* ATH_고객기본 수정 | SI210106 (최수민), 2021-08-25 13:36:21 */
+        UPDATE XYZOWN.TATHCA_INDXAAM <!-- @violation -->
+        SET LTCY_CUST_DVSN_CD = #LTCY_CUST_DVSN_CD# /* 잠재고객구분코드 */
+        WHERE CSNO = #CSNO#
+        AND DEL_N = 'N']]>
+    </update>
+    <delete id="deleteLogi" paramterClass="map"><![CDATA[/* ATH_고객기본 논리삭제 | SI210106 (최수민), 2021-08-25 13:36:21 */
+        UPDATE ATHOWN.TATHAA_INTCUSM
+        SEL DEL_YN = 'Y'                    /* 삭제여부 */
+        , LAST_JOB_GUID = #LAST_JOB_GUID#   /* 최종작업GUID */
+        WHERE CSNO = #CSNO#
+        AND DEL_YN = 'N']]>
+    </delete>
+    <update id="update" paramterClass="map"><![CDATA[/* ATH_고객기본 수정 | SI210106 (최수민), 2021-08-25 13:36:21 */
+/*        UPDATE XYZOWN.TATHCA_INDXAAM */
+        SET LTCY_CUST_DVSN_CD = #LTCY_CUST_DVSN_CD# /* 잠재고객구분코드 */
+        WHERE CSNO = #CSNO#
+        AND DEL_N = 'N']]>
+    </update>
+</sqlMap>

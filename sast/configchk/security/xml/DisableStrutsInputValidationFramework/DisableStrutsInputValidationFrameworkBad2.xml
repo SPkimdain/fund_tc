@@ -1,0 +1,6 @@
+<struts-config>                                                                              <!-- @violation-->
+    <form-beans>
+        <form-bean name="RegistrationForm" type="RegistrationForm" />
+    </form-beans>
+    <!-- ...-->
+</struts-config>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="dms.ep.XCE001">
+	<select id="inquire" parameterClass="map" resultClass="hmap" fetchSize="50" ><![CDATA[/* ATH_고객기본 조회 | SI210106 (최수민), 2021-08-25 13:36:21 */
+SELECT
+        A.CSNO                          AS CSNO /* 고객 번호 */
+       ,A.LTCY_CUST_DVSN_CD             AS LTCY_CUST_DVSN_CD /* 잠재고객구분코드 */
+    FROM TATHCA_INDXAAM A    /* ATH_고객기본 */
+    WHERE A.CSNO = #CSNO#
+    GROUP BY A.CSNO, A.LTCY_CUST_DVSN_CD
+    ORDER BY 1, 2 <!-- @violation-->
+    AND A.DEL_TY = 'N']]>
+    </select>
+
+    <select id="inquire" parameterClass="map" resultClass="hmap" fetchSize="50" ><![CDATA[/* ATH_고객기본 조회 | SI210106 (최수민), 2021-08-25 13:36:21 */
+SELECT
+        A.CSNO                          AS CSNO /* 고객 번호 */
+       ,A.LTCY_CUST_DVSN_CD             AS LTCY_CUST_DVSN_CD /* 잠재고객구분코드 */
+    FROM TATHCA_INDXAAM A    /* ATH_고객기본 */
+    WHERE A.CSNO = #CSNO#
+    GROUP BY A.CSNO, A.LTCY_CUST_DVSN_CD
+/*    ORDER BY 1, 2  */
+    AND A.DEL_TY = 'N']]>
+    </select>
+</sqlMap>

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="dms.ep.XCE001">
+	<select id="inquire" parameterClass="map" resultClass="hmap" fetchSize="50" >
+        <![CDATA[
+        WITH employee AS (SELECT * FROM Employees) <!-- @violation -->
+        SELECT * FROM employee WHERE ID > 20
+        UNION ALL
+        SELECT * FROM employee WHERE Sex = 'M'
+        ]]>
+    </select>
+    <select id="inquire" parameterClass="map" resultClass="hmap" fetchSize="50" >
+        <![CDATA[
+        WITH regional_sales AS ( <!-- @violation -->
+            SELECT region, SUM(amount) AS total_sales
+            FROM orders
+            GROUP BY region
+        ), top_regions AS (
+            SELECT region
+            FROM regional_sales
+            WHERE total_sales > (SELECT SUM(total_sales)/10 FROM regional_sales)
+        )
+        SELECT region,
+               product,
+               SUM(quantity) AS product_units,
+               SUM(amount) AS product_sales
+        FROM orders
+        WHERE region IN (SELECT region FROM top_regions)
+        GROUP BY region, product;
+        ]]>
+    </select>
+    <select id="inquire" parameterClass="map" resultClass="hmap" fetchSize="50" >
+        <![CDATA[
+        WITH RECURSIVE t(n) AS ( <!-- @violation -->
+            VALUES (1)
+            UNION ALL
+            SELECT n+1 FROM t WHERE n < 100
+        )
+        SELECT sum(n) FROM t;
+        ]]>
+    </select>
+    <select id="inquire" parameterClass="map" resultClass="hmap" fetchSize="50" >
+        <![CDATA[
+        WITH RECURSIVE included_parts(sub_part, part, quantity) AS ( <!-- @violation -->
+            SELECT sub_part, part, quantity FROM parts WHERE part = 'our_product'
+            UNION ALL
+            SELECT p.sub_part, p.part, p.quantity * pr.quantity
+            FROM included_parts pr, parts p
+            WHERE p.part = pr.sub_part
+        )
+        SELECT sub_part, SUM(quantity) as total_quantity
+        FROM included_parts
+        GROUP BY sub_part
+        ]]>
+    </select>
+    <select id="inquire" parameterClass="map" resultClass="hmap" fetchSize="50" >
+        <![CDATA[
+        WITH RECURSIVE search_tree(id, link, data) AS ( <!-- @violation -->
+            SELECT t.id, t.link, t.data
+            FROM tree t
+            UNION ALL
+            SELECT t.id, t.link, t.data
+            FROM tree t, search_tree st
+            WHERE t.id = st.link
+        )
+        SELECT * FROM search_tree;
+        ]]>
+    </select>
+    <select id="inquire" parameterClass="map" resultClass="hmap" fetchSize="50" >
+        <![CDATA[
+        WITH RECURSIVE search_tree(id, link, data, path) AS ( <!-- @violation -->
+            SELECT t.id, t.link, t.data, ARRAY[t.id]
+            FROM tree t
+            UNION ALL
+            SELECT t.id, t.link, t.data, path || t.id
+            FROM tree t, search_tree st
+            WHERE t.id = st.link
+        )
+        SELECT * FROM search_tree ORDER BY path;
+        ]]>
+    </select>
+    <select id="inquire" parameterClass="map" resultClass="hmap" fetchSize="50" >
+        <![CDATA[
+        WITH RECURSIVE search_tree(id, link, data, path) AS ( <!-- @violation -->
+            SELECT t.id, t.link, t.data, ARRAY[ROW(t.f1, t.f2)]
+            FROM tree t
+            UNION ALL
+            SELECT t.id, t.link, t.data, path || ROW(t.f1, t.f2)
+            FROM tree t, search_tree st
+            WHERE t.id = st.link
+        )
+        SELECT * FROM search_tree ORDER BY path;
+        ]]>
+    </select>
+    <select id="inquire" parameterClass="map" resultClass="hmap" fetchSize="50" >
+        <![CDATA[
+        WITH RECURSIVE search_tree(id, link, data, depth) AS ( <!-- @violation -->
+            SELECT t.id, t.link, t.data, 0
+            FROM tree t
+            UNION ALL
+            SELECT t.id, t.link, t.data, depth + 1
+            FROM tree t, search_tree st
+            WHERE t.id = st.link
+        )
+        SELECT * FROM search_tree ORDER BY depth;
+        ]]>
+    </select>
+    <select id="inquire" parameterClass="map" resultClass="hmap" fetchSize="50" >
+        <![CDATA[
+        WITH RECURSIVE search_tree(id, link, data) AS ( <!-- @violation -->
+            SELECT t.id, t.link, t.data
+            FROM tree t
+            UNION ALL
+            SELECT t.id, t.link, t.data
+            FROM tree t, search_tree st
+            WHERE t.id = st.link
+        ) SEARCH DEPTH FIRST BY id SET ordercol
+        SELECT * FROM search_tree ORDER BY ordercol;
+
+        WITH RECURSIVE search_tree(id, link, data) AS (
+            SELECT t.id, t.link, t.data
+            FROM tree t
+            UNION ALL
+            SELECT t.id, t.link, t.data
+            FROM tree t, search_tree st
+            WHERE t.id = st.link
+        ) SEARCH BREADTH FIRST BY id SET ordercol
+        SELECT * FROM search_tree ORDER BY ordercol;
+        ]]>
+    </select>
+    <select id="inquire" parameterClass="map" resultClass="hmap" fetchSize="50" >
+        <![CDATA[
+        WITH w AS NOT MATERIALIZED ( <!-- @violation -->
+            SELECT * FROM big_table
+            )
+        SELECT * FROM w AS w1 JOIN w AS w2 ON w1.key = w2.ref
+        WHERE w2.key = 123;
+        ]]>
+    </select>
+    <select id="inquire" parameterClass="map" resultClass="hmap" fetchSize="50" >
+        <![CDATA[
+        WITH RECURSIVE included_parts(sub_part, part) AS ( <!-- @violation -->
+            SELECT sub_part, part FROM parts WHERE part = 'our_product'
+            UNION ALL
+            SELECT p.sub_part, p.part
+            FROM included_parts pr, parts p
+            WHERE p.part = pr.sub_part
+        )
+        DELETE FROM parts
+        WHERE part IN (SELECT part FROM included_parts);
+        ]]>
+    </select>
+    <select id="inquire" parameterClass="map" resultClass="hmap" fetchSize="50" >
+        <![CDATA[
+        WITH cte1 AS (SELECT a, b FROM table1), <!-- @violation -->
+            cte2 AS (SELECT c, d FROM table2)
+        SELECT b, d FROM cte1 JOIN cte2
+        WHERE cte1.a = cte2.c;
+        ]]>
+    </select>
+    <select id="inquire" parameterClass="map" resultClass="hmap" fetchSize="50" >
+        <![CDATA[
+        WITH cte (col1, col2) AS ( <!-- @violation -->
+            SELECT 1, 2
+            UNION ALL
+            SELECT 3, 4
+        )
+        SELECT col1, col2 FROM cte;
+        ]]>
+    </select>
+    <select id="inquire" parameterClass="map" resultClass="hmap" fetchSize="50" >
+        <![CDATA[
+        SELECT * FROM z WHERE id IN (
+            WITH cte1 AS (SELECT a, b FROM table1), <!-- @violation -->
+                cte2 AS (SELECT c, d FROM table2)
+            SELECT b, d FROM cte1 JOIN cte2
+            )
+        ]]>
+    </select>
+    <select id="inquire" parameterClass="map" resultClass="hmap" fetchSize="50" >
+        <![CDATA[
+        INSERT INTO emp20
+        SELECT * FROM (
+            WITH dept20 AS ( <!-- @violation -->
+                SELECT empno, ename FROM emp WHERE deptno = 20
+            )
+            SELECT * FROM dept20
+        )
+        ]]>
+    </select>
+    <select id="inquire" parameterClass="map" resultClass="hmap" fetchSize="50" >
+        <![CDATA[
+        /* WITH employee AS (SELECT * FROM Employees) */
+        /* SELECT * FROM employee WHERE ID > 20 */
+        /* UNION ALL */
+        /* SELECT * FROM employee WHERE Sex = 'M' */
+        ]]>
+    </select>
+</sqlMap>

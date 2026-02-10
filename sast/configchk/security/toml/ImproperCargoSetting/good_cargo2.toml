@@ -1,0 +1,7 @@
+[profile.dev]
+overflow-checks = true
+debug-assertions = true
+
+[profile.test]
+overflow-checks = true
+debug-assertions = true

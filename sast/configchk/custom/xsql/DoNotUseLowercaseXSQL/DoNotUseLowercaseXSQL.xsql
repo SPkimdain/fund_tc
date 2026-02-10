@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="dms.ep.XCE001">
+	<select id="inquire" parameterClass="map" resultClass="hmap" fetchSize="50" ><![CDATA[/* ATH_고객기본 조회 | SI210106 (최수민), 2021-08-25 13:36:21 */
+    select  <!-- @violation-->
+        A.CSNO                          AS CSNO /* 고객번호 */
+       ,A.LTCY_CUST_DVSN_CD             AS LTCY_CUST_DVSN_CD /* 잠재고객구분코드 */
+    FROM ATHOWN.TATHCA_INDXAAM A    /* ATH_고객기본 */
+    WHERE A.CSNO = #CSNO# /* ignore comment */
+    and A.DEL_TY = 'N']]> <!-- @violation-->
+    </select>
+
+    <select id="inquire" parameterClass="map" resultClass="hmap" fetchSize="50" >
+    <![CDATA[/* ATH_고객기본 조회 | SI210106 (최수민), 2021-08-25 13:36:21 */
+    SELECT
+        A.CSNO                          AS CSNO /* 고객번호 */
+       ,A.LTCY_CUST_DVSN_CD             AS LTCY_CUST_DVSN_CD /* 잠재고객구분코드 */
+    FROM ATHOWN.TATHCA_INDXAAM A    /* ATH_고객기본 */
+    WHERE A.CSNO = "csno_blahblah" /* IGNORE DOUBLE QUOTE */
+    AND A.DEL_TY = 'n']]> /* IGNORE QUOTE */
+    </select>
+
+    <select id="listPofcFcAcrsPrst1" parameterClass="map" resultClass="hmap" fetchSize="50"><![CDATA[ /* 우체국 FC 실적 현황 1 목록조회 | SI210447 (장윤회), 2021-10-21 11:12:13 */
+    SELECT
+        A.GB              AS CHNL_DVSN_MM /* 구분값 */
+       ,A.CHGB            AS ROFC_CD      /* 청코드 */
+       , (SELECT   COMN_CD_VAL_NM
+          FROM      ATDOWN.TATDCI_COMCODP
+          WHERE     CD_DOWN_ID = 'ROFC_CD'
+          AND       COMN_CD_VAL = A.CHGB
+          AND       DEL_YN = 'N'
+         )                AS ROFC_NM      /* 청명 */
+       ,A.GAMDOKBRN       AS SMRZ_BRN_CD  /* 총괄국코드 */
+       , (
+        SELECT Z.BRN_NM
+        FROMATCOWN.TATCOM_GOVOFFM Z
+        WHERE Z.BRN_CD = A.GAMDOCBRN
+        AND Z.VLD_END_YMD > TO_CHAR(SYSDATE, "YYYYMMDD")
+        AND Z.DEL_YN = 'N'
+        )                 AS SMRZ_BRN_NM /* 총괄국명 */
+       ,#ACRS_YM#         AS ACRS_YM     /* 실적연월 */
+       ,A.A               AS DTL_DAT_NOCS1  /* 총괄국계 */
+       ,A.B               AS DTL_DAT_NOCS2  /* 주사국이하 */
+       ,A.C               AS DTL_DAT_NOCS3  /* 관서별계 */
+       ,A.D               AS DTL_DAT_NOCS4  /* 성별 남 */
+       ,A.E               AS DTL_DAT_NOCS5  /* 성별 여 */
+       ,A.D + A.E         AS DTL_DAT_NOCS6  /* 성별 계 */
+       ,A.F               AS DTL_DAT_NOCS7  /* 근무기간별 3월 */
+       ,A.G               AS DTL_DAT_NOCS8  /* 근무기간별 6월 */
+       ,A.H               AS DTL_DAT_NOCS9  /* 근무기간별 1년 */
+       ,A.I               AS DTL_DAT_NOCS10 /* 근무기간별 2년 */
+       ,A.J               AS DTL_DAT_NOCS11 /* 근무기간별 3년미만 */
+       ,A.K               AS DTL_DAT_NOCS12 /* 근무기간별 3년이상 */
+       ,A.F + A.G + A.H + A.I + A.J + A.K AS DTL_DAT_NOCS13 /* 근무기간별 계 */
+       ,A.L               AS DTL_DAT_NOCS14 /* 학력별 국졸 */
+       ,A.M               AS DTL_DAT_NOCS15 /* 학력별 중졸 */
+       ,A.N               AS DTL_DAT_NOCS16 /* 학력별 고졸 */
+       ,A.O               AS DTL_DAT_NOCS17 /* 학력별 고졸 */
+       ,A.L + A.M + A.N + A.O AS DTL_DAT_NOCS18 /* 학력별 계 */
+       ,A.P               AS DTL_DAT_NOCS19 /* 연령별 30세 이하 */
+       ,A.Q               AS DTL_DAT_NOCS20 /* 연령별 40세 이하 */
+       ,A.R               AS DTL_DAT_NOCS21 /* 연령별 50세 이하 */
+       ,A.S               AS DTL_DAT_NOCS22 /* 연령별 51세 이상 */
+       ,A.P + A.Q + A.R + A.S AS DTL_DAT_NOCS23 /* 연령별 계 */
+       FROM(
+          SELECT
+            SUBSTR(A.RCMN_NO,1,2)       GB,
+            A.ROFC_CD                   CHGB,
+            A.DRBR_CD                   GAMDOKBRN,
+            COUNT(CASE WHEN A.DRBR_CD - A.BRN_CD = 0 THEN A.RCMN_MD END) A, /* 총괄국계 */
+            COUNT(A.RCNM_MD) - COUNT(CASE WHEN A.DRBR_CD - A.BRN_CD = 0 THEN A.RCMN_NO END) B, /* 주사국계 */
+            COUNT(A.RCMN_MD) C, /* 관서별계 */
+            /* 2016.05.24 개인정보암호화 R START */
+            COUNT(CASE WHEN A.RMND_SEX_CD = '1' THEN A.RCMN_NO END) D, /* 성별 남 */
+            COUNT(CASE WHEN A.RMND_SEX_CD = '2' THEN A.RCMN_NO END) E, /* 성별 여 */
+            /* 2016.05.24 개인정보암호화 R END */
+            COUNT(CASE WHEN GREATEST(MONTHS_BETWEEN(TO_DATE('202112', 'YYYYMM'),
+              TO_DATE(SUBSTR(A.JNCMP_YMD,1,6), 'YYYYMM')),0) =
+              LEAST(MONTHS_BETWEEN(TO_DATE('202112','YYYYMM'),
+              TO_DATE(SUBSTR(A.JNCMP_YMD,1,6), 'YYYYMM')),2) THEN A.RCMN_NO END) F, /* 근무기간별 3월 */
+            COUNT(CASE WHEN GREATEST(MONTHS_BETWEEN(TO_DATE('202112', 'YYYYMM'),
+              TO_DATE(SUBSTR(A.JNCMP_YMD,1,6), 'YYYYMM')),3) =
+              LEAST(MONTHS_BETWEEN(TO_DATE('202112', 'YYYYMM'),
+              TO_DATE(SUBSTR(A.JNCMP_YMD,1,6), 'YYYYMM')),5) THEN A.RCMN_NO END) G,
+            COUNT(CASE WHEN GREATEST(MONTHS_BETWEEN(TO_DATE('202112', 'YYYYMM'),
+              TO_DATE(SUBSTR(A.JNCMP_YMD,1,6), 'YYYYMM')),6) =
+              LEAST(MONTHS_BETWEEN(TO_DATE('202112', 'YYYYMM'),
+              TO_DATE(SUBSTR(A.JNCMP_YMD,1,6), 'YYYYMM')),11) THEN A.RCMN_NO END) H,
+            COUNT(CASE WHEN GREATEST(MONTHS_BETWEEN(TO_DATE('202112', 'YYYYMM'),
+              TO_DATE(SUBSTR(A.JNCMP_YMD,1,6), 'YYYYMM')),12) =
+              LEAST(MONTHS_BETWEEN(TO_DATE('202112', 'YYYYMM'),
+              TO_DATE(SUBSTR(A.JNCMP_YMD,1,6), 'YYYYMM')),23) THEN A.RCMN_NO END) I, /* 근무기간별 2년 */
+            COUNT(CASE WHEN GREATEST(MONTHS_BETWEEN(TO_DATE('202112', 'YYYYMM'),
+              TO_DATE(SUBSTR(A.JNCMP_YMD,1,6), 'YYYYMM')),24) =
+              LEAST(MONTHS_BETWEEN(TO_DATE('202112', 'YYYYMM'),
+              TO_DATE(SUBSTR(A.JNCMP_YMD,1,6), 'YYYYMM')),34) THEN A.RCMN_NO END) J, /* 근무기간별 3년 */
+            COUNT(CASE WHEN GREATEST(MONTHS_BETWEEN(TO_DATE('202112', 'YYYYMM'),
+              TO_DATE(SUBSTR(A.JNCMP_YMD,1,6), 'YYYYMM')),35) =
+              LEAST(MONTHS_BETWEEN(TO_DATE('202112', 'YYYYMM'),
+              TO_DATE(SUBSTR(A.JNCMP_YMD,1,6), 'YYYYMM')),999) THEN A.RCMN_NO END) K, /* 근무기간별 3년 미만*/
+            COUNT(CASE WHEN GREATEST(A.ACBG_CD,11) = LEAST(A.ACBG_CD,13) THEN A.RCNM_NO END) L, /* 학력별 국졸 */
+            COUNT(CASE WHEN GREATEST(A.ACBG_CD,21) = LEAST(A.ACBG_CD,23) THEN A.RCNM_NO END) M, /* 학력별 국졸 */
+            COUNT(CASE WHEN GREATEST(A.ACBG_CD,31) = LEAST(A.ACBG_CD,33) THEN A.RCNM_NO END) N, /* 학력별 국졸 */
+            COUNT(CASE WHEN GREATEST(A.ACBG_CD,41) = LEAST(A.ACBG_CD,99) THEN A.RCNM_NO END) O, /* 학력별 국졸 */
+            /* 2016.05.24 개인정보암호화 R END */
+            COUNT(CASE WHEN GREATEST(SUBSTR('202112',1,4)-SUBSTR(A.RNNO_BRDT,1,4),0) =
+              LEAST(SUBSTR('202112',1,4)-SUBSTR(A.RNNO_BRDT,1,4),30) THEN A.CRMN_NO END) P, /* 연령별 30세 이하 */
+            COUNT(CASE WHEN GREATEST(SUBSTR('202112',1,4)-SUBSTR(A.RNNO_BRDT,1,4),31) =
+              LEAST(SUBSTR('202112',1,4)-SUBSTR(A.RNNO_BRDT,1,4),40) THEN A.CRMN_NO END) Q, /* 연령별 40세 이하 */
+            COUNT(CASE WHEN GREATEST(SUBSTR('202112',1,4)-SUBSTR(A.RNNO_BRDT,1,4),41) =
+              LEAST(SUBSTR('202112',1,4)-SUBSTR(A.RNNO_BRDT,1,4),50) THEN A.CRMN_NO END) R, /* 연령별 50세 이하 */
+            COUNT(CASE WHEN GREATEST(SUBSTR('202112',1,4)-SUBSTR(A.RNNO_BRDT,1,4),51) =
+              LEAST(SUBSTR('202112',1,4)-SUBSTR(A.RNNO_BRDT,1,4),200) THEN A.CRMN_NO END) S, /* 연령별 60세 이하 */
+            FROM
+              MHLOWN.TMHLAA_RCACITM A /* IGRCACIT MHL_모집자실적공통기본 */
+              , MHLOWN.TMHLAA_RCAIITD C /* IGRCAIIT MHL_모집자실적보험관리사상세 */
+            WHERE
+              A.ACRS_YM = #ARCS_YM#
+              ]]><isNotEqual property="ROFC_CD" compareValue="99"><![CDATA[
+              AND A.ROFC_CD = #ROFC_CD#
+              ]]></isNotEqual><![CDATA[
+              ]]><isNotEmpty property="BRN_CD"><![CDATA[
+                ]]><isEqual property="BRN_CD" compareValue="010066"><![CDATA[
+                  AND A.BRN_CD = #BRN_CD#
+                  ]]></isEqual><![CDATA[
+                  ]]><isNotEqual property="BRN_CD" compareValue="010066"><![CDATA[
+                  AND A.DRBR_CD = #BRN_CD#
+                  ]]></isNotEqual><![CDATA[
+                ]]></isNotEmpty><![CDATA[
+                AND A.ENTRST_FIRE_DVSN_CD = '02
+                AND A.JNCMP_YMD < TO_CHAR(ADD_MONTHS(TO_DATE(#ARCS_YM#, 'YYYYMM'),1),'YYYYMM') ||'00'
+                AND SUBSTR(a.RCMN_NO,1,2) in ('01','06','09') <!-- @violation-->
+                AND C.ACRS_YM = A.ACRS_YM
+                AND C.RCMN_NO = A.RCMN_NO
+                GROUP BY SUBSTR(A.RCMN_NO,1,2),A.ROFC_CD,A.DRBR_CD
+              ) A
+            ORDER BY A.GB, A.CHGB, A.GAMDOKBRN
+            ]]>
+    </select>
+
+    <update id="qnaUpdateOne" parameterType="pobis.im.cv.qa.vo.IMCVQA0000DM00IVo">
+UPDATE /* pobis.im.cv.qa.dao.IMCVQA00DMDao:qnaUpdateOne/cec/SI210864 */ CECOWN.TCECEC_CMMBUBP SET
+    BULB_MCLS_CD = #{bulbMclsCd} /* 게시판중분류코드 */
+    </update>
+
+	<select id="inquire" parameterClass="map" resultClass="hmap" fetchSize="50" ><![CDATA[/* ATH_고객기본 조회 | SI210106 (최수민), 2021-08-25 13:36:21 */
+/*    select  */
+        A.CSNO                          AS CSNO /* 고객번호 */
+       ,A.LTCY_CUST_DVSN_CD             AS LTCY_CUST_DVSN_CD /* 잠재고객구분코드 */
+    FROM ATHOWN.TATHCA_INDXAAM A    /* ATH_고객기본 */
+    WHERE A.CSNO = #CSNO# /* ignore comment */
+    and A.DEL_TY = 'N']]> <!-- @violation-->
+    </select>
+
+    <update id="qnaUpdateOne" parameterType="pobis.im.cv.qa.vo.IMCVQA0000DM00IVo">
+    UPDATE /* pobis.im.cv.qa.dao.IMCVQA00DMDao:qnaUpdateOne/cec/SI210864 */ CECOWN.TCECEC_CMMBUBP SET
+        WHEN #v_tx_stop_dvsn# = 'H' THEN '3'
+    </update>
+
+</sqlMap>

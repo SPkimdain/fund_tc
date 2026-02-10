@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="${__NAMESPACE__}">
+    <insert id="register" parameterClass="map"><![CDATA[/* ATH_고객기본 등록 | SI210106 (최수민), 2021-08-25 13:36:21 */
+    INSERT
+        INTO ATHOWN.TATKEB_SVCBASM
+        ( CSNO              /* 고객 번호 */
+        , LTCY_CUST_DVSN_CD /* 잠재고객구분코드 */ )
+        VALUES
+        ( #CSNO#
+        , #LTCY_CUST_DVSN_CD# )]]>
+    </insert>
+
+    <delete id="deleteLogi" paramterClass="map"><![CDATA[/* ATH_고객기본 논리삭제 | SI210106 (최수민), 2021-08-25 13:36:21 */
+            UPDATE XYQOWN.TATKEB_SVCBASM  <!-- @violation -->
+            SEL DEL_YN = 'Y'                    /* 삭제여부 */
+            , LAST_JOB_GUID = #LAST_JOB_GUID#   /* 최종작업GUID */
+            WHERE CSNO = #CSNO#
+            AND DEL_YN = 'N']]>
+    </delete>
+</sqlMap>

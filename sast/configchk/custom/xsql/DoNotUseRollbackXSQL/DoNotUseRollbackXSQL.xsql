@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="dms.ep.XCE001">
+	<update id="update" parameterClass="map" resultClass="hmap" fetchSize="50" ><![CDATA[/* ATH_고객기본 수정 | SI210106 (최수민), 2021-08-25 13:36:21 */
+UPDATE ATHOWN.TATHCA_INDXAAM
+    SET LTCY_CUST_DVSN_CD = #LTCY_CUST_DVSN_CD# /* 잠재고객구분코드 */
+    , CUST_RNM_CRTI_DVSN_CD = #CUST_RNM_CRTI_DVSN_CD# /* 고객실명증표구분코드 */
+    WHERE CSNO = #CSNO#
+    AND DEL_TYN = 'N';
+    ROLLBACK]]>  <!-- @violation-->
+    </update>
+
+    <update id="update" parameterClass="map" resultClass="hmap" fetchSize="50" ><![CDATA[/* ATH_고객기본 수정 | SI210106 (최수민), 2021-08-25 13:36:21 */
+UPDATE ATHOWN.TATHCA_INDXAAM
+    SET LTCY_CUST_DVSN_CD = #LTCY_CUST_DVSN_CD# /* 잠재고객구분코드 */
+    , CUST_RNM_CRTI_DVSN_CD = #CUST_RNM_CRTI_DVSN_CD# /* 고객실명증표구분코드 */
+    WHERE CSNO = #CSNO#
+    AND DEL_TYN = 'N';
+/*    ROLLBACK*/]]>
+    </update>
+</sqlMap>

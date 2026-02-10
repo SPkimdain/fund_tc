@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE form-validation
+        PUBLIC "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.1.3//EN"
+        "http://jakarta.apache.org/commons/dtds/validator_1_1_3.dtd">
+<form-validation>
+    <formset>
+        <!-- 적용할 어플리케이션 폼빈을 논리명으로 지정 -->
+        <form name="ProjectForm">   <!-- @violation -->
+            <!-- required 룰 지정 -->
+            <field property="requireV" depends="required">
+            </field>
+            <!-- validwhen룰 지정
+                 validwhen의 조건식을 test변수로 지정
+                 *this*는 프로퍼티 validwhenV를 나타냄 -->
+            <field property="validwhenV" depends="validwhen">
+                <msg name="validwhen" key="errors.validwhen" />
+                <var>
+                    <var-name>test</var-name>
+                    <var-value>
+                        ((*this* != null) and (countV != null))
+                    </var-value>
+                </var>
+            </field>
+            <!-- minlength룰 지정
+                 minlength변수로 조건의 최저입력수를 지정 -->
+            <field property="countV" depends="minlength">
+                <var>
+                    <var-name>minlength</var-name>
+                    <var-value>4</var-value>
+                </var>
+            </field>
+            <!-- mask룰 지정
+                 mask변수로 조건패턴을 지정 -->
+            <field property="patternV" depends="mask">
+                <var>
+                    <var-name>mask</var-name>
+                    <var-value>^[a-zA-Z]*$</var-value>
+                </var>
+            </field>
+            <!-- date룰 지정
+                 datePattern변수로 조건의 일자 패턴을 지정 -->
+            <field property="dateV" depends="date">
+                <msg name="date" key="errors.date" />
+                <var>
+                    <var-name>datePattern</var-name>
+                    <var-value>yyyy/mm/dd</var-value>
+                </var>
+            </field>
+            <!-- intRange 룰 지정
+                 max변수, min변수로 조건의 범위를 지정 -->
+            <field property="rangeV" depends="intRange">
+                <var>
+                    <var-name>min</var-name>
+                    <var-value>4</var-value>
+                </var>
+                <var>
+                    <var-name>max</var-name>
+                    <var-value>16</var-value>
+                </var>
+            </field>
+            <!-- email 룰 지정 -->
+            <field property="emailV" depends="email">
+            </field>
+        </form>
+        <form name="ProjectForm">   <!-- @violation -->
+            <!-- ... -->
+        </form>
+        <form>
+            <!-- ... -->
+        </form>
+    </formset>
+</form-validation>

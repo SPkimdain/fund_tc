@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="dms.ep.XCE001">
+	<select id="inquire" parameterClass="map" resultClass="hmap" fetchSize="50" ><![CDATA[/* ATH_고객기본 조회 | SI210106 (최수민), 2021-08-25 13:36:21 */
+SELECT DECODE(COL1, 'A', <!-- @violation-->
+    DECODE(COL2, 1, '가', 2, '나'), 'B',
+    DECODE(COL2, 3, '가', 4, '나'), '라')]]>
+    </select>
+    <select id="inquire" parameterClass="map" resultClass="hmap" fetchSize="50" ><![CDATA[/* ATH_고객기본 조회 | SI210106 (최수민), 2021-08-25 13:36:21 */
+/* SELECT DECODE(COL1, 'A', */
+/*    DECODE(COL2, 1, '가', 2, '나'), 'B',*/
+/*    DECODE(COL2, 3, '가', 4, '나'), '라')*/]]>
+    </select>
+</sqlMap>
