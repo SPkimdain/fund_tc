@@ -1,0 +1,5 @@
+name: SPARROW_5676_Dart_vuln_test_set
+
+dependencies:
+  agent_dart: 1.0.0-dev.28
+  archive: 3.3.7
