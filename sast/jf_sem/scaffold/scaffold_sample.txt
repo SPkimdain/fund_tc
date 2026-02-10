@@ -1,0 +1,45 @@
+method A.foo(int,long,com.fasoo.B) {
+  memory(#1 > -10; #2 < 20) {
+	#3.f.a.b.c.e.f.g = 12;
+	#4.a = NULL;
+	#5.b = 1;
+	return 1
+  }
+  trigger(#1 > 10; #3 != NULL) alarm_when_null(#2)
+  trigger(#2 < -1) alarm_when_null(#4)
+}
+
+method A.zoo() {
+  memory(#1 > 10; #1 <= 20) {
+	return 0
+  }
+  trigger(#1 > 10 ; #2 < 10) alarm_when_null(#2.$2)
+}
+
+method Manager.getResultSet(int [], java.lang.String [], float, double []) {
+	memory() {
+		return resource(ResultSet)
+	}
+}
+
+method Manager.<init>() {
+	memory() {
+	}
+	trigger() open(THIS)
+}
+
+method Manager.close() {
+	memory() {}
+	trigger() close(THIS)
+}
+method Manager.CommitAndclose(int) {
+	memory() {}
+	trigger() close(THIS)
+}
+
+method ResultSet.close() {
+	memory() {
+	}
+	trigger() close(THIS)
+}
+

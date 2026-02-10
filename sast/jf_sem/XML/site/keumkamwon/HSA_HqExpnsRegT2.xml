@@ -1,0 +1,1306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="507" Id="frmHsaHqExpnsRegT2" Left="8" OnLoadCompleted="frmHsaHqExpnsRegT2_OnLoadCompleted" PidAttrib="7" Title="현수막" Top="8" Ver="1.0" Width="923" WorkArea="false">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_CommonValidator" UseClientLayout="1"><!-- SAFE -->
+				<Contents>
+					<colinfo id="dsName" size="100" summ="default" type="STRING"/>
+					<colinfo id="colName" size="100" summ="default" type="STRING"/>
+					<colinfo id="expression" size="500" summ="default" type="STRING"/>
+					<record>
+						<colName>ordDt</colName>
+						<dsName>dsList</dsName>
+						<expression>required;name=주문일자;MAXLENGTHB=8;</expression>
+					</record>
+					<record>
+						<colName>strCd</colName>
+						<dsName>dsList</dsName>
+						<expression>required;name=점포코드;MAXLENGTHB=5;</expression>
+					</record>
+					<record>
+						<colName>strNm</colName>
+						<dsName>dsList</dsName>
+						<expression>name=점포명;</expression>
+					</record>
+					<record>
+						<colName>erpAcctCd</colName>
+						<dsName>dsList</dsName>
+						<expression>required;name=비용계정코드;MAXLENGTHB=7;</expression>
+					</record>
+					<record>
+						<colName>acctCd</colName>
+						<dsName>dsList</dsName>
+						<expression>name=현수막;MAXLENGTHB=7;</expression>
+					</record>
+					<record>
+						<colName>acctNm</colName>
+						<dsName>dsList</dsName>
+						<expression>required;name=현수막명;MAXLENGTHB=100;</expression>
+					</record>
+					<record>
+						<colName>wthLenth</colName>
+						<dsName>dsList</dsName>
+						<expression>name=가로길이;MAXLENGTHB=8;</expression>
+					</record>
+					<record>
+						<colName>lenLenth</colName>
+						<dsName>dsList</dsName>
+						<expression>name=세로길이;MAXLENGTHB=8;</expression>
+					</record>
+					<record>
+						<colName>sizeVal</colName>
+						<dsName>dsList</dsName>
+						<expression>name=규격값;MAXLENGTHB=30;</expression>
+					</record>
+					<record>
+						<colName>orderExpns</colName>
+						<dsName>dsList</dsName>
+						<expression>name=발주비용;MAXLENGTHB=13;</expression>
+					</record>
+					<record>
+						<colName>bannerCnts</colName>
+						<dsName>dsList</dsName>
+						<expression>required;name=현수막내용;MAXLENGTHB=1000;</expression>
+					</record>
+					<record>
+						<colName>notes</colName>
+						<dsName>dsList</dsName>
+						<expression>name=비고;MAXLENGTHB=1000;</expression>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="dsErpAcctCd"><!-- BUG -->
+				<Contents>
+					<colinfo id="code" size="256" summ="default" type="STRING"/>
+					<colinfo id="value" size="256" summ="default" type="STRING"/>
+					<colinfo id="name" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="dsExcelTemp"><!-- BUG -->
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="dsHqExpnsParam" UseClientLayout="1"><!-- BUG -->
+				<Contents>
+					<colinfo id="mkSpCd" size="256" summ="default" type="STRING"/>
+					<colinfo id="acctNm" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="dsList" OnColumnChanged="dsList_OnColumnChanged" UseClientLayout="1"><!-- BUG -->
+				<Contents>
+					<colinfo id="ordDt" size="256" summ="default" type="STRING"/>
+					<colinfo id="strCd" size="256" summ="default" type="STRING"/>
+					<colinfo id="erpAcctCd" size="256" summ="default" type="STRING"/>
+					<colinfo id="acctCd" size="256" summ="default" type="STRING"/>
+					<colinfo id="acctNm" size="256" summ="default" type="STRING"/>
+					<colinfo id="wthLenth" size="256" summ="default" type="DECIMAL"/>
+					<colinfo id="lenLenth" size="256" summ="default" type="DECIMAL"/>
+					<colinfo id="sizeVal" size="256" summ="default" type="DECIMAL"/>
+					<colinfo id="orderExpns" size="256" summ="default" type="DECIMAL"/>
+					<colinfo id="notes" size="256" summ="default" type="STRING"/>
+					<colinfo id="orderQty" size="256" summ="default" type="DECIMAL"/>
+					<colinfo id="strNm" size="256" summ="default" type="STRING"/>
+					<colinfo id="suppCd" size="256" summ="default" type="STRING"/>
+					<colinfo id="suppNm" size="256" summ="default" type="STRING"/>
+					<colinfo id="unitNm" size="256" summ="default" type="STRING"/>
+					<colinfo id="dtlDesc" size="256" summ="default" type="STRING"/>
+					<colinfo id="mkUnitCd" size="256" summ="default" type="STRING"/>
+					<colinfo id="mkUnitprcCd" size="256" summ="default" type="STRING"/>
+					<colinfo id="bannerCnts" size="256" summ="default" type="STRING"/>
+					<colinfo id="objtUnitprc" size="256" summ="default" type="DECIMAL"/>
+					<colinfo id="ordDttm" size="256" summ="default" type="STRING"/>
+					<colinfo id="mkSpCd" size="256" summ="default" type="STRING"/>
+					<colinfo id="chk" size="256" summ="default" type="STRING"/>
+					<colinfo id="rowNum" size="256" summ="default" type="STRING"/>
+					<colinfo id="chkNotes" size="256" summ="default" type="STRING"/>
+					<colinfo id="erpJobSpCd" size="256" summ="default" type="STRING"/>
+					<colinfo id="hqStrSpCd" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="dsListChk" UseClientLayout="1"><!-- BUG -->
+				<Contents>
+					<colinfo id="ordDt" size="256" summ="default" type="STRING"/>
+					<colinfo id="strCd" size="256" summ="default" type="STRING"/>
+					<colinfo id="strNm" size="256" summ="default" type="STRING"/>
+					<colinfo id="erpAcctCd" size="256" summ="default" type="STRING"/>
+					<colinfo id="acctCd" size="256" summ="default" type="STRING"/>
+					<colinfo id="acctNm" size="256" summ="default" type="STRING"/>
+					<colinfo id="suppCd" size="256" summ="default" type="STRING"/>
+					<colinfo id="suppNm" size="256" summ="default" type="STRING"/>
+					<colinfo id="dtlDesc" size="256" summ="default" type="STRING"/>
+					<colinfo id="orderQty" size="256" summ="default" type="STRING"/>
+					<colinfo id="objtUnitprc" size="256" summ="default" type="STRING"/>
+					<colinfo id="orderExpns" size="256" summ="default" type="STRING"/>
+					<colinfo id="notes" size="256" summ="default" type="STRING"/>
+					<colinfo id="chkNotes" size="256" summ="default" type="STRING"/>
+					<colinfo id="mkSpCd" size="256" summ="default" type="STRING"/>
+					<colinfo id="rowNum" size="256" summ="default" type="STRING"/>
+					<colinfo id="erpJobSpCd" size="256" summ="default" type="STRING"/>
+					<colinfo id="hqStrSpCd" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="dsSearchCond" UseClientLayout="1"><!-- BUG -->
+				<Contents>
+					<colinfo id="mkSpCd" size="256" summ="default" type="STRING"/>
+					<colinfo id="acctNm" size="256" summ="default" type="STRING"/>
+					<record>
+						<acctNm></acctNm>
+						<mkSpCd></mkSpCd>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="dsSrch" UseClientLayout="1"><!-- BUG -->
+				<Contents>
+					<colinfo id="mkSpCd" size="256" summ="default" type="STRING"/>
+					<colinfo id="ordDdFROM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ordDdTO" size="256" summ="default" type="STRING"/>
+					<colinfo id="tapSpCd" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="dsStrParam" UseClientLayout="1"><!-- BUG -->
+				<Contents>
+					<colinfo id="strSpCd" size="256" summ="default" type="STRING"/>
+					<colinfo id="strCd" size="256" summ="default" type="STRING"/>
+					<colinfo id="strNm" size="256" summ="default" type="STRING"/>
+					<colinfo id="mltOptYn" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="dsStrRslt" UseClientLayout="1"><!-- BUG -->
+				<Contents>
+					<colinfo id="strCd" size="256" summ="default" type="STRING"/>
+					<colinfo id="strNm" size="256" summ="default" type="STRING"/>
+					<colinfo id="mallSpCd" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="dsUnitdecoListRtn" UseClientLayout="1"><!-- BUG -->
+				<Contents>
+					<colinfo id="mkSpCd" size="256" summ="default" type="STRING"/>
+					<colinfo id="acctCd" size="256" summ="default" type="STRING"/>
+					<colinfo id="acctNm" size="256" summ="default" type="STRING"/>
+					<colinfo id="suppCd" size="256" summ="default" type="STRING"/>
+					<colinfo id="suppNm" size="256" summ="default" type="STRING"/>
+					<colinfo id="unitNm" size="256" summ="default" type="STRING"/>
+					<colinfo id="dtlDesc" size="256" summ="default" type="STRING"/>
+					<colinfo id="objtUnitprc" size="256" summ="default" type="DECIMAL"/>
+					<colinfo id="mkUnitCd" size="256" summ="default" type="STRING"/>
+					<colinfo id="mkUnitprcCd" size="256" summ="default" type="STRING"/>
+					<colinfo id="imgFileNm" size="256" summ="default" type="STRING"/>
+					<colinfo id="notes" size="256" summ="default" type="STRING"/>
+					<colinfo id="lastModDttm" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="dsListDown" UseClientLayout="1"><!-- BUG -->
+				<Contents>
+					<colinfo id="ordDt" size="256" summ="default" type="STRING"/>
+					<colinfo id="strCd" size="256" summ="default" type="STRING"/>
+					<colinfo id="erpAcctCd" size="256" summ="default" type="STRING"/>
+					<colinfo id="acctCd" size="256" summ="default" type="STRING"/>
+					<colinfo id="acctNm" size="256" summ="default" type="STRING"/>
+					<colinfo id="wthLenth" size="256" summ="default" type="STRING"/>
+					<colinfo id="lenLenth" size="256" summ="default" type="STRING"/>
+					<colinfo id="sizeVal" size="256" summ="default" type="STRING"/>
+					<colinfo id="orderExpns" size="256" summ="default" type="STRING"/>
+					<colinfo id="notes" size="256" summ="default" type="STRING"/>
+					<colinfo id="orderQty" size="256" summ="default" type="STRING"/>
+					<colinfo id="strNm" size="256" summ="default" type="STRING"/>
+					<colinfo id="suppCd" size="256" summ="default" type="STRING"/>
+					<colinfo id="suppNm" size="256" summ="default" type="STRING"/>
+					<colinfo id="unitNm" size="256" summ="default" type="STRING"/>
+					<colinfo id="dtlDesc" size="256" summ="default" type="STRING"/>
+					<colinfo id="mkUnitCd" size="256" summ="default" type="STRING"/>
+					<colinfo id="mkUnitprcCd" size="256" summ="default" type="STRING"/>
+					<colinfo id="bannerCnts" size="256" summ="default" type="STRING"/>
+					<colinfo id="objtUnitprc" size="256" summ="default" type="STRING"/>
+					<colinfo id="ordDttm" size="256" summ="default" type="STRING"/>
+					<colinfo id="mkSpCd" size="256" summ="default" type="STRING"/>
+					<colinfo id="chk" size="256" summ="default" type="STRING"/>
+					<colinfo id="rowNum" size="256" summ="default" type="STRING"/>
+					<colinfo id="chkNotes" size="256" summ="default" type="STRING"/>
+					<colinfo id="erpJobSpCd" size="256" summ="default" type="STRING"/>
+					<colinfo id="hqStrSpCd" size="256" summ="default" type="STRING"/>
+					<record>
+						<acctCd></acctCd>
+						<acctNm></acctNm>
+						<bannerCnts></bannerCnts>
+						<chk></chk>
+						<chkNotes></chkNotes>
+						<dtlDesc></dtlDesc>
+						<erpAcctCd></erpAcctCd>
+						<erpJobSpCd></erpJobSpCd>
+						<hqStrSpCd></hqStrSpCd>
+						<lenLenth></lenLenth>
+						<mkSpCd></mkSpCd>
+						<mkUnitCd></mkUnitCd>
+						<mkUnitprcCd></mkUnitprcCd>
+						<notes></notes>
+						<objtUnitprc></objtUnitprc>
+						<ordDt></ordDt>
+						<ordDttm></ordDttm>
+						<orderExpns></orderExpns>
+						<orderQty></orderQty>
+						<rowNum></rowNum>
+						<sizeVal></sizeVal>
+						<strCd></strCd>
+						<strNm></strNm>
+						<suppCd></suppCd>
+						<suppNm></suppNm>
+						<unitNm></unitNm>
+						<wthLenth></wthLenth>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape BKColor="user2" Bottom="52" Height="44" Id="Shape1" Left="0" LineColor="user17" LineWidth="2" Right="923" RoundHeight="4" RoundUnit="Pixel" RoundWidth="4" TabOrder="4" Top="8" Type="RoundRect" Width="923"></Shape>
+		<Static Align="Right" Border="None" Height="22" Id="Static9" Left="6" Style="essential_text" TabOrder="5" Text="*&#32;주문일자&#32;:" Top="19" VAlign="Middle" Width="76"></Static>
+		<Button ButtonStyle="TRUE" Color="white" Cursor="HAND" Height="24" Id="btnSrch" ImageID="Btn_search" Left="858" OnClick="btnSrch_OnClick" Style="text_bold" TabOrder="3" ToolTipText="조회" Top="18" Width="58"></Button>
+		<Div Height="25" Id="Sum_info" Style="input_default" TabOrder="6" TabStop="FALSE" Text="Div0" Top="88" Width="923">
+			<Contents>
+				<Button ButtonStyle="TRUE" Color="white" Cursor="HAND" DisableBKColor="#888888" Height="25" Id="btnSave" ImageID="BtnCRUD" Left="872" OnClick="Sum_info_btnSave_OnClick" Style="Text_Extra" TabOrder="1" Text="저장" ToolTipText="저장" Transparent="TRUE" Width="52"></Button>
+				<Static Border="None" Height="18" Id="sum_info_t01" Left="2" Style="Text_Extra" TabOrder="2" Text="총건수&#32;:&#32;" Top="4" VAlign="Middle" Width="43"></Static>
+				<Static Border="None" Height="18" Id="sum_info_c01" Left="49" Style="Text_Basic" TabOrder="3" Text="0&#32;건" Top="4" VAlign="Middle" Width="57"></Static>
+				<Shape Bottom="23" Height="20" Id="Shape1" Left="865" LineColor="#888888" LineKind="Vertical" LineStyle="Dot" Right="872" TabOrder="4" Top="3" Width="7"></Shape>
+				<Button Align="Right" ButtonStyle="TRUE" Cursor="HAND" Height="25" Id="btnDel" ImageID="Btn_del" Left="813" OnClick="Sum_info_btnDel_OnClick" RightMargin="7" TabOrder="5" Text="삭제" ToolTipText="삭제" Width="53"></Button>
+				<Button Align="Right" ButtonStyle="TRUE" Cursor="HAND" Height="25" Id="btnAdd" ImageID="Btn_new" Left="758" OnClick="Sum_info_btnAdd_OnClick" RightMargin="7" TabOrder="6" Text="신규" ToolTipText="신규" Width="53"></Button>
+				<Button Align="Right" ButtonStyle="TRUE" Cursor="HAND" Height="25" Id="btnExcelDown" ImageID="Btn_excelformat" Left="531" OnClick="Sum_info_btnExcelDown_OnClick" RightMargin="7" TabOrder="9" Text="엑셀양식다운로드" ToolTipText="엑셀양식다운로드" Width="127"></Button>
+				<Button Align="Right" ButtonStyle="TRUE" Cursor="HAND" Height="25" Id="btnUpload" ImageID="Btn_excelup" Left="660" OnClick="Sum_info_btnUpload_OnClick" RightMargin="7" TabOrder="8" Text="엑셀업로드" ToolTipText="엑셀업로드" Width="92"></Button>
+				<Shape Bottom="23" Height="20" Id="Shape2" Left="751" LineColor="#888888" LineKind="Vertical" LineStyle="Dot" Right="758" TabOrder="7" Top="3" Width="7"></Shape>
+			</Contents>
+		</Div>
+		<Grid AutoEnter="TRUE" AutoFitEndLine="Hide" BindDataset="dsList" BkColor2="user2" BoldHead="true" Border="Flat" Bottom="500" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillArea="TRUE" HeadBorder="Default" HeadHeight="25" Height="380" Id="grdList" InputPanel="FALSE" LineColor="user8" NoDataText="조회된&#32;데이터가&#32;없습니다." OnChar="grdList_OnChar" OnEnterDown="grdList_OnEnterDown" OnExpandEdit="grdList_OnExpandEdit" OnHeadClick="grdList_OnHeadClick" OnKeyDown="grdList_OnKeyDown" Right="923" RowHeight="26" Style="default_grid" TabOrder="8" TabStop="FALSE" Top="120" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="silver" WheelScrollRow="1" Width="923">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="35"/>
+						<col width="35"/>
+						<col width="120"/>
+						<col width="80"/>
+						<col width="120"/>
+						<col width="80"/>
+						<col width="120"/>
+						<col width="120"/>
+						<col width="70"/>
+						<col width="120"/>
+						<col width="50"/>
+						<col width="50"/>
+						<col width="50"/>
+						<col width="70"/>
+						<col width="120"/>
+						<col width="160"/>
+					</columns>
+					<head>
+						<cell bkimageid="gridbg" col="0" display="text" rowspan="2" text="번호"/>
+						<cell bkimageid="gridbg" col="1" display="checkbox" edit="checkbox" rowspan="2"/>
+						<cell bkimageid="gridbg" col="2" display="text" rowspan="2" text="주문일자"/>
+						<cell bkimageid="gridbg" col="3" display="text" rowspan="2" text="점포코드"/>
+						<cell bkimageid="gridbg" col="4" display="text" rowspan="2" text="점포명"/>
+						<cell bkimageid="gridbg" col="5" display="text" rowspan="2" text="비용계정코드"/>
+						<cell bkimageid="gridbg" col="6" display="text" rowspan="2" text="현수막"/>
+						<cell bkimageid="gridbg" col="7" display="text" rowspan="2" text="현수막명"/>
+						<cell bkimageid="gridbg" col="8" display="text" rowspan="2" text="협력사코드"/>
+						<cell bkimageid="gridbg" col="9" display="text" rowspan="2" text="협력사명"/>
+						<cell bkimageid="gridbg" col="10" colspan="3" display="text" text="규격"/>
+						<cell col="11" display="text" row="1" text="세로길이"/>
+						<cell col="12" display="text" row="1" text="규격값"/>
+						<cell bkimageid="gridbg" col="13" display="text" rowspan="2" text="발주비용"/>
+						<cell col="14" display="text" rowspan="2" text="현수막내용"/>
+						<cell bkimageid="gridbg" col="15" display="text" rowspan="2" text="비고"/>
+						<cell bkimageid="gridbg" col="10" display="text" row="1" text="가로길이"/>
+					</head>
+					<body>
+						<cell align="center" bkcolor="expr:fnSetBkcolor(row)" col="0" display="text" expr="row+1"/>
+						<cell bkcolor="expr:fnSetBkcolor(row)" col="1" colid="chk" display="checkbox" edit="checkbox"/>
+						<cell align="center" bkcolor="expr:fnSetBkcolor(row)" col="2" colid="ordDt" display="date" edit="expr:decode(rowType,&apos;insert&apos;,&apos;date&apos;,&apos;none&apos;)" expandimage="Btn_calendar_grid" expandshow="expr:iif(Row&#32;==&#32;RowPos,&#32;decode(rowType,&#32;&apos;insert&apos;,&#32;&apos;true&apos;,&#32;&apos;false&apos;),&#32;&apos;false&apos;)" expandsize="25" limit="8"/>
+						<cell align="center" bkcolor="expr:fnSetBkcolor(row)" col="3" colid="strCd" display="text" edit="expr:decode(rowType,&apos;insert&apos;,&apos;regexpr&apos;,&apos;none&apos;)" limit="5" RegExprFilter="expr:fnSetStrCd(row)"/>
+						<cell align="left" bkcolor="expr:fnSetBkcolor(row)" col="4" colid="strNm" display="text" expandimage="Btn_insearch_grid" expandshow="expr:iif(Row&#32;==&#32;RowPos,&#32;decode(rowType,&#32;&apos;insert&apos;,&#32;&apos;true&apos;,&#32;&apos;false&apos;),&#32;&apos;false&apos;)" expandsize="25"/>
+						<cell align="left" bkcolor="expr:fnSetBkcolor(row)" col="5" colid="erpAcctCd" combocol="code" combodataset="dsErpAcctCd" combotext="value" display="combo" edit="expr:decode(rowType,&apos;insert&apos;,&apos;combo&apos;,&apos;none&apos;)" limit="7"/>
+						<cell align="center" bkcolor="expr:fnSetBkcolor(row)" col="6" colid="acctCd" display="text" limit="7"/>
+						<cell bkcolor="expr:fnSetBkcolor(row)" col="7" colid="acctNm" display="text" edit="expr:decode(rowType,&apos;insert&apos;,&apos;normal&apos;,&apos;none&apos;)" expandfont="Default,10" expandimage="Btn_insearch_grid" expandshow="expr:iif(Row&#32;==&#32;RowPos,&#32;decode(rowType,&#32;&apos;insert&apos;,&#32;&apos;true&apos;,&#32;&apos;false&apos;),&#32;&apos;false&apos;)" expandsize="25" imemode="native" limit="100"/>
+						<cell align="center" bkcolor="expr:fnSetBkcolor(row)" col="8" colid="suppCd" display="text" limit="6"/>
+						<cell align="left" bkcolor="expr:fnSetBkcolor(row)" col="9" colid="suppNm" display="text" limit="100"/>
+						<cell align="right" bkcolor="expr:fnSetBkcolor(row)" col="10" colid="wthLenth" display="number" edit="number" limit="8" LimitDec="4"/>
+						<cell align="right" bkcolor="expr:fnSetBkcolor(row)" col="11" colid="lenLenth" display="number" edit="number" limit="8"/>
+						<cell align="right" bkcolor="expr:fnSetBkcolor(row)" col="12" colid="sizeVal" display="number" limit="30"/>
+						<cell align="right" bkcolor="expr:fnSetBkcolor(row)" col="13" colid="orderExpns" display="number" limit="13"/>
+						<cell align="left" bkcolor="expr:fnSetBkcolor(row)" col="14" colid="bannerCnts" display="text" edit="normal" imemode="native" limit="1000"/>
+						<cell bkcolor="expr:fnSetBkcolor(row)" col="15" colid="notes" display="text" edit="normal" imemode="native" limit="1000"/>
+					</body>
+					<summary>
+						<cell align="center" bkcolor="user9" col="0" colspan="3" display="text" text="계"/>
+						<cell align="right" bkcolor="user9" col="3" display="text" text="점포수"/>
+						<cell align="right" bkcolor="user9" col="4" display="number" expr="fnSetCount(&apos;strCd&apos;)"/>
+						<cell align="right" bkcolor="user9" col="5" display="text"/>
+						<cell align="right" bkcolor="user9" col="6" display="text" text="상품수"/>
+						<cell align="right" bkcolor="user9" col="7" display="number" expr="fnSetCount(&apos;acctCd&apos;)"/>
+						<cell align="right" bkcolor="user9" col="8" display="text"/>
+						<cell align="right" bkcolor="user9" col="9" display="text"/>
+						<cell align="right" bkcolor="user9" col="10" display="text"/>
+						<cell align="right" bkcolor="user9" col="11" display="text"/>
+						<cell align="right" bkcolor="user9" col="12" display="text"/>
+						<cell align="right" bkcolor="user9" col="13" display="number" expr='sum(&quot;orderExpns&quot;)'/>
+						<cell bkcolor="user9" col="14" display="text"/>
+						<cell align="right" bkcolor="user9" col="15" display="text"/>
+					</summary>
+				</format>
+			</contents>
+		</Grid>
+		<Shape Bottom="121" Height="2" Id="Shape0" Left="-1" LineColor="user17" LineWidth="2" Right="922" TabOrder="7" Top="119" Width="923"></Shape>
+		<MaskEdit BindDataset="dsSrch" Border="Flat" Column="ordDdFROM" Height="22" Id="medtOrdDdFromTo1" Left="89" LeftMargin="4" Mask="####-##-##" OnKeyDown="medtOrdDdFromTo1_OnKeyDown" OnKillFocus="medtOrdDdFromTo1_OnKillFocus" RightMargin="4" Style="input_default" TabOrder="1" Top="19" Type="STRING" Width="80"></MaskEdit>
+		<Button Cursor="HAND" Height="22" Id="btnOrdDdFromTo1" ImageID="Btn_calendar" Left="168" OnClick="fnInqDtFRomTo_OnClick" TabOrder="11" TabStop="FALSE" Text="Button0" ToolTipText="달력" Top="19" Width="23"></Button>
+		<MaskEdit BindDataset="dsSrch" Border="Flat" Column="ordDdTO" Height="22" Id="medtOrdDdFromTo2" Left="211" LeftMargin="4" Mask="####-##-##" OnKeyDown="medtOrdDdFromTo2_OnKeyDown" OnKillFocus="medtOrdDdFromTo2_OnKillFocus" RightMargin="4" Style="input_default" TabOrder="2" Top="19" Type="STRING" Width="80"></MaskEdit>
+		<Static Align="Center" Border="None" Height="22" Id="Static13" Left="191" TabOrder="10" Text="~" Top="19" VAlign="Middle" Width="20"></Static>
+		<Button Cursor="HAND" Height="22" Id="btnOrdDdFromTo2" ImageID="Btn_calendar" Left="290" OnClick="fnInqDtFRomTo_OnClick" TabOrder="9" TabStop="FALSE" Text="Button0" ToolTipText="달력" Top="19" Width="23"></Button>
+		<Div Height="25" Id="Div0" Style="input_default" TabOrder="12" TabStop="FALSE" Text="Div0" Top="58" Width="923">
+			<Contents>
+				<Static Border="None" Height="17" Id="Static00" Left="12" Style="Text_10pt_Extra" TabOrder="2" Text="장치장식품(현수막)&#32;비용&#32;등록" Top="4" Width="248"></Static>
+				<Image Height="17" Id="Image00" ImageID="icon_bullet01" TabOrder="1" TabStop="FALSE" Top="4" Width="7"></Image>
+			</Contents>
+		</Div>
+		<Grid AutoEnter="TRUE" AutoFitEndLine="Hide" BindDataset="dsListDown" BkColor2="user2" BoldHead="true" Border="Flat" Bottom="909" Editable="TRUE" Enable="true" EndLineColor="default" FillArea="TRUE" HeadBorder="Default" HeadHeight="25" Height="380" Id="grdListDown" InputPanel="FALSE" LineColor="user8" Right="923" RowHeight="26" Style="default_grid" TabOrder="13" TabStop="true" Top="529" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="FALSE" VLineColor="silver" WheelScrollRow="1" Width="923">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="86"/>
+						<col width="70"/>
+						<col width="69"/>
+						<col width="63"/>
+						<col width="70"/>
+						<col width="160"/>
+					</columns>
+					<head>
+						<cell bkimageid="gridbg" col="0" display="text" text="주문일자"/>
+						<cell bkimageid="gridbg" col="1" display="text" text="점포코드"/>
+						<cell bkimageid="gridbg" col="2" display="text" text="비용계정코드"/>
+						<cell col="3" display="text" text="현수막코드"/>
+						<cell col="5" display="text" text="세로길이"/>
+						<cell bkimageid="gridbg" col="6" display="text" text="발주비용"/>
+						<cell bkimageid="gridbg" col="7" display="text" text="비고"/>
+						<cell bkimageid="gridbg" col="4" display="text" text="가로길이"/>
+					</head>
+					<body>
+						<cell align="center" bkcolor="expr:fnSetBkcolor(row)" col="0" colid="ordDt" display="date" edit="expr:decode(rowType,&apos;insert&apos;,&apos;date&apos;,&apos;none&apos;)" expandimage="Btn_calendar_grid" expandshow="expr:iif(Row&#32;==&#32;RowPos,&#32;decode(rowType,&#32;&apos;insert&apos;,&#32;&apos;true&apos;,&#32;&apos;false&apos;),&#32;&apos;false&apos;)" expandsize="25"/>
+						<cell align="center" bkcolor="expr:fnSetBkcolor(row)" col="1" colid="strCd" display="text" edit="expr:decode(rowType,&apos;insert&apos;,&apos;normal&apos;,&apos;none&apos;)"/>
+						<cell align="left" bkcolor="expr:fnSetBkcolor(row)" col="2" colid="erpAcctCd" display="combo" edit="expr:decode(rowType,&apos;insert&apos;,&apos;combo&apos;,&apos;none&apos;)"/>
+						<cell col="3" display="text"/>
+						<cell align="right" bkcolor="expr:fnSetBkcolor(row)" col="4" colid="wthLenth" display="number" edit="number"/>
+						<cell align="right" bkcolor="expr:fnSetBkcolor(row)" col="5" colid="lenLenth" display="number" edit="number"/>
+						<cell align="right" bkcolor="expr:fnSetBkcolor(row)" col="6" colid="orderExpns" display="number" edit="number"/>
+						<cell bkcolor="expr:fnSetBkcolor(row)" col="7" colid="notes" display="text" edit="normal"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+	</Form>
+	<Script><![CDATA[/*------------------------------------------------------------------------------
+* PROJECT : GS리테일 SM차세대시스템 구축 프로젝트
+* NAME    : HSA_HqExpnsRegT2.xml
+* DESC    : 현수막
+* AUTHOR  : sunying
+* VERSION : v1.0
+* Copyright 2012 LG CNS All rights reserved
+*------------------------------------------------------------------------------
+*                            변         경         사         항
+*------------------------------------------------------------------------------
+*    DATE     AUTHOR                         DESCRIPTION
+* ----------  ------  --------------------------------------------------------- 
+* 2012.11.15   sunying                       최초 프로그램 작성
+* 2012.12.03  eajoh		sal/hsa/cst moved
+*------------------------------------------------------------------------------*/	 
+
+/************************
+*  공통 Script Include *
+************************/
+#include "lib::Common.js";
+#include "lib::ComboUtils.js";
+#include "lib::CommonGrid.js";
+#include "lib::OSC_COM.js";
+#include "lib::GridUtils.js";
+#include "lib::CommonDate.js";
+#include "js::sal.js";
+#include "lib::FileUtils.js";
+
+var SVC_RETRIEVE  = "svcRetrieveBannerExpnsReg"; 
+var SVC_SAVE  = "svcSaveBannerExpnsReg"; 
+var SVC_SAVECHK  = "svcCheckXlsUpload"; 
+var asMkSpCd = '2';
+var confirmFlag = false;
+var f_callBack = "fnStrPopCallBack";
+var flagChk = false;
+var strFlag = false;
+
+var c = 0;
+var anSheet;
+var lvXls = false;			 // 엑셀 업로드 여부를 확인하는 변수
+var lvChkMdItemClasfSym = 1; // 엑셀 업로드시, 상품분류체계의 개수를 확인하는 변수
+
+var enkeyFrom = false;
+var enkeyTo = false;
+/**************************
+*  form on load completeed *
+**************************/
+
+function frmHsaHqExpnsRegT2_OnLoadCompleted(obj)
+{
+	fnInitAllDataSet();
+	fnInit();
+}
+
+/************************
+*  화면 초기화 함수 *
+************************/
+function fnInit() 
+{
+	confirmFlag = false;
+	strFlag = false;
+    medtOrdDdFromTo1.Value =  today().substr(0,6)+"01";
+    medtOrdDdFromTo2.Value = today();
+    medtOrdDdFromTo1.SetFocus();
+    var whereCond = array();
+	whereCond[0] = "mkSpCd=2"; // 현수막
+    gfnInitBizCommCodeComboArgs("retrieveUnitdecoExpnsAcct", dsErpAcctCd, "", "", false,whereCond);
+    
+    dsSrch.SetColumn(0, "tapSpCd", "checkBannerXlsUpload");
+}
+
+/****************************
+*  fnInitAllDataSet*
+******************************/
+function fnInitAllDataSet() 
+{
+   dsSrch.AddRow();
+   dsList.ClearData();
+}
+
+/****************************
+*  fnInqDtFRomTo_OnClick*
+******************************/
+function fnInqDtFRomTo_OnClick(obj)
+{
+	var arg;
+	arg = " p_StandFromDt="+quote(medtOrdDdFromTo1.Value)+
+	      " p_StandToDt="+quote(medtOrdDdFromTo2.Value);
+			  
+	var rslt = array();      
+	sRslt = gfnCalendarDual_Dialog(arg, medtOrdDdFromTo1, medtOrdDdFromTo2);	
+	medtOrdDdFromTo1.value = sRslt[0];
+	medtOrdDdFromTo2.value = sRslt[1];	
+}
+
+/****************************
+*  validate *
+******************************/
+function fnRunPre(strSvcId)
+{
+	if(gfn_isEqual(SVC_RETRIEVE,strSvcId,true)) {	
+	
+		confirmFlag = false;
+	    if(gfnIsModifyDsEx(dsList,"chk")) {
+			if(!confirm(gfnGetMsg(domain.gssm_com_cfm_001))) {
+			} else {
+			    confirmFlag = true;
+				fnRun(SVC_SAVE);
+				return false;
+			}
+	    }
+	    
+		if(gfnIsNull(trim(medtOrdDdFromTo1.Value))){
+		  var paramArray = ["주문일자From"];
+		  alert(gfnGetMsg(domain.gssm_com_warn_006,paramArray));
+		  medtOrdDdFromTo1.SetFocus();
+		  return false;
+		}
+		
+		if(gfnIsNull(trim(medtOrdDdFromTo2.Value))){
+		  var paramArray = ["주문일자To"];
+		  alert(gfnGetMsg(domain.gssm_com_warn_006,paramArray));
+		  medtOrdDdFromTo2.SetFocus();
+		  return false;
+		}
+		
+		var startDt = medtOrdDdFromTo1.Value;
+		var endDt = medtOrdDdFromTo2.Value;
+		
+		if (gfnIsDateYMD(startDt) < 0) {
+			var paramArray = ["주문일자From"];
+			alert(gfnGetMsg(domain.gssm_mst_warn_073,paramArray));
+			medtOrdDdFromTo1.SetFocus();
+			return false;
+		}
+		
+		if (gfnIsDateYMD(endDt) < 0) {
+			var paramArray = ["주문일자To"];
+			alert(gfnGetMsg(domain.gssm_mst_warn_073,paramArray));
+			medtOrdDdFromTo2.SetFocus();
+			return false;
+		}
+
+		if(gfnFromToDateChk(startDt, endDt) < 0) {
+			alert(gfnGetMsg(domain.gssm_com_warn_007));
+			medtOrdDdFromTo2.SetFocus();
+			return false;
+		}
+	}else if(gfn_isEqual(SVC_SAVE,strSvcId,true)) { 
+	
+	    if(!gfnIsModifyDsEx(dsList,"chk")) {
+			alert(gfnGetMsg(domain.gssm_com_inf_004));
+			return false;
+	    }
+	    
+	    if(!gfnIsChecked(dsList)) {
+			alert(gfnGetMsg(domain.gssm_com_warn_001));
+			return false;
+	    }
+
+		if(!gfnValidGridDataChk(grdList)) { 
+			return false; 
+		}
+		
+		if(flagChk){
+			for(var i = 0; i < dsList.rowcount; i++){
+				if(!gfnIsNull(dsList.GetColumn(i,"chkNotes"))){	
+					alert("엑셀업로드 체크 실패했습니다,업로드값을 확인하십시요.");	
+					return false;
+				}
+			}
+		}
+		if(!confirmFlag&&!strFlag) {
+			
+			var a = 0;
+			var b = 0;
+			for(var i = 0; i < dsList.rowcount; i++){
+				if(dsList.GetColumn(i,"chk") == 1){
+					if(dsList.GetRowType(i) == 'insert'){	
+						a++;
+					}
+					if(dsList.GetRowType(i) == 'update'){	
+						b++;
+					}	
+				}
+			}
+
+			var paramArray = [a,b,c];			
+			if(!confirm(gfnGetMsg(domain.gssm_com_cfm_012,paramArray))) {			
+				return false;
+			}
+			
+
+        }
+		gfnApplyChange(dsList,"chk");	
+	}else if(gfn_isEqual(SVC_SAVECHK,strSvcId,true)) { 
+		for(var i = 0; i < dsList.rowcount; i++){
+			if (dsList.GetColumn(i,"ordDt").length != 8 || gfnIsDateYMD(dsList.GetColumn(i,"ordDt")) < 0) {
+				dsList.SetColumn(i,"ordDt","");
+			}
+		}
+	}
+	return true;
+}
+
+/*****************************************
+*  btnSrch_OnClick*
+******************************************/
+function btnSrch_OnClick(obj)
+{
+	fnRun(SVC_RETRIEVE);
+}
+
+/****************************
+*  fnRun*
+******************************/
+function fnRun(strSvcId)
+{
+	if( !fnRunPre(strSvcId) ) {
+        return;
+    }
+  
+    var strUrl = "";
+    var sInDataSet  = ""; 
+    var sOutDataSet = "";
+    var sArgument = "";
+    dsSrch.SetColumn(0,"mkSpCd",asMkSpCd);
+    if(gfn_isEqual(SVC_RETRIEVE,strSvcId,true)) { 
+	
+       SetWaitCursor(true);
+       strURL      = "Svl::gssm/sal/hsa/cst/hqExpnsRegBizNav/retrieveBannerExpnsReg.mip";  
+	   sInDataSet  = "dsSrch=dsSrch";                				
+	   sOutDataSet = "dsList=dsList"; 
+	   sArgument   = "";
+	  
+       gfnCallService(strSvcId, strURL, sInDataSet, sOutDataSet, sArgument, "fnCallBack");        
+    }else if(gfn_isEqual(SVC_SAVE,strSvcId,true)) { 
+       SetWaitCursor(true);
+       strURL      = "Svl::gssm/sal/hsa/cst/hqExpnsRegBizNav/saveBannerExpnsReg.mip";  
+	   sInDataSet  = "dsList=dsList:u dsSrch=dsSrch";
+	   sOutDataSet = "";         
+	   sArgument   = "";
+       gfnCallService(strSvcId, strURL, sInDataSet, sOutDataSet, sArgument, "fnCallBack");	
+    } else if(gfn_isEqual(SVC_SAVECHK,strSvcId,true)) { 
+       SetWaitCursor(true);       
+       strURL      = "Svl::gssm/sal/hsa/cst/hqExpnsRegBizNav/checkXlsUpload.mip"; 
+	   sInDataSet  = "dsList=dsList:u dsSrch=dsSrch";                				
+	   sOutDataSet = "dsListChk=dsListChk";         
+	   sArgument   = "";
+       gfnCallService(strSvcId, strURL, sInDataSet, sOutDataSet, sArgument, "fnCallBack",false);        
+    }
+}
+/*****************************************
+*  CallBack 함수 *
+******************************************/
+function fnCallBack(strSvcId, strErrCode, strErrMsg)
+{	
+	SetWaitCursor(false);
+	if(strErrCode <> 0) {
+		trace("svcid:"+strSvcId+":"+strErrCode + " : " + strErrMsg);
+		gfnErrorHandler( strErrCode, gfnGetMsg( strErrMsg ) );
+		return;
+	} else if (strSvcId == SVC_RETRIEVE) {
+		gfnClearSortMark(grdList);
+	    Sum_info.sum_info_c01.Text = NumFormat(dsList.rowcount)+ " 건";
+	    if(dsList.GetRowCount() == 0) {
+			grdList.FillArea = false;
+			//Sum_info.btnAdd.Enable = false;
+		}else {
+			grdList.FillArea = true;
+			//Sum_info.btnAdd.Enable = true;
+		}
+		
+		dsList.ApplyChange();
+		c=0;
+		flagChk = false;
+	} else if (strSvcId == SVC_SAVE) {
+		alert(gfnGetMsg(domain.dev_suc_com_save));
+		confirmFlag = false;
+		strFlag = false;
+		dsList.ClearData();
+		fnRun(SVC_RETRIEVE);
+	}  else if (strSvcId == SVC_SAVECHK) {
+		var sum = 0;
+		for(var i = 0; i < dsListChk.rowcount; i++){
+			if(!gfnIsNull(dsListChk.GetColumn(i,"chkNotes"))){	
+				dsList.SetColumn(dsListChk.GetColumn(i,"rowNum"),"chkNotes",dsListChk.GetColumn(i,"chkNotes"));
+				sum++;		
+			} else {
+				dsList.SetColumn(dsListChk.GetColumn(i,"rowNum"),"chkNotes","");
+			}
+		}
+		grdList.Redraw = false;
+		
+		for(var i = 0; i < dsList.rowcount; i++){
+			dsList.UpdateControl = false;
+			dsList.SetRowType(i, "insert");
+			dsList.UpdateControl = true;
+		}
+		dsList.rowposition = -1;
+		grdList.Redraw = true;
+	
+		if(sum > 0) {
+			return false;
+		}
+		
+	}
+}
+
+function Sum_info_btnExcelDown_OnClick(obj)
+{
+	gfnSaveExcel(grdListDown);
+}
+
+/*****************************************
+*  grdList_OnExpandEdit *
+******************************************/
+function grdList_OnExpandEdit(obj,nRow,nCell,strVal,nPivotIndex)
+{
+	if(nCell == 2) {
+		fnCallCalPop(obj,nRow,nCell);
+	}else if(nCell == 4) {
+		dsStrRslt.Clear();
+		dsStrParam.ClearData();
+		dsStrParam.AddRow();
+		dsStrParam.SetColumn(0,"mltOptYn",0);
+		dsStrParam.SetColumn(0, "strCd", dsList.GetColumn(nRow,"strCd"));
+	
+		// if(gfnIsNull(dsList.GetColumn(nRow,"strCd"))) {
+			// var msgParam = Array(1);
+			// msgParam[0] = "점포";
+			// alert(gfnGetMsg(domain.gssm_com_warn_004, msgParam));
+			// grdList.SetCellPos(3);
+			// grdList.ShowEditor();
+			// return false;
+		// }
+	
+		fnStrInq (true,f_callBack);
+	}else if(nCell == 7) {
+	    var sAcctNm = dsList.GetColumn(nRow,"acctNm");
+		cfnPopHqExpnsSrchP("selectHqExpns", "2",sAcctNm,"fnHqExpnsSrchPopCallBack",true);
+	}
+}
+
+/*****************************************
+*  fnCallCalPop *
+******************************************/
+function fnCallCalPop(obj,nRow,nCell) 
+{
+	 var calW = 184;
+	 var calH = 196;
+	 var arg = "p_StandDt="+grdList.GetCellValue(nRow, nCell-1);	
+	 var param = "";
+	 var strColId = "";
+	 
+	 var rect = obj.GetCellRect(nRow, nCell);
+	 var x = rect[0] ;
+	 var y = rect[3];
+	
+	 if(nCell == 2) {
+		strColId = "ordDt";
+		if(!gfnIsNull(dsList.GetColumn(nRow, strColId))) {
+			param = gfnCalendar_Dialog("p_StandDt="+dsList.GetColumn(nRow, strColId), , ClientToScreenX(obj, x), ClientToScreenY(obj, y));
+			dsList.SetColumn(nRow, strColId, substr(param, 0, 8));
+		} else {
+			param = gfnCalendar_Dialog("p_StandDt="+today(), , ClientToScreenX(obj, x), ClientToScreenY(obj, y));
+			dsList.SetColumn(nRow, strColId, substr(param, 0, 8));
+		}
+	 }	 	
+}
+
+/*****************************************
+*  fnCallStrPop *
+******************************************/
+function fnCallStrPop(nRow) 
+{
+	dsStrRslt.Clear();
+	dsStrParam.ClearData();
+    dsStrParam.AddRow();
+    dsStrParam.SetColumn(0,"mltOptYn",0);
+    dsStrParam.SetColumn(0, "strCd", dsList.GetColumn(nRow,"strCd"));
+
+	// if(gfnIsNull(dsList.GetColumn(nRow,"strCd"))) {
+		// var msgParam = Array(1);
+		// msgParam[0] = "점포";
+		// alert(gfnGetMsg(domain.gssm_com_warn_004, msgParam));
+		// grdList.SetCellPos(3);
+        // grdList.ShowEditor();
+		// return false;
+	// }
+
+	fnStrInq (false,f_callBack);
+}
+
+
+/*****************************************
+*  fnStrInq *
+******************************************/
+function fnStrInq (bPopCk, sCallBack)
+{
+	http.Sync = true;
+	
+	// 전역변수에 코드필드와 코드명 필드 ID 및 리턴함수명 셋팅
+	f_callBack = sCallBack;
+	var sSvcID      = "selectStr";
+	
+	if (bPopCk == false) {
+		var sURL	    = "Svl::gssm/com/commNav/retrieveStr.mip";
+		var sInDS  		= "dsStrParam=dsStrParam"; 
+		var sOutDS 		= "dsStrRslt=dsStrRslt"; 
+		var sArgument   = "";
+		var callBack    = "cfnComPopRtn";
+	
+		gfnCallService(sSvcID, sURL, sInDS, sOutDS, sArgument, callBack);
+	} else {			
+		Dialog("com::COM_StrInqP.xml","f_callBack="+ quote(f_callBack)+" f_svcId="+quote(sSvcID));
+		cfnSetRetValue (dsStrRslt, 'strCd', 'strNm', sSvcID);
+	} 
+
+	http.Sync = true;		
+}
+
+/*****************************************
+*  cfnComPopRtn *
+******************************************/
+function cfnComPopRtn(strSvcId, strErrCode, strErrMsg) 
+{
+	if (strSvcId == 'selectStr') {
+		if (dsStrRslt.GetRowCount() == 1) {
+			dsList.SetColumn(dsList.row,"strCd",dsStrRslt.getColumn(0, "strCd"));
+		    dsList.SetColumn(dsList.row,"strNm",dsStrRslt.getColumn(0, "strNm"));
+		} else {
+			dsStrRslt.clearData();		
+			fnStrInq(true, f_callBack);
+		}
+	}
+}
+
+/********************************************************************************************************************
+ * Description : 업무공통 - 코드와 코드명 필드에 값 셋팅					   										*
+ * Usage       : cfnSetRetValue 											   										*
+ * Params      : ds = 결과 데이터셋, cdId = 코드칼럼ID, nmId = 코드명칼럼ID, retCallCk = 리턴함수 호출 여부	   	   	*
+ * Author      : 강정현. 2012.10.24	   	   	   	   	   	   	   	   	   	   	   										*
+ ********************************************************************************************************************/
+function cfnSetRetValue (ds,cdId, nmId, strSvcId) 
+{
+	http.Sync = true;
+	var rcnt = ds.rowcount;
+	
+	if (rcnt > 0 ) {
+	
+		if (ds.rowcount == 1) {
+			dsList.SetColumn(dsList.row,"strCd", ds.getColumn(0, cdId));
+			dsList.SetColumn(dsList.row,"strNm", ds.getColumn(0, nmId));		
+		} else {
+			var cd = "";
+			var nm = "";
+			for (var row = 0; row < ds.rowcount; row++ ) {
+				cd = cd + ds.getColumn(row, cdId);
+				nm = nm + ds.getColumn(row, nmId);
+				if (row != ds.rowcount-1 ) {
+					cd = cd+ ',';
+					nm = nm+',';
+				}
+			}
+			dsList.SetColumn(dsList.row,"strCd", cd);
+			dsList.SetColumn(dsList.row,"strNm", nm);	
+		}
+		
+		if (length(f_callBack) > 0 ) {
+			eval(f_callBack+"('"+strSvcId+"')");
+		}		
+	}
+	
+	http.sync = true;
+}
+
+function grdList_OnEnterDown(obj,nRow,nCell,strVal,nPivotIndex)
+{
+	if(nCell == 3) {
+		fnCallStrPop(nRow);
+	}else if(nCell == 7) {
+		var sAcctNm = dsList.GetColumn(nRow,"acctNm");
+		cfnPopHqExpnsSrchP("selectHqExpns", "2",sAcctNm,"fnHqExpnsSrchPopCallBack");
+	}
+}
+
+
+/*****************************************
+*  fnHqExpnsSrchPopCallBack*
+******************************************/
+function fnHqExpnsSrchPopCallBack(sSvcId, dsTemp)
+{
+	if(dsTemp.rowcount > 0) {
+		dsList.SetColumn(dsList.row,"acctCd",dsTemp.getColumn(0, "acctCd"));
+		dsList.SetColumn(dsList.row,"acctNm",dsTemp.getColumn(0, "acctNm"));
+		dsList.SetColumn(dsList.row,"suppCd",dsTemp.getColumn(0, "suppCd"));
+	    dsList.SetColumn(dsList.row,"suppNm",dsTemp.getColumn(0, "suppNm"));   
+	    dsList.SetColumn(dsList.row,"dtlDesc",dsTemp.getColumn(0, "dtlDesc"));
+	    dsList.SetColumn(dsList.row,"objtUnitprc",dsTemp.getColumn(0, "objtUnitprc"));
+	}
+}
+
+/****************************
+*  grdList_OnKeyDown*
+******************************/
+function grdList_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam)
+{
+	if(bShift) {
+		if(nChar == 13) {
+			obj.MoveToPrevCell();
+		}
+    } else {
+		if(nChar == 13) {
+			obj.MoveToNextCell();
+		}
+    }
+}
+
+/****************************
+*  Sum_info_btnAdd_OnClick*
+******************************/
+function Sum_info_btnAdd_OnClick(obj)
+{
+	if(!gfnValidGridDataChkAdd(grdList)) { 
+		return; 
+	}
+    
+	gfnNewAdd(dsList);
+	dsList.SetColumn(dsList.row,"chk","1");
+	dsList.SetColumn(dsList.row,"mkSpCd","2");
+	dsList.SetColumn(dsList.row,"erpJobSpCd","S20402");
+	dsList.SetColumn(dsList.row,"hqStrSpCd","H");
+	
+	grdList.SetCellPos(2);
+    grdList.ShowEditor();
+}
+
+/****************************
+*  Sum_info_btnDel_OnClick*
+******************************/
+function Sum_info_btnDel_OnClick(obj)
+{
+	var index = dsList.SearchRow("chk == '1'");
+    if(index == -1) {
+		alert(gfnGetMsg(domain.gssm_com_warn_001));
+		return;
+    }
+    if (confirm("삭제하시겠습니까? \n *삭제 후 저장을 해야 반영됩니다.") == true) {
+		while(index != -1) {
+			dsList.DeleteRow(index);
+			c++;
+			index = dsList.SearchRow("chk == '1'");
+		}
+		alert("삭제 되었습니다. 저장을 하시면 반영됩니다.");
+    }
+}
+
+/****************************
+*  Sum_info_btnSave_OnClick*
+******************************/
+function Sum_info_btnSave_OnClick(obj)
+{
+	if(flagChk){
+		fnRun(SVC_SAVECHK);
+	}
+	fnRun(SVC_SAVE);
+}
+
+/****************************
+*  grdList_OnHeadClick*
+******************************/
+function grdList_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+	if(nCell != 0 && nCell != 1) {
+	    var index  = dsList.SearchRow("rowType=='insert'||rowType=='update'");
+	    if(index == -1) {
+	       gfnGridSort(obj, dsList, nCell);
+	    }
+	}
+	if(nCell == 1) {
+		gfnGrdcheckAll(obj, 1);
+	}
+}
+
+/****************************
+*  Sum_info_btnUpload_OnClick*
+******************************/
+function Sum_info_btnUpload_OnClick(obj)
+{
+	lvXls = true;
+	
+	//데이터 셋 초기화
+	dsList.ClearData();
+	
+	//File Dialog 정보 설정
+	var strFileDialog = "fdXls";
+	var strFileID = "flXls";
+	var objFile = find(strFileID);
+	
+	var strFileName;
+	var nSheet = 0;
+
+	//File Dialog 생성
+	if (isValid(Find(strFileDialog)) == false) {
+		Create("FileDialog",strFileDialog,'Height="1" Left="1" Right="1" TabOrder="100" Top="1" Width="1"');
+	}
+	
+	var objFileDialog = Find(strFileDialog);
+	
+	//File Dialog 호출
+	objFileDialog.Type = "OPEN";	
+	objFileDialog.Filter = "Excel File(*.xls;*.xlsx)|*.xls;*.xlsx|";
+	objFileDialog.FileName = "";
+	
+	if (objFileDialog.Open() == false) {
+		return;
+	}	
+
+	strFileName = objFileDialog.FilePath + "\\" + objFileDialog.FileName;
+
+	SetTimer(1000,300);	// 시간차이로 에러가 발생되는 듯 하여 Timer로 Excel Load처리...		
+
+	if (strFileName != null){
+		ext_ExcelImportByIndex(strFileName, nSheet, "dsExcelTemp", 0, 0, 0, 0, 0, 0, 0, 0);	// 시간차이로 에러가 발생되는 듯 하여 Timer로 Excel Load처리...
+	}
+	
+	//데이터를 복사한다.
+	var rowCnt = dsExcelTemp.GetRowCount();
+	
+	for(var i = 1; i < rowCnt; i++) {
+		// if( gfnIsNull( dsExcelTemp.GetColumn(i, 1) ) ) {
+			// continue;
+		// }
+		
+		var nRow = dsList.AddRow();
+		
+		dsList.CopyRow(nRow, "dsExcelTemp", i, "ordDt=Col01,strCd=Col02,erpAcctCd=Col03,acctNm=Col04,wthLenth=Col05,lenLenth=Col06,orderExpns=Col07,notes=Col08");
+
+		//모두 선택으로 변경한다.
+		dsList.SetColumn(nRow, "chk", 1);
+		dsList.SetColumn(nRow, "rowNum", i-1);
+		dsList.SetColumn(nRow,"mkSpCd","2");
+		if(!gfnIsNull(dsList.GetColumn(nRow,"strCd"))){
+			fnCallStrPop(nRow);
+		}
+		var sAcctNm = dsList.GetColumn(nRow,"acctNm");
+		if(!gfnIsNull(sAcctNm)){
+			cfnPopHqExpnsSrchP("selectHqExpns", "2",sAcctNm,"fnHqExpnsSrchPopCallBack");
+		}
+	}	
+	
+	Sum_info.sum_info_c01.Text = NumFormat(dsList.rowcount)+ " 건";
+	flagChk = true;
+	fnRun(SVC_SAVECHK);
+}
+
+/****************************
+*  fnStrPopCallBack*
+******************************/
+function fnStrPopCallBack() {}
+
+/****************************
+*  grdList_OnChar*
+******************************/
+function grdList_OnChar(obj,strPreText,nChar,strPostText,nLLParam,nHLParam,nRow,nCell,nPivotIndex)
+{
+	if(nCell == 3){
+		dsList.SetColumn(nRow,"strNm","");
+	}else if(nCell == 7){
+		dsList.SetColumn(nRow,"acctCd","");
+		dsList.SetColumn(nRow,"suppCd","");
+	    dsList.SetColumn(nRow,"suppNm","");   
+	    dsList.SetColumn(nRow,"dtlDesc","");
+	    dsList.SetColumn(nRow,"objtUnitprc","");
+	}
+}
+
+/****************************
+*  fnSetBkcolor*
+******************************/
+function fnSetBkcolor(n)
+{
+	if(!gfnIsNull(dsList.GetColumn(n,"chkNotes"))){
+		return 'red';
+	}
+}
+
+/****************************
+*  fnSetCount*
+******************************/
+function fnSetCount(col)
+{
+	
+    var c = dsList.GetRowCount();
+	var arr = Array(c);
+	var count = 0;
+	
+	var text = dsList.GetColumn(0, col);
+	if(!gfnIsNull(text)) {
+		arr[0] = text;
+		count++;
+	}
+	var flag  = false;
+    for(var i = 1; i < c; i++){
+        var temp = dsList.GetColumn(i, col);
+        flag  = false;
+		for(var j=0;j<arr.length();j++) {
+			if(temp == arr[j] &&!gfnIsNull(temp)) {
+			    flag = true;
+				break;
+			}
+		}
+		
+		if(!flag) {
+		    var kk = arr.length();
+			arr[kk] = temp;
+			count++;
+		}
+	}
+ 
+	return count;
+}
+
+/*****************************************
+*  setStrFlag *
+******************************************/
+function setStrFlag(f) {
+	strFlag = f;
+}
+
+/*****************************************
+*  fnIsUpateDs2 *
+******************************************/
+function fnIsUpateDs2() {
+	if(gfnIsModifyDsEx(dsList,"chk")) {
+	    if(gfnIsChecked(dsList)) {
+			return true;
+	    } else {
+			return false;
+	    }
+		
+    } else  {
+		return false;
+    }
+}
+
+
+/*****************************************
+*  fnAlertMsg2 *
+******************************************/
+function fnAlertMsg2() {
+	return gfnGetChangeAlert(dsList,"chk");
+}
+
+
+/*****************************************
+*  fnSetStrCd *
+******************************************/
+function fnSetStrCd(n)
+{
+	if(dsList.GetRowType(n) == "insert"){
+		return fnSetNumberFormat();
+	}else {
+		return "none";
+	}
+}
+
+/*****************************************
+*  fnSetNumberFormat *
+******************************************/
+function fnSetNumberFormat()
+{
+	var sRegExp = "";
+	sRegExp = "['\\d']";
+	return sRegExp;
+}
+
+/*****************************************
+*  medtOrdDdFromTo1_OnKillFocus *
+******************************************/
+function medtOrdDdFromTo1_OnKillFocus(obj)
+{
+	if(!enkeyFrom){ 
+		fnValFromDt();
+	}
+}
+
+/*****************************************
+*  fnValFromDt *
+******************************************/
+function fnValFromDt()
+{	
+	if(!gfnIsNull(trim(medtOrdDdFromTo1.Value))){
+	 
+		var startDt = medtOrdDdFromTo1.Value;
+		
+		if (startDt.length < 8 || gfnIsDateYMD(startDt) < 0) {
+			var paramArray = ["주문일자From"];
+			alert(gfnGetMsg(domain.gssm_mst_warn_073,paramArray));
+			medtOrdDdFromTo1.Value = "";
+			medtOrdDdFromTo1.SetFocus();
+			return false;
+		}
+	}
+	
+	return true;
+}
+
+/*****************************************
+*  medtOrdDdFromTo1_OnKeyDown *
+******************************************/
+function medtOrdDdFromTo1_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam)
+{
+	if(nChar == 13) {
+		enkeyFrom = true;
+		fnValFromDt();
+		enkeyFrom = false;
+	}
+}
+
+/*****************************************
+*  medtOrdDdFromTo2_OnKillFocus *
+******************************************/
+function medtOrdDdFromTo2_OnKillFocus(obj)
+{
+	if(!enkeyTo){
+		fnValEndDt();
+	}
+}
+
+/*****************************************
+*  fnValEndDt *
+******************************************/
+function fnValEndDt()
+{
+	if(!gfnIsNull(trim(medtOrdDdFromTo2.Value))){
+		var startDt = medtOrdDdFromTo1.Value;
+		var endDt = medtOrdDdFromTo2.Value;
+		
+		if (endDt.length < 8 || gfnIsDateYMD(endDt) < 0) {
+			var paramArray = ["주문일자To"];
+			alert(gfnGetMsg(domain.gssm_mst_warn_073,paramArray));
+			medtOrdDdFromTo2.Value = "";
+			medtOrdDdFromTo2.SetFocus();
+			return false;
+		}
+		if(!gfnIsNull(trim(startDt))){
+			if(gfnFromToDateChk(startDt, endDt) < 0) {
+				alert(gfnGetMsg(domain.gssm_com_warn_007));
+				medtOrdDdFromTo2.Value = "";
+				medtOrdDdFromTo2.SetFocus();
+				return false;
+			}
+		}
+	}
+	return true;
+}
+
+/*****************************************
+*  medtOrdDdFromTo2_OnKeyDown *
+******************************************/
+function medtOrdDdFromTo2_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam)
+{
+	if(nChar == 13) {
+		enkeyTo = true;
+		fnValEndDt();
+		enkeyTo = false;
+	}
+}
+
+/*****************************************
+*  dsList_OnColumnChanged *
+******************************************/
+function dsList_OnColumnChanged(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+	if(strColumnID != "chk"){
+		dsList.SetColumn(nRow,"chk","1");
+	}
+	if(strColumnID == "wthLenth"){
+		if(gfnIsNull(dsList.GetColumn(nRow,"wthLenth")) || gfnIsNull(dsList.GetColumn(nRow,"lenLenth"))){
+			dsList.SetColumn(nRow, "sizeVal", 0);
+		}else {
+			dsList.SetColumn(nRow, "sizeVal", (dsList.GetColumn(nRow,"wthLenth") * dsList.GetColumn(nRow,"lenLenth")));
+		}
+
+		if(!gfnIsNull(dsList.GetColumn(nRow,"objtUnitprc"))){	
+			dsList.SetColumn(nRow, "orderExpns", (dsList.GetColumn(nRow,"sizeVal") * dsList.GetColumn(nRow,"objtUnitprc")));
+		}else {
+			dsList.SetColumn(nRow, "orderExpns", 0);
+		}
+	}else if(strColumnID == "lenLenth"){
+		if(gfnIsNull(dsList.GetColumn(nRow,"wthLenth")) || gfnIsNull(dsList.GetColumn(nRow,"lenLenth"))){
+			dsList.SetColumn(nRow, "sizeVal", 0);
+		}else {
+			dsList.SetColumn(nRow, "sizeVal", (dsList.GetColumn(nRow,"wthLenth") * dsList.GetColumn(nRow,"lenLenth")));
+		}
+		
+		if(!gfnIsNull(dsList.GetColumn(nRow,"objtUnitprc"))){	
+			dsList.SetColumn(nRow, "orderExpns", (dsList.GetColumn(nRow,"sizeVal") * dsList.GetColumn(nRow,"objtUnitprc")));
+		}else {
+			dsList.SetColumn(nRow, "orderExpns", 0);
+		}
+	}else if(strColumnID == "sizeVal"){
+		if(!gfnIsNull(dsList.GetColumn(nRow,"objtUnitprc"))){
+			dsList.SetColumn(nRow, "orderExpns", (dsList.GetColumn(nRow,"sizeVal") * dsList.GetColumn(nRow,"objtUnitprc")));
+		}else {
+			dsList.SetColumn(nRow, "orderExpns", 0);
+		}
+	}
+}
+]]></Script>
+</Window>

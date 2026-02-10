@@ -1,0 +1,16 @@
+/**
+ *	아래 두개의 method 정의는 ex.test() method 의 첫 번째 인자값의 조건에 따라서 Exception을
+ *  throw 할지 아닌지를 기술하기 위한 것이다.
+ */
+
+/* ex.test() method 는 첫 번째 인자가 true 일 경우 java.io.SQLException 을 throw 한다. */
+method ex.test(boolean,short) {
+    memory(#1 == 1) { // 첫번째 인자가 true (1) 인 경우
+	}
+	throw java.io.SQLException
+}
+/* ex.test() method 는 첫 번째 인자가 false 일 경우, 아무일도 일어나지 않는다. */
+method ex.test(boolean,short) {
+    memory(#1 == 0) { // 첫 번째 인자가 false (0) 인 경우
+	}
+}

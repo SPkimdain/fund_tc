@@ -1,0 +1,8 @@
+/*
+    아래는 FileLib class 의 getStream() method 가 FileInputStream 자원을 return 하는 것을 의미한다.
+ */
+method FileLib.getStream() {
+  memory() {
+    return resource(java.io.FileInputStream) // java.io.FileInputStream type 의 자원을 return
+  }
+}

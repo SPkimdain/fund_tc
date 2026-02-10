@@ -1,0 +1,7 @@
+/*
+ *  아래는 FileLib class 의 close() method 가 FileInputStream 자원을 해제(close) 하는 것을 의미한다.
+ */
+method FileLib.close(java.io.FileInputStream) {
+    memory() {}
+    trigger() close(#1) // 이 method 의 첫 번째 인자는 java.io.FileInputStream type 이고, 이 자원을 해제
+}

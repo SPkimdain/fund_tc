@@ -1,0 +1,27 @@
+method Manager.getResultSet() {
+	memory() {
+		return resource(ResultSet)
+	}
+}
+method Manager.getResultSet(int) {
+	memory() {
+		return resource(ResultSet)
+	}
+}
+
+method Manager.<init>() {
+	memory() {
+	}
+	trigger() open(THIS)
+}
+
+method Manager.CommitAndclose() {
+	memory() {}
+	trigger() close(THIS)
+}
+
+method ResultSet.close() {
+	memory() {
+	}
+	trigger() close(THIS)
+}

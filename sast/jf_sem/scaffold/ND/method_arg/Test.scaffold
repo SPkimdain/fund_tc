@@ -1,0 +1,7 @@
+/*
+    아래는 StringLib class 의 doSomething() method 의 첫 번째 인자가 null 일 경우, alarm 을 내는 것을 의미한다.
+ */
+method StringLib.doSomething(java.lang.String) {
+  memory() {}
+  trigger() alarm_when_null(#1) // 첫 번째 인자가 null 일 경우 경고(alarm)를 한다.
+}

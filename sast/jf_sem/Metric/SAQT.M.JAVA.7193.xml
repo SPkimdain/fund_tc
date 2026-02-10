@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<option>
+    <category name="SAQT.M.JAVA.7193">
+        <!-- 제한값
+        함수 호출자의 제한값을 입력합니다. 이 값을 초과시 이슈로 검출합니다.
+        -->
+        <item name="threshold" type="decimal" required="true" variable="false">
+            <value>8</value>
+        </item>
+    </category>
+</option>

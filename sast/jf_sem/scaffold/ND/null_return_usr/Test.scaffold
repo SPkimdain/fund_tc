@@ -1,0 +1,8 @@
+/*
+    아래는 StringLib class 의 getString() method 가 null 을 return 하는 것을 의미 한다.
+ */
+method Library.getString() {
+  memory() {
+	return USR_NULL
+  }
+}

@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ConnectGroup Bkalign="center" BkColor="#465f64" Border="false" device="Win32&#32;(800x600)" EnforcedIgnoreInput="true" Font="나눔고딕,10" height="0" HideFrame="true" OnInit="gfnSetApplicationInit" ReSize="false" SessionOpenStyle="Scroll=true" SessionURL="main::Login.xml" Statusbar="false" Title="GSSM" titlebar="true" TraceMode="append" version="1.0" width="0" work_height="1024" work_width="1280">
+	<container Version="1000">
+		<Component Height="21" Id="Spin" Image="10" Name="cySpin" Title="Spin" Version="1000" Width="121"/>
+		<Component Height="21" Id="MaskEdit" Image="19" Name="cyMaskedit" Title="MaskEdit" Version="1000" Width="121"/>
+		<Component Height="21" Id="Button" Image="2" Name="cyButton" Title="Button" Version="1000" Width="104"/>
+		<Component Height="13" Id="Static" Image="8" Name="cyStatic" Title="Static" Version="1000" Width="40"/>
+		<Component Height="21" Id="Edit" Image="3" Name="cyEdit" Title="Edit" Version="1000" Width="121"/>
+		<Component Height="65" Id="Shape" Image="28" Name="cyShape" Title="Shape" Version="1000" Width="65"/>
+		<Component Height="65" Id="Pie" Image="30" Name="cyPie" Title="Pie" Version="1000" Width="65"/>
+		<Component Height="21" Id="Checkbox" Image="4" Name="cyCheckBox" Title="Check&#32;Box" Version="1000" Width="97"/>
+		<Component Height="24" Id="FileDialog" Image="18" Name="cyFileDialog" Title="File&#32;Dialog" Version="1000" Width="24"/>
+		<Component Height="24" Id="File" Image="25" Name="cyFile" Title="File" Version="1000" Width="24"/>
+		<Component Height="97" Id="List" Image="6" Name="cyListBox" Title="List" Version="1000" Width="145"/>
+		<Component Height="21" Id="Combo" Image="5" Name="cyComboEx" Title="ComboBox" Version="1000" Width="145"/>
+		<Component Height="21" Id="Radio" Image="7" Name="cyRadio" Title="Radio" Version="1000" Width="113"/>
+		<Component Height="72" Id="TextArea" Image="16" Name="cyTextArea" Title="Text&#32;Area" Version="1000" Width="185"/>
+		<Component Height="17" Id="Progressbar" Image="31" Name="cyProgressbar" Title="Progressbar" Version="1000" Width="150"/>
+		<Component Height="97" Id="TreeView" Image="11" Module="CyTreeView" Name="cyTreeView" Title="Tree&#32;View" Version="1000" Width="121"/>
+		<Component Height="120" Id="Grid" Image="1" Module="CyGrid" Name="cyGrid" Title="Grid" Version="1000" Width="320"/>
+		<Component Height="105" Id="Image" Image="9" Name="cyImage" Title="Image" Version="1000" Width="105"/>
+		<Component Height="21" Id="Calendar" Image="13" Module="CyCalendarEx" Name="cyCalendarEx" Title="Calendar" Version="1000" Width="145"/>
+		<Component Height="193" Id="Div" Image="20" Name="cyDiv" Title="Division" Version="1000" Width="289"/>
+		<Component Id="PopupDiv" Image="54" Name="CyPopupDiv" Title="Popup&#32;Div" Version="1000"/>
+		<Component Height="193" Id="Tab" Image="12" Name="cyTab" Title="Tab" Version="1000" Width="289"/>
+		<Component Height="260" Id="WebBrowser" Image="24" Module="CyWebBrowser" Name="cyWebBrowser" Title="WebBrowser" Version="1000" Width="364"/>
+		<Component Height="168" Id="swFlash" Image="27" Module="CySWFlash" Name="cySWFlash" Title="Flash" Version="1000" Width="248"/>
+		<Component Height="24" Id="MenuBar" Image="32" Module="CyMenuBar" Name="cyMenuBar" Title="MenuBar" Version="1000" Width="192"/>
+		<Component Height="50" Id="Split" Image="55" Module="CySplit" Name="cySplit" Title="Split" Version="1000" Width="8"/>
+		<Component Height="8" Id="SplitJoint" Image="56" Module="CySplitU" Name="cySplitJoint" Title="SplitJoint" Version="1000" Width="8"/>
+		<Component Height="50" Id="Sign" Image="57" Module="CySign" Name="cySign" Title="Sign" Version="1000" Width="50"/>
+		<Component Height="100" Id="XChart" Image="17" Module="CyXChart" Name="CyXChart" Title="XChart" Version="1000" Width="100"/>
+		<Component Height="100" Id="CyHttpFile" Image="52" Module="CyHttpFile" Name="CyHttpFile" Title="CyHttpFile" Version="1000" Width="100"/>
+		<Component Height="100" Id="CSComm" Image="23" Module="CyCSComm" Name="CyCSComm" Title="CSComm" Version="1000" Width="100"/>
+		<Component Height="100" Id="CyMultiLineTab" Image="60" Module="CyMultiLineTab" Name="CyMultiLineTab" Title="CyMultiLineTab" Version="1000" Width="100"/>
+		<Component Height="100" Id="tabpage" Image="23" Module="CyComCtl330" Name="tabpage" Title="tabpage" Version="1000" Width="100"/>
+	</container>
+	<protocols version="1000">
+		<protocol id="file" name="cyHttpAdp" version="1000"/>
+		<protocol id="http" name="cyHttpAdp" version="1000"/>
+		<protocol id="https" name="cyHttpAdp" version="1000"/>
+	</protocols>
+	<AppGroups>
+		<AppGroup CodePage="utf-8" Language="0" Prefix="UX" Type="Form" Version="1.0">
+			<script Baseurl="./UX/" CacheLevel="dynamic" ScriptUrl="./UX/"/>
+		</AppGroup>
+		<AppGroup CodePage="utf-8" Language="1042" Prefix="lib" Type="js" Version="1000">
+			<Script Baseurl="./lib/" CacheLevel="dynamic"/>
+		</AppGroup>
+		<AppGroup CodePage="utf-8" Language="1042" Prefix="buy_hby" Type="form" Version="1000">
+			<Script Baseurl="./buy_hby/" CacheLevel="dynamic" ScriptUrl="./buy_hby/"/>
+		</AppGroup>
+		<AppGroup CodePage="utf-8" Language="1042" Prefix="clo_hcl" Type="form" Version="1000">
+			<Script Baseurl="./clo_hcl/" CacheLevel="dynamic" ScriptUrl="./clo_hcl/"/>
+		</AppGroup>
+		<AppGroup CodePage="utf-8" Language="1042" Prefix="com" Type="form" Version="1000">
+			<Script Baseurl="./com/" CacheLevel="dynamic" ScriptUrl="./com/"/>
+		</AppGroup>
+		<AppGroup CodePage="utf-8" Language="1042" Prefix="frn_hfc" Type="form" Version="1000">
+			<Script Baseurl="./frn_hfc/" CacheLevel="dynamic" ScriptUrl="./frn_hfc/"/>
+		</AppGroup>
+		<AppGroup CodePage="utf-8" Language="1042" Prefix="inf_hia" Type="form" Version="1000">
+			<Script Baseurl="./inf_hia/" CacheLevel="dynamic" ScriptUrl="./inf_hia/"/>
+		</AppGroup>
+		<AppGroup CodePage="utf-8" Language="1042" Prefix="log_hlo" Type="form" Version="1000">
+			<Script Baseurl="./log_hlo/" CacheLevel="dynamic" ScriptUrl="./log_hlo/"/>
+		</AppGroup>
+		<AppGroup CodePage="utf-8" Language="1042" Prefix="log_hin" Type="form" Version="1000">
+			<Script Baseurl="./log_hin/" CacheLevel="dynamic" ScriptUrl="./log_hin/"/>
+		</AppGroup>
+		<AppGroup CodePage="utf-8" Language="1042" Prefix="mst_hma" Type="form" Version="1000">
+			<Script Baseurl="./mst_hma/" CacheLevel="dynamic" ScriptUrl="./mst_hma/"/>
+		</AppGroup>
+		<AppGroup CodePage="utf-8" Language="1042" Prefix="ord_hor" Type="form" Version="1000">
+			<Script Baseurl="./ord_hor/" CacheLevel="dynamic" ScriptUrl="./ord_hor/"/>
+		</AppGroup>
+		<AppGroup CodePage="utf-8" Language="1042" Prefix="sal_hsa" Type="form" Version="1000">
+			<Script Baseurl="./sal_hsa/" CacheLevel="dynamic" ScriptUrl="./sal_hsa/"/>
+		</AppGroup>
+		<AppGroup CodePage="utf-8" Language="1042" Prefix="inv_hin" Type="form" Version="1000">
+			<Script Baseurl="./inv_hin/" CacheLevel="dynamic" ScriptUrl="./inv_hin/"/>
+		</AppGroup>
+		<AppGroup CodePage="utf-8" Language="1042" Prefix="sys" Type="form" Version="1000">
+			<Script Baseurl="./sys/" CacheLevel="dynamic" ScriptUrl="./sys/"/>
+		</AppGroup>
+		<AppGroup CodePage="utf-8" Language="1042" Prefix="sample" Type="form" Version="1000">
+			<Script Baseurl="./sample/" ScriptUrl="./sample/"/>
+		</AppGroup>
+		<AppGroup CodePage="utf-8" Language="1042" Prefix="sample2" Type="form" Version="1000">
+			<Script Baseurl="./sample2/" ScriptUrl="./sample2/"/>
+		</AppGroup>
+		<AppGroup CodePage="utf-8" Language="1042" Prefix="common" Type="form" Version="1000">
+			<Script Baseurl="./common/" ScriptUrl="./common/"/>
+		</AppGroup>
+		<AppGroup CodePage="utf-8" Language="1042" Prefix="main" Type="form" Version="1000">
+			<Script Baseurl="./main/" ScriptUrl="./main/"/>
+		</AppGroup>
+		<AppGroup CodePage="utf-8" Language="1042" Prefix="images" Type="file" Version="1000">
+			<Script Baseurl="./images/"/>
+		</AppGroup>
+		<AppGroup CodePage="utf-8" Language="1042" Prefix="buy_sby" Type="form" Version="1000">
+			<Script Baseurl="./buy_sby/" CacheLevel="dynamic" ScriptUrl="./buy_sby/"/>
+		</AppGroup>
+		<AppGroup CodePage="utf-8" Language="1042" Prefix="frn_sfc" Type="form" Version="1000">
+			<Script Baseurl="./frn_sfc/" CacheLevel="dynamic" ScriptUrl="./frn_sfc/"/>
+		</AppGroup>
+		<AppGroup CodePage="utf-8" Language="1042" Prefix="inf_sia" Type="form" Version="1000">
+			<Script Baseurl="./inf_sia/" CacheLevel="dynamic" ScriptUrl="./inf_sia/"/>
+		</AppGroup>
+		<AppGroup CodePage="utf-8" Language="1042" Prefix="inv_sin" Type="form" Version="1000">
+			<Script Baseurl="./inv_sin/" CacheLevel="dynamic" ScriptUrl="./inv_sin/"/>
+		</AppGroup>
+		<AppGroup CodePage="utf-8" Language="1042" Prefix="mst_sma" Type="form" Version="1000">
+			<Script Baseurl="./mst_sma/" CacheLevel="dynamic" ScriptUrl="./mst_sma/"/>
+		</AppGroup>
+		<AppGroup CodePage="utf-8" Language="1042" Prefix="ord_sor" Type="form" Version="1000">
+			<Script Baseurl="./ord_sor/" CacheLevel="dynamic" ScriptUrl="./ord_sor/"/>
+		</AppGroup>
+		<AppGroup CodePage="utf-8" Language="1042" Prefix="sal_ssa" Type="form" Version="1000">
+			<Script Baseurl="./sal_ssa/" CacheLevel="dynamic" ScriptUrl="./sal_ssa/"/>
+		</AppGroup>
+		<AppGroup CodePage="utf-8" Language="1042" Prefix="js" Type="js" Version="1000">
+			<Script Baseurl="./js/" CacheLevel="dynamic"/>
+		</AppGroup>
+		<AppGroup CodePage="utf-8" Language="1042" Prefix="act_sac" Type="form" Version="1000">
+			<Script Baseurl="./act_sac/" CacheLevel="dynamic" ScriptUrl="./act_sac/"/>
+		</AppGroup>
+		<AppGroup CodePage="utf-8" Language="1042" Prefix="sample_chart" Type="form" Version="1000">
+			<Script Baseurl="./sample_chart/" CacheLevel="dynamic" ScriptUrl="./sample_chart/"/>
+		</AppGroup>
+		<AppGroup CodePage="utf-8" Language="1042" Prefix="mst_hma_itm" Type="form" Version="1000">
+			<Script Baseurl="./mst_hma_itm/" CacheLevel="dynamic" ScriptUrl="./mst_hma_itm/"/>
+		</AppGroup>
+		<AppGroup CodePage="utf-8" Language="1042" Prefix="mst_hma_prc" Type="form" Version="1000">
+			<Script Baseurl="./mst_hma_prc/" CacheLevel="dynamic" ScriptUrl="./mst_hma_prc/"/>
+		</AppGroup>
+		<AppGroup CodePage="utf-8" Language="1042" Prefix="mst_hma_evt" Type="form" Version="1000">
+			<Script Baseurl="./mst_hma_evt/" CacheLevel="dynamic" ScriptUrl="./mst_hma_evt/"/>
+		</AppGroup>
+		<AppGroup CodePage="utf-8" Language="1042" Prefix="mst_hma_pog" Type="form" Version="1000">
+			<Script Baseurl="./mst_hma_pog/" CacheLevel="dynamic" ScriptUrl="./mst_hma_pog/"/>
+		</AppGroup>
+		<AppGroup CodePage="utf-8" Language="1042" Prefix="sal_ssa_cst" Type="form" Version="1000">
+			<Script Baseurl="./sal_ssa_cst/" CacheLevel="dynamic" ScriptUrl="./sal_ssa_cst/"/>
+		</AppGroup>
+		<AppGroup CodePage="utf-8" Language="1042" Prefix="sal_ssa_cmm" Type="form" Version="1000">
+			<Script Baseurl="./sal_ssa_cmm/" CacheLevel="dynamic" ScriptUrl="./sal_ssa_cmm/"/>
+		</AppGroup>
+		<AppGroup CodePage="utf-8" Language="1042" Prefix="sal_ssa_gft" Type="form" Version="1000">
+			<Script Baseurl="./sal_ssa_gft/" CacheLevel="dynamic" ScriptUrl="./sal_ssa_gft/"/>
+		</AppGroup>
+		<AppGroup CodePage="utf-8" Language="1042" Prefix="sal_ssa_stm" Type="form" Version="1000">
+			<Script Baseurl="./sal_ssa_stm/" CacheLevel="dynamic" ScriptUrl="./sal_ssa_stm/"/>
+		</AppGroup>
+		<AppGroup CodePage="utf-8" Language="1042" Prefix="sal_hsa_cst" Type="form" Version="1000">
+			<Script Baseurl="./sal_hsa_cst/" CacheLevel="dynamic" ScriptUrl="./sal_hsa_cst/"/>
+		</AppGroup>
+		<AppGroup CodePage="utf-8" Language="1042" Prefix="act_hac" Type="form" Version="1000">
+			<Script Baseurl="./act_hac/" CacheLevel="dynamic" ScriptUrl="./act_hac/"/>
+		</AppGroup>
+		<AppGroup CodePage="utf-8" Language="1042" Prefix="sal_hsa_gft" Type="form" Version="1000">
+			<Script Baseurl="./sal_hsa_gft/" CacheLevel="dynamic" ScriptUrl="./sal_hsa_gft/"/>
+		</AppGroup>
+		<DataGroup Baseurl="http://localhost:8080" CacheLevel="none" CodePage="utf-8" Language="0" Prefix="Svl" Streamver="4000" TrMethod="normal" Type="JSP" Version="1000"/>
+	</AppGroups>
+	<Resource Ext="res" Url="./images/common.res" Version="1000"/>
+	<GlobalStyle>
+		<style BorderColor="#b0b0b0" DisableColor="#888888" DkshadowColor="#b0b0b0" Face3dColor="#f1f1f1" FixedFont="나눔고딕,9" Font="나눔고딕,9" Hilight3dColor="white" HilightColor="#fefcce" HilightTextColor="black" ID="default_grid" ShadowColor="white"/>
+		<style FixedFont="나눔고딕&#32;ExtraBold,9,Bold" Font="나눔고딕&#32;ExtraBold,9,Bold" ID="essential_text" TextColor="user17"/>
+		<style BorderColor="user10" FixedFont="나눔고딕,9" Font="나눔고딕,9" ID="input" TextColor="black" WindowColor="white"/>
+		<style BorderColor="#b0b0b0" DisablebkColor="#f3f3f3" DisableColor="#888888" DkshadowColor="#b0b0b0" Face3dColor="#b0b0b0" FixedFont="나눔고딕,9" Font="나눔고딕,9" Hilight3dColor="white" HilightColor="HIGHLIGHT" HilightTextColor="HIGHLIGHTTEXT" ID="input_default" ShadowColor="white" TextColor="black"/>
+		<style BorderColor="user10" DisablebkColor="user22" DisableColor="user20" FixedFont="나눔고딕,9" Font="나눔고딕,9" ID="input_disable" TextColor="user20"/>
+		<style BorderColor="user2" FixedFont="나눔고딕,9" Font="나눔고딕,9" Formcolor="user2" ID="input_graybg" TextColor="black"/>
+		<style BorderColor="user10" DisableColor="black" EditColor="user5" FixedFont="나눔고딕,9" Font="나눔고딕,9" ID="input_readonly" TextColor="black"/>
+		<style DkshadowColor="#cecece" Face3dColor="#f3f3f3" FixedFont="나눔고딕,9" Font="나눔고딕,9" Hilight3dColor="#cecece" HilightColor="white" HilightTextColor="black" ID="main_grid" Light3dColor="#cecece" ShadowColor="#cecece"/>
+		<style BorderColor="user10" FixedFont="나눔고딕,9" Font="나눔고딕,9" Formcolor="white" ID="table_content"/>
+		<style BorderColor="user10" FixedFont="나눔고딕&#32;ExtraBold,9,Bold" Font="나눔고딕&#32;ExtraBold,9,Bold" Formcolor="#f4f4f4" ID="table_header"/>
+		<style BorderColor="user10" FixedFont="나눔고딕&#32;ExtraBold,9,Bold" Font="나눔고딕&#32;ExtraBold,9,Bold" Formcolor="#f4f4f4" ID="table_header_essential_text" TextColor="user17"/>
+		<style BorderColor="user10" FixedFont="나눔고딕,9" Font="나눔고딕,9" Formcolor="white" ID="table_rowbg"/>
+		<style FixedFont="나눔고딕,10" Font="나눔고딕,10" ID="Text_10pt" TextColor="black"/>
+		<style FixedFont="나눔고딕&#32;ExtraBold,10,Bold" Font="나눔고딕&#32;ExtraBold,10,Bold" ID="Text_10pt_Extra" TextColor="black"/>
+		<style FixedFont="나눔고딕,11" Font="나눔고딕,11" ID="Text_11pt"/>
+		<style FixedFont="나눔고딕,11" Font="나눔고딕,11" ID="Text_11pt_Bold"/>
+		<style FixedFont="나눔고딕&#32;ExtraBold,11,Bold" Font="나눔고딕&#32;ExtraBold,11,Bold" ID="Text_11pt_Extra"/>
+		<style FixedFont="나눔고딕&#32;ExtraBold,12,Bold" Font="나눔고딕&#32;ExtraBold,12,Bold" ID="Text_12pt_Extra"/>
+		<style FixedFont="나눔고딕&#32;ExtraBold,8,Bold" Font="나눔고딕&#32;ExtraBold,8,Bold" ID="Text_8pt_Extra" TextColor="black"/>
+		<style Font="나눔고딕&#32;ExtraBold,9,Bold" ID="Text_9pt_Extra"/>
+		<style FixedFont="나눔고딕,9" Font="나눔고딕,9" ID="Text_Basic" TextColor="black"/>
+		<style FixedFont="나눔고딕,9" Font="나눔고딕,9" ID="Text_Bold" TextColor="black"/>
+		<style FixedFont="나눔고딕&#32;ExtraBold,9,Bold" Font="나눔고딕&#32;ExtraBold,9,Bold" ID="Text_Extra" TextColor="black"/>
+		<style FixedFont="나눔고딕&#32;ExtraBold,9,Bold" Font="나눔고딕&#32;ExtraBold,9,Bold" ID="Text_Green_Extra" TextColor="#1f8087"/>
+		<style FixedFont="나눔고딕&#32;ExtraBold,9,Bold" Font="나눔고딕&#32;ExtraBold,9,Bold" ID="Text_Point" TextColor="#ff4e00"/>
+		<style FixedFont="나눔고딕&#32;ExtraBold,10,Bold" Font="나눔고딕&#32;ExtraBold,10,Bold" ID="title" TextColor="user5"/>
+	</GlobalStyle>
+	<DockBars>
+		<DockBar Align="left" Border="false" Bottom="1024" Fixed="true" FixedSize="true" ID="FrameLeft" InitURL="main::FRMLeftMenu.xml" Left="0" Right="300" Scroll="false" Top="0"/>
+		<DockBar Align="left" Border="false" Bottom="717" Fixed="true" FixedSize="true" ID="FrameMain" InitURL="main::FRMWorkForm.xml" Left="300" Right="1272" Scroll="false" Top="0"/>
+	</DockBars>
+	<UserColor User0="#1f8087" User1="#ff4e00" User10="#b0b0b0" User11="#d9dbdb" User12="#43939a" User13="#155562" User14="#ff8d1e" User15="#fffdc2" User16="#35484c" User17="#1a8989" User18="#ebebeb" User19="#b7b7b7" User2="#f7f7f7" User20="#888888" User21="#465e63" User22="#f0f0f0" User23="#fff0b2" User24="white" User3="#fefcce" User30="black" User31="black" User32="black" User4="#ffede8" User5="#e9f5f5" User6="#ffe178" User7="#b4d7cb" User8="#a7a7a7" User9="#dadada"/>
+	<EXTAPIS>
+		<EXTAPI Name="ExtCommonApi" Version="1000"/>
+	</EXTAPIS>
+	<ActiveX Version="1000">
+		<Component Id="AxMSIE" Image="24" Progid="Shell.Explorer" Title="AxMSIE" Version="1000"/>
+		<Component Id="OZViewer" Image="54" Progid="EXOZVIEWER35.EXOZViewer35Ctrl.1" Title="OZViewer" Version="1000"/>
+		<Component Id="ZTransferX" Image="23" Progid="ZTRANSFERX.ZTransferXCtrl.1" Title="ZTransferX" Version="1000"/>
+	</ActiveX>
+	<Domaininfo Ext="xml" Url="./message/message_ko.xml"/>
+	<Variables>
+		<Var Id="gvLang" Type="Global" Value="ko"/><!-- BUG -->
+		<Var Comment="Projrct&#32;ID" Id="gvProjectID" Type="Global" Value="GSSM"/><!-- BUG -->
+		<Var Comment="Report&#32;Server&#32;URL" Id="gvReportUrl" Type="Global" Value="http://165.244.225.239:7081/oz60/server"/><!-- BUG -->
+		<Var Comment="location&#32;host&#32;url" Id="gvServerUrl" Type="Global" Value="localhost:8080"/><!-- BUG -->
+		<Var Id="U_gvSmUrl" Type="Global" Value="http://localhost:8080"/>
+		<Var Id="U_gvStrKey" Type="Global" Value="GSSMLOCAL"/>
+		<Var Comment="Server&#32;Side&#32;JSESSIONID" Id="JSESSIONID" Type="Share"/><!-- BUG -->
+	</Variables>
+	<Script><![CDATA[#include "lib::globalAPI.js";
+	]]></Script>
+	<Datasets>
+		<Dataset DataSetType="Dataset" Id="USD_GdsUserInfo"><!--SAFE-->
+			<Contents>
+				<colinfo id="sessionUserId" size="256" summ="default" type="STRING"/>
+				<colinfo id="sessionUserNm" size="100" summ="default" type="STRING"/>
+				<colinfo id="sessionOrganCd" size="256" summ="default" type="STRING"/>
+				<colinfo id="sessionOrganNm" size="100" summ="default" type="STRING"/>
+				<colinfo id="sessionUserSpCd" size="256" summ="default" type="STRING"/>
+				<colinfo id="sessionJobdutyCd" size="256" summ="default" type="STRING"/>
+				<colinfo id="sessionJobdutyNm" size="100" summ="default" type="STRING"/>
+				<colinfo id="sessionEmpno" size="256" summ="default" type="STRING"/>
+				<colinfo id="sessionJobposCd" size="256" summ="default" type="STRING"/>
+				<colinfo id="sessionJobfuncCd" size="256" summ="default" type="STRING"/>
+				<colinfo id="sessionMoblTelNo" size="256" summ="default" type="STRING"/>
+				<colinfo id="sessionEmailAddr" size="100" summ="default" type="STRING"/>
+				<colinfo id="sessionStrCd" size="256" summ="default" type="STRING"/>
+				<colinfo id="initStatus" size="256" summ="default" type="STRING"/>
+				<colinfo id="userGrp" size="256" summ="default" type="STRING"/>
+				<colinfo id="sessionStrNm" size="256" summ="default" type="STRING"/>
+				<colinfo id="sessionStrSpCd" size="256" summ="default" type="STRING"/>
+				<colinfo id="sessionWhCd" size="256" summ="default" type="STRING"/>
+				<colinfo id="sessionWhNm" size="256" summ="default" type="STRING"/>
+				<colinfo id="sessionWthrRegnCd" size="256" summ="default" type="STRING"/>
+				<record>
+					<initStatus>false</initStatus>
+					<sessionEmailAddr></sessionEmailAddr>
+					<sessionEmpno></sessionEmpno>
+					<sessionJobdutyCd></sessionJobdutyCd>
+					<sessionJobdutyNm></sessionJobdutyNm>
+					<sessionJobfuncCd></sessionJobfuncCd>
+					<sessionJobposCd></sessionJobposCd>
+					<sessionMoblTelNo></sessionMoblTelNo>
+					<sessionOrganCd></sessionOrganCd>
+					<sessionOrganNm></sessionOrganNm>
+					<sessionStrCd></sessionStrCd>
+					<sessionStrNm></sessionStrNm>
+					<sessionStrSpCd></sessionStrSpCd>
+					<sessionUserId>hq1</sessionUserId>
+					<sessionUserNm></sessionUserNm>
+					<sessionUserSpCd></sessionUserSpCd>
+					<sessionWhCd></sessionWhCd>
+					<sessionWhNm></sessionWhNm>
+					<sessionWthrRegnCd></sessionWthrRegnCd>
+					<userGrp></userGrp>
+				</record>
+			</Contents>
+		</Dataset>
+		<Dataset DataSetType="Dataset" Id="GdsOpenMenu"><!-- BUG -->
+			<Contents>
+				<colinfo id="menuId" size="256" summ="default" type="STRING"/>
+				<colinfo id="menuNm" size="256" summ="default" type="STRING"/>
+				<colinfo id="higherMenuId" size="256" summ="default" type="STRING"/>
+				<colinfo id="pgmPath" size="256" summ="default" type="STRING"/>
+				<colinfo id="modAuthYn" size="256" summ="default" type="STRING"/>
+				<colinfo id="prntAuthYn" size="256" summ="default" type="STRING"/>
+				<colinfo id="next" size="256" summ="default" type="STRING"/>
+				<colinfo id="prev" size="256" summ="default" type="STRING"/>
+				<colinfo id="schParam" MapValue="화면단위에서&#32;메뉴화면을&#32;호출할때&#32;파라미터&#32;보내기&#32;위한&#32;값&#32;설정" size="256" summ="default" type="STRING"/>
+			</Contents>
+		</Dataset>
+		<Dataset DataSetType="Dataset" Id="GdsBookMark"><!-- BUG -->
+			<Contents>
+				<colinfo id="sessionUserId" size="256" summ="default" type="STRING"/>
+				<colinfo id="menuGrp" size="256" summ="default" type="STRING"/>
+				<colinfo id="menuId" size="256" summ="default" type="STRING"/>
+				<colinfo id="menuNm" size="256" summ="default" type="STRING"/>
+				<colinfo id="higherMenuId" size="256" summ="default" type="STRING"/>
+				<colinfo id="pgmPath" size="256" summ="default" type="STRING"/>
+				<colinfo id="prntAuthYn" size="256" summ="default" type="STRING"/>
+			</Contents>
+		</Dataset>
+		<Dataset DataSetType="Dataset" Id="USD_gdsSysDate"><!--SAFE-->
+			<Contents>
+				<colinfo id="USRID" size="256" summ="default" type="STRING"/>
+				<colinfo id="USRNM" size="256" summ="default" type="STRING"/>
+				<record>
+					<USRID>admin</USRID>
+					<USRNM>어드민</USRNM>
+				</record>
+			</Contents>
+		</Dataset>
+		<Dataset DataSetType="Dataset" Id="GdsSystemLink"><!-- BUG -->
+			<Contents>
+				<colinfo id="SYSID" size="256" summ="default" type="STRING"/>
+				<colinfo id="SYSNM" size="256" summ="default" type="STRING"/>
+				<colinfo id="SYSDESC" size="256" summ="default" type="STRING"/>
+				<colinfo id="SYSLINKPATH" size="256" summ="default" type="STRING"/>
+				<colinfo id="SORT" size="256" summ="default" type="STRING"/>
+				<record>
+					<SORT></SORT>
+					<SYSDESC>smart21</SYSDESC>
+					<SYSID>sys0001</SYSID>
+					<SYSLINKPATH></SYSLINKPATH>
+					<SYSNM>smart21</SYSNM>
+				</record>
+				<record>
+					<SORT></SORT>
+					<SYSDESC>단품정보시스템</SYSDESC>
+					<SYSID>sys0002</SYSID>
+					<SYSLINKPATH></SYSLINKPATH>
+					<SYSNM>단품정보시스템</SYSNM>
+				</record>
+				<record>
+					<SORT></SORT>
+					<SYSDESC>행사분석시스템</SYSDESC>
+					<SYSID>sys0003</SYSID>
+					<SYSLINKPATH></SYSLINKPATH>
+					<SYSNM>행사분석시스템</SYSNM>
+				</record>
+				<record>
+					<SORT></SORT>
+					<SYSDESC>고객정보분석시스템</SYSDESC>
+					<SYSID>sys0004</SYSID>
+					<SYSLINKPATH></SYSLINKPATH>
+					<SYSNM>고객정보분석시스템</SYSNM>
+				</record>
+				<record>
+					<SORT></SORT>
+					<SYSDESC>GIS</SYSDESC>
+					<SYSID>sys0004</SYSID>
+					<SYSLINKPATH></SYSLINKPATH>
+					<SYSNM>GIS</SYSNM>
+				</record>
+				<record>
+					<SORT></SORT>
+					<SYSDESC>통합회원(CRM)</SYSDESC>
+					<SYSID>sys0005</SYSID>
+					<SYSLINKPATH></SYSLINKPATH>
+					<SYSNM>통합회원(CRM)</SYSNM>
+				</record>
+				<record>
+					<SORT></SORT>
+					<SYSDESC>아이디어&#32;톡!톡!톡!</SYSDESC>
+					<SYSID>sys0006</SYSID>
+					<SYSLINKPATH></SYSLINKPATH>
+					<SYSNM>아이디어&#32;톡!톡!톡!</SYSNM>
+				</record>
+				<record>
+					<SORT></SORT>
+					<SYSDESC>시설접수</SYSDESC>
+					<SYSID>sys0007</SYSID>
+					<SYSLINKPATH></SYSLINKPATH>
+					<SYSNM>시설접수</SYSNM>
+				</record>
+				<record>
+					<SORT></SORT>
+					<SYSDESC>고객VOC</SYSDESC>
+					<SYSID>sys0008</SYSID>
+					<SYSLINKPATH></SYSLINKPATH>
+					<SYSNM>고객VOC</SYSNM>
+				</record>
+				<record>
+					<SORT></SORT>
+					<SYSDESC>모니터링(CS,&#32;선도)</SYSDESC>
+					<SYSID>sys0009</SYSID>
+					<SYSLINKPATH></SYSLINKPATH>
+					<SYSNM>모니터링(CS,&#32;선도)</SYSNM>
+				</record>
+				<record>
+					<SORT></SORT>
+					<SYSDESC>BGM</SYSDESC>
+					<SYSID>sys0010</SYSID>
+					<SYSLINKPATH></SYSLINKPATH>
+					<SYSNM>BGM</SYSNM>
+				</record>
+				<record>
+					<SORT></SORT>
+					<SYSDESC>소모품발주</SYSDESC>
+					<SYSID>sys0011</SYSID>
+					<SYSLINKPATH></SYSLINKPATH>
+					<SYSNM>소모품발주</SYSNM>
+				</record>
+				<record>
+					<SORT></SORT>
+					<SYSDESC>전자세금계산서</SYSDESC>
+					<SYSID>sys0012</SYSID>
+					<SYSLINKPATH></SYSLINKPATH>
+					<SYSNM>전자세금계산서</SYSNM>
+				</record>
+				<record>
+					<SORT></SORT>
+					<SYSDESC>우리점포이야기</SYSDESC>
+					<SYSID>sys0013</SYSID>
+					<SYSLINKPATH></SYSLINKPATH>
+					<SYSNM>우리점포이야기</SYSNM>
+				</record>
+				<record>
+					<SORT></SORT>
+					<SYSDESC>메뉴얼조회</SYSDESC>
+					<SYSID>sys0014</SYSID>
+					<SYSLINKPATH></SYSLINKPATH>
+					<SYSNM>메뉴얼조회</SYSNM>
+				</record>
+			</Contents>
+		</Dataset>
+		<Dataset DataSetType="Dataset" Id="GdsStrInfo"><!-- BUG -->
+			<Contents>
+				<colinfo id="strCd" size="5" summ="default" type="STRING"/>
+				<colinfo id="strNm" size="256" summ="default" type="STRING"/>
+				<colinfo id="strSpCd" size="256" summ="default" type="STRING"/>
+				<colinfo id="wthrRegnCd" size="256" summ="default" type="STRING"/>
+			</Contents>
+		</Dataset>
+		<Dataset DataSetType="Dataset" Id="GdsMenuList"><!-- BUG -->
+			<Contents>
+				<colinfo id="menuId" size="256" summ="default" type="STRING"/>
+				<colinfo id="menuNm" size="256" summ="default" type="STRING"/>
+				<colinfo id="higherMenuId" size="256" summ="default" type="STRING"/>
+				<colinfo id="pgmPath" size="256" summ="default" type="STRING"/>
+				<colinfo id="modAuthYn" size="256" summ="default" type="STRING"/>
+				<colinfo id="prntAuthYn" size="256" summ="default" type="STRING"/>
+				<colinfo id="menuFullPath" size="256" summ="default" type="STRING"/>
+			</Contents>
+		</Dataset>
+		<Dataset DataSetType="Dataset" Id="GdsRecently"><!-- BUG -->
+			<Contents>
+				<colinfo id="menuId" size="256" summ="default" type="STRING"/>
+				<colinfo id="menuNm" size="256" summ="default" type="STRING"/>
+				<colinfo id="higherMenuId" size="256" summ="default" type="STRING"/>
+				<colinfo id="pgmPath" size="256" summ="default" type="STRING"/>
+				<colinfo id="prntAuthYn" size="256" summ="default" type="STRING"/>
+				<colinfo id="menuArg" size="256" summ="default" type="STRING"/>
+				<colinfo id="menuds" size="256" summ="default" type="STRING"/>
+			</Contents>
+		</Dataset>
+		<Dataset DataSetType="Dataset" Id="GdsNote"><!-- BUG -->
+			<Contents>
+				<colinfo id="userId" size="256" summ="default" type="STRING"/>
+				<colinfo id="noteId" size="256" summ="default" type="STRING"/>
+				<colinfo id="noteCnts" size="256" summ="default" type="STRING"/>
+			</Contents>
+		</Dataset>
+		<Dataset DataSetType="Dataset" Id="GdsWhInfo"><!-- BUG -->
+			<Contents>
+				<colinfo id="whCd" size="5" summ="default" type="STRING"/>
+				<colinfo id="whNm" size="256" summ="default" type="STRING"/>
+			</Contents>
+		</Dataset>
+		<Dataset DataSetType="Dataset" Id="GDSMoveDs"></Dataset><!-- BUG -->
+		<Dataset DataSetType="Dataset" Id="GdsAuth"><!-- BUG -->
+			<Contents>
+				<colinfo id="authId" size="256" summ="default" type="STRING"/>
+				<colinfo id="authNm" size="256" summ="default" type="STRING"/>
+			</Contents>
+		</Dataset>
+	</Datasets>
+	<MDIInfo>
+		<Forms>
+			<Form ID="MDIForm0"/>
+		</Forms>
+		<Shortcuts Color="default" Font="tahoma,9" HeaderTitle="Title:Description:Status"></Shortcuts>
+	</MDIInfo>
+</ConnectGroup>

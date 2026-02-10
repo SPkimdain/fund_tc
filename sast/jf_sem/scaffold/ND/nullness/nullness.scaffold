@@ -1,0 +1,10 @@
+method NullNessTestLib.isNull(java.lang.String) {
+    memory(#1 == NULL) {
+        return 1
+    }
+}
+method NullNessTestLib.isNull(java.lang.String) {
+    memory(#1 != NULL) {
+        return 0
+    }
+}
