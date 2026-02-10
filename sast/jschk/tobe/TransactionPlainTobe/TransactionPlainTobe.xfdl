@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="frmButton" classname="frmButton" left="0" top="0" width="1024" height="768" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Button id="Button00" taborder="0" text="Button00" left="19" top="27" width="286" height="100" onclick="Button00_onclick"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.0"><![CDATA[
+
+this.Button00_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+    var bComp = false;
+    Transaction( "MyService01" ,"DataSrv::samplexml.jsp?arg=1234","input1=Dataset02:U","Dataset03=output1","a=b","callbackFunction", true, 2, bComp); //@violation
+
+    Transaction( "MyService01" ,"DataSrv::samplexml.jsp?arg=1234","input1=Dataset02:U","Dataset03=output1","a=b","callbackFunction", true, 2, false); //@violation
+    Transaction( "MyService01" ,"DataSrv::samplexml.jsp?arg=1234","input1=Dataset02:U","Dataset03=output1","a=b","callbackFunction", true); //@violation
+}
+]]></Script>
+  </Form>
+</FDL>

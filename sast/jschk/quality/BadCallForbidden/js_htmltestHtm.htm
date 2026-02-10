@@ -1,0 +1,310 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title>SPARROW NEST</title>
+    <link rel="SHORTCUT ICON" href="sparrow.ico"/>
+    <link type="text/css" rel="stylesheet" href="css/common.css" />
+    <link type="text/css" rel="stylesheet" href="css/jquery-ui.css"/>
+    <script type="text/javascript" src="js/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/jquery/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/jquery/jquery.form.js"></script>
+    <script type='text/javascript' src='js/jquery/jquery.scrollTo-min.js'></script>
+    <script type="text/javascript" src="js/jquery/jquery.history.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+
+    <link type="text/css" rel="stylesheet" href="css/jquery-ui-timepicker-addon.css"/>
+    <script type="text/javascript" src="js/jquery/jquery-ui-timepicker-addon.js"></script>
+    <script type='text/javascript'>
+    //<![CDATA[
+        $(function(){
+            refreshDatetimepicker();
+        });
+		forbidden();  //@violation
+    //]]>
+    </script>
+    <link type='text/css' rel='stylesheet' href='css/tree.css'/>
+    <script type="text/javascript" src="js/tree.js"></script>
+    <script type="text/javascript" src="js/projectGroupTree.js"></script>
+    <script type="text/javascript">
+    //<![CDATA[
+        window.onload = function() {
+            initSortIcon();
+            setEnableExportExcel();
+            alertMsg();
+            openNotice();
+        }
+        function ajaxDeleteProject(url) {
+            jQuery.ajax({
+                type: "POST",
+                dataType: "json",
+                url: url,
+                data: $('#form').formSerialize(true),
+                success: function(data) {
+                    if(data.sessionClosedMsg != null) {
+                        goSessionClosed(data);
+                    } else {
+                        document.getElementById("curPage").value = data.updateCurPage;
+                        goPage("projectList.spw");
+                    }
+                },
+                error: function(request) {
+                  ajaxError(request);
+                }
+           });
+        }
+        function searchList() {
+            goPageLoader("projectListSearch.spw");
+        }
+        function clearSearch(){
+            document.getElementById("searchCondition.fromAnalysisTime").value = "";
+            document.getElementById("searchCondition.toAnalysisTime").value = "";
+            document.getElementById("searchCondition.projectGroupName").value = "";
+            document.getElementById("searchCondition.projectGroupId").value = "";
+            document.getElementById("searchCondition.selectedColumn").value = "";
+            document.getElementById("searchCondition.searchWord").value = "";
+            document.getElementById("searchCondition.includeWord1").checked = true;
+            document.getElementById("searchCondition.matchCase1").checked = true;
+            searchList();
+        }
+        function changeLanguage(){
+            $.cookie("projectList.language", document.getElementById("pageCondition.language").value,  { expires: 7 });
+            goDataList();
+        }
+        function goModifyMultipleProjects(obj) {
+            if(isDisableBtnById("btnModify"))
+                return;
+            goPage("modifyMultipleProjects.spw");
+        }
+        function goModifyProject(projectId, progress) {
+            if(progress != "" && !confirm("asdasdasd?"))
+                return;
+            location.href = "modifyProject.spw?projectId=" + projectId;
+        }
+        function closeProjectUserList() {
+            if(selectedUserListId != -1)
+                document.getElementById("userTable" + selectedUserListId).style.display = "none";
+        }
+    //]]>
+    </script>
+</head>
+<body>
+<div class="wrap">
+
+    <div id="dialogLoader" style="display:none;text-align:center;margin: 0px;padding: 0px;vertical-align: middle;" >
+        <table style="background: #ffffff;border: 1px solid #aaaaaa;" align="center" width="50" height="50">
+            <tr><td><img src="image/ajax-loader.gif"/></td></tr>
+        </table>
+    </div>
+    <div id="dialogPopupNotice" style="display:none;"></div>
+    <form id="form" name="form" action="/projectList.spw" method="post">
+
+        <input type="hidden" id="token" name="token" value="14131748416814774925403777922224"/>
+        <input id="projectId" name="projectId" type="hidden" value=""/>
+        <input id="alertMsg" name="alertMsg" type="hidden" value=""/>
+        <input type="hidden" id="projectDto.language" name="projectDto.language" />
+        <input id="pageCondition.projectGroupId" name="pageCondition.projectGroupId" type="hidden" value=""/>
+        <input id="pageCondition.fromAnalysisTime" name="pageCondition.fromAnalysisTime" type="hidden" value=""/>
+        <input id="pageCondition.toAnalysisTime" name="pageCondition.toAnalysisTime" type="hidden" value=""/>
+        <input id="pageCondition.selectedColumn" name="pageCondition.selectedColumn" type="hidden" value=""/>
+        <input id="pageCondition.searchWord" name="pageCondition.searchWord" type="hidden" value=""/>
+        <input id="pageCondition.includeWord" name="pageCondition.includeWord" type="hidden" value="true"/>
+        <input id="pageCondition.matchCase" name="pageCondition.matchCase" type="hidden" value="true"/>
+        <input id="searchCondition.projectGroupId" name="searchCondition.projectGroupId" type="hidden" value=""/>
+        <input id="searchCondition.excludeHiddenDefects" name="searchCondition.excludeHiddenDefects" type="hidden" value="false"/>
+
+        <script type="text/javascript">
+//<![CDATA[
+    function logout() {
+        if(confirm("asdasd?")){
+           redirect('logout.spw');
+        }
+    }
+//]]>
+</script>
+        <div class="topmenu">
+            <h1><img src="image/logo_h1.jpg" class="pointer" onclick="window.location='projectList.spw';return false;"/></h1>
+            <img src="image/blank.gif" style="height: 0px;width: 1150px;"/>
+        </div>
+
+        <div class="navigator">
+            <ul>
+                <li class="selected">project</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            <table class="footer" cellpadding="0" cellspacing="0" align="center">
+                <tr>
+                    <td align="left">Test</td>
+                    <td align="right"><img alt="Fasoo" src="image/fasooLogo.gif" /></td>
+                </tr>
+                <tr>
+                    <td align="left">Sparro Test</td>
+                    <td align="right"><img alt="Copyright" src="image/copyright.gif" /></td>
+                </tr>
+            </table>
+        </div>
+
+    </form>
+</div>
+</body>
+</html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title>SPARROW NEST</title>
+    <link rel="SHORTCUT ICON" href="sparrow.ico"/>
+    <link type="text/css" rel="stylesheet" href="css/common.css" />
+    <link type="text/css" rel="stylesheet" href="css/jquery-ui.css"/>
+    <script type="text/javascript" src="js/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/jquery/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/jquery/jquery.form.js"></script>
+    <script type='text/javascript' src='js/jquery/jquery.scrollTo-min.js'></script>
+    <script type="text/javascript" src="js/jquery/jquery.history.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+
+    <link type="text/css" rel="stylesheet" href="css/jquery-ui-timepicker-addon.css"/>
+    <script type="text/javascript" src="js/jquery/jquery-ui-timepicker-addon.js"></script>
+    <script type='text/javascript'>
+    //<![CDATA[
+        $(function(){
+            refreshDatetimepicker();
+        });
+		forbidden();  //@violation
+    //]]>
+    </script>
+    <link type='text/css' rel='stylesheet' href='css/tree.css'/>
+    <script type="text/javascript" src="js/tree.js"></script>
+    <script type="text/javascript" src="js/projectGroupTree.js"></script>
+    <script type="text/javascript">
+    //<![CDATA[
+        window.onload = function() {
+            initSortIcon();
+            setEnableExportExcel();
+            alertMsg();
+            openNotice();
+        }
+        function ajaxDeleteProject(url) {
+            jQuery.ajax({
+                type: "POST",
+                dataType: "json",
+                url: url,
+                data: $('#form').formSerialize(true),
+                success: function(data) {
+                    if(data.sessionClosedMsg != null) {
+                        goSessionClosed(data);
+                    } else {
+                        document.getElementById("curPage").value = data.updateCurPage;
+                        goPage("projectList.spw");
+                    }
+                },
+                error: function(request) {
+                  ajaxError(request);
+                }
+           });
+        }
+        function searchList() {
+            goPageLoader("projectListSearch.spw");
+        }
+        function clearSearch(){
+            document.getElementById("searchCondition.fromAnalysisTime").value = "";
+            document.getElementById("searchCondition.toAnalysisTime").value = "";
+            document.getElementById("searchCondition.projectGroupName").value = "";
+            document.getElementById("searchCondition.projectGroupId").value = "";
+            document.getElementById("searchCondition.selectedColumn").value = "";
+            document.getElementById("searchCondition.searchWord").value = "";
+            document.getElementById("searchCondition.includeWord1").checked = true;
+            document.getElementById("searchCondition.matchCase1").checked = true;
+            searchList();
+        }
+        function changeLanguage(){
+            $.cookie("projectList.language", document.getElementById("pageCondition.language").value,  { expires: 7 });
+            goDataList();
+        }
+        function goModifyMultipleProjects(obj) {
+            if(isDisableBtnById("btnModify"))
+                return;
+            goPage("modifyMultipleProjects.spw");
+        }
+        function goModifyProject(projectId, progress) {
+            if(progress != "" && !confirm("asdasdasd?"))
+                return;
+            location.href = "modifyProject.spw?projectId=" + projectId;
+        }
+        function closeProjectUserList() {
+            if(selectedUserListId != -1)
+                document.getElementById("userTable" + selectedUserListId).style.display = "none";
+        }
+    //]]>
+    </script>
+</head>
+<body>
+<div class="wrap">
+
+    <div id="dialogLoader" style="display:none;text-align:center;margin: 0px;padding: 0px;vertical-align: middle;" >
+        <table style="background: #ffffff;border: 1px solid #aaaaaa;" align="center" width="50" height="50">
+            <tr><td><img src="image/ajax-loader.gif"/></td></tr>
+        </table>
+    </div>
+    <div id="dialogPopupNotice" style="display:none;"></div>
+    <form id="form" name="form" action="/projectList.spw" method="post">
+
+        <input type="hidden" id="token" name="token" value="14131748416814774925403777922224"/>
+        <input id="projectId" name="projectId" type="hidden" value=""/>
+        <input id="alertMsg" name="alertMsg" type="hidden" value=""/>
+        <input type="hidden" id="projectDto.language" name="projectDto.language" />
+        <input id="pageCondition.projectGroupId" name="pageCondition.projectGroupId" type="hidden" value=""/>
+        <input id="pageCondition.fromAnalysisTime" name="pageCondition.fromAnalysisTime" type="hidden" value=""/>
+        <input id="pageCondition.toAnalysisTime" name="pageCondition.toAnalysisTime" type="hidden" value=""/>
+        <input id="pageCondition.selectedColumn" name="pageCondition.selectedColumn" type="hidden" value=""/>
+        <input id="pageCondition.searchWord" name="pageCondition.searchWord" type="hidden" value=""/>
+        <input id="pageCondition.includeWord" name="pageCondition.includeWord" type="hidden" value="true"/>
+        <input id="pageCondition.matchCase" name="pageCondition.matchCase" type="hidden" value="true"/>
+        <input id="searchCondition.projectGroupId" name="searchCondition.projectGroupId" type="hidden" value=""/>
+        <input id="searchCondition.excludeHiddenDefects" name="searchCondition.excludeHiddenDefects" type="hidden" value="false"/>
+
+        <script type="text/javascript">
+//<![CDATA[
+    function logout() {
+        if(confirm("asdasd?")){
+           redirect('logout.spw');
+        }
+    }
+//]]>
+</script>
+        <div class="topmenu">
+            <h1><img src="image/logo_h1.jpg" class="pointer" onclick="window.location='projectList.spw';return false;"/></h1>
+            <img src="image/blank.gif" style="height: 0px;width: 1150px;"/>
+        </div>
+
+        <div class="navigator">
+            <ul>
+                <li class="selected">project</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            <table class="footer" cellpadding="0" cellspacing="0" align="center">
+                <tr>
+                    <td align="left">Test</td>
+                    <td align="right"><img alt="Fasoo" src="image/fasooLogo.gif" /></td>
+                </tr>
+                <tr>
+                    <td align="left">Sparro Test</td>
+                    <td align="right"><img alt="Copyright" src="image/copyright.gif" /></td>
+                </tr>
+            </table>
+        </div>
+
+    </form>
+</div>
+</body>
+</html>

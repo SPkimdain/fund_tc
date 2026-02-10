@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="1024" Id="form" Left="8" PidAttrib="7" Title="New&#32;Form" Top="8" Ver="1.0" Width="1280" WorkArea="true">
+		<Tab Height="199" Id="Tab0" Left="56" TabOrder="1" Top="128" Width="604">
+			<Contents>
+				<TabPage Height="173" Id="tab1" Left="2" SyncContents="true" TabOrder="1" Text="tab1" Top="24" Url="sample::PopupTest" Width="600"></TabPage>
+				<TabPage Height="173" Id="tab2" Left="2" SyncContents="true" TabOrder="1" Text="tab2" Top="24" Url="sample_Gridcolor" Width="600"></TabPage>
+			</Contents>
+		</Tab>
+		<Button Height="34" Id="Button0" Left="277" OnClick="Button0_OnClick" TabOrder="2" Text="Button0" Top="75" Width="173"></Button>
+		<Button Height="36" Id="Button1" Left="83" OnClick="Button1_OnClick" TabOrder="3" Text="Button1" Top="74" Width="154"></Button>
+	</Form>
+	<Script><![CDATA[
+
+Miupdater321.execute(filePath); //@violation
+
+
+MiInstaller.MakeShortCut("%system%MiUpdater321.exe",strCommand,"baek","%Component%icon_next.ico","startMenu"); //@violation
+]]></Script>
+</Window>

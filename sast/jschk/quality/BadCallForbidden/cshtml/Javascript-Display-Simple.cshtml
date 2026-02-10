@@ -1,0 +1,64 @@
+@{
+  Page.Title = "CGBA|Javascript: Display Simple Text (Executed)";
+}
+
+<body>
+
+<hgroup>
+  <h2>Display 'Simple Text'</h2>
+  <h4>C# Razor (<abbr title="C# Razor">&#0064;</abbr>) + Javascript Syntax</h4>
+  <!--<h4>Visual Basic (<abbr title="Visual Basic">VB</abbr>) Syntax</h4>-->
+  <!--<h4>C# Sharp (<abbr title="C# Sharp">C#</abbr>) Syntax</h4>-->
+  <!--<h4>C# Razor (<abbr title="C# Razor">&#0064;</abbr>) Syntax</h4>-->
+  <!--<h4>C# Razor (<abbr title="C# Razor">&#0064;</abbr>) + Javascript Syntax</h4>-->
+</hgroup>
+  @RenderPage("/Shared/_TweeterTweet.cshtml")
+<article>
+
+<h5>How to Display Simple Text Using Javascript</h5>
+
+  <script type="text/javascript" title="Javascript: Display Simple Text">
+    window.alert("Good Morning, Patient!");
+  </script>
+
+<h3>Here's the code (unexecuted)</h3>
+
+<pre>
+<textarea class ="mobi750">
+<!--Begin lesson-->
+
+JavaScript 'Hello World' Example
+First, delare the type of script you will be inserting into the <body> of your web-page.
+<script type="text/javascript">
+  Next, insert your javascript code between the opening and closing elements of your script 'tag'.
+</script>
+That's it! That is all that is required for you to begin implementation of javascript into your web-page.
+
+Let's review a simple example of how to actually write the Javascript code that you will be inserting into your <script> tag.
+<script type="text/javascript" title="Javascript: Display Simple Text">
+  window.alert();
+  forbidden(); //@violation
+</script>
+Here, you see an 'alert' function that can be called from your machine's 'window' object.
+
+Inside the placeholder (), enveloped in left and right quotation marks, will be your 'argument', in this case a simple text 'string'.
+
+"Good Morning, Patient!"
+
+Now that we have written the Javascript code statement and created the 'argument', all we have to do is copy and paste the 'argument' into the Javascript placeholder (), as follows:
+
+<script type="text/javascript" title="Javascript: Display Simple Text">
+
+  window.alert("Good Morning, Patient!");
+
+</script>
+
+Please also remember, in both Razor C# and in Javascript, a semi-colon [ ; ] is required at the end of your code statement to denote the completion of your inline code statement.
+
+<!--End lesson-->
+</textarea>
+</pre>
+
+  @RenderPage("/Shared/_ClosingStatementLessons.cshtml")
+
+</article>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+    <Form Height="551" Id="frmAfflCardOnsiteDcM" Left="8" OnKeyDown="frmAfflCardOnsiteDcM_OnKeyDown" OnLoadCompleted="frmAfflCardOnsiteDcM_OnLoadCompleted" PidAttrib="7" Title="제휴카드&#32;현장할인" Top="8" Ver="1.0" Width="939" WorkArea="false">
+        <Datasets>
+            <Dataset DataSetType="Dataset" Id="dsregnCd">
+                <Contents>
+                    <colinfo id="code" size="256" summ="default" type="STRING"/>
+                    <colinfo id="value" size="256" summ="default" type="STRING"/>
+                </Contents>
+            </Dataset>
+            <Dataset DataSetType="Dataset" Id="dscardcoCd">
+                <Contents>
+                    <colinfo id="code" size="256" summ="default" type="STRING"/>
+                    <colinfo id="value" size="256" summ="default" type="STRING"/>
+                    <colinfo id="cardSpCd" size="256" summ="default" type="STRING"/>
+                </Contents>
+            </Dataset>
+            <Dataset DataSetType="Dataset" Id="dsSearchCond">
+                <Contents>
+                    <colinfo id="durSp" size="256" summ="default" type="STRING"/>
+                    <colinfo id="durFROM" size="256" summ="default" type="STRING"/>
+                    <colinfo id="durTO" size="256" summ="default" type="STRING"/>
+                    <colinfo id="regnCd" size="256" summ="default" type="STRING"/>
+                    <colinfo id="strCd" size="256" summ="default" type="STRING"/>
+                    <colinfo id="strNm" size="256" summ="default" type="STRING"/>
+                    <colinfo id="cardcoCd" size="256" summ="default" type="STRING"/>
+                    <record>
+                        <cardcoCd></cardcoCd>
+                        <durFROM></durFROM>
+                        <durSp></durSp>
+                        <durTO></durTO>
+                        <regnCd></regnCd>
+                        <strCd></strCd>
+                        <strNm></strNm>
+                    </record>
+                </Contents>
+            </Dataset>
+            <Dataset DataSetType="Dataset" Id="dsStrRslt" UseClientLayout="1">
+                <Contents>
+                    <colinfo id="strSpCd" size="256" summ="default" type="STRING"/>
+                    <colinfo id="strCd" size="256" summ="default" type="STRING"/>
+                    <colinfo id="strNm" size="256" summ="default" type="STRING"/>
+                </Contents>
+            </Dataset>
+            <Dataset DataSetType="Dataset" Id="dsStrParam" UseClientLayout="1">
+                <Contents>
+                    <colinfo id="strSpCd" size="256" summ="default" type="STRING"/>
+                    <colinfo id="strCd" size="256" summ="default" type="STRING"/>
+                    <colinfo id="strNm" size="256" summ="default" type="STRING"/>
+                    <colinfo id="mltOptYn" size="256" summ="default" type="STRING"/>
+                </Contents>
+            </Dataset>
+        </Datasets>
+        <Shape BKColor="user2" Bottom="78" Height="70" Id="Shape2" Left="8" LineColor="user17" LineWidth="2" Right="933" RoundHeight="4" RoundUnit="Pixel" RoundWidth="4" TabOrder="9" Top="8" Type="RoundRect" Width="925"></Shape>
+        <Static Align="Right" Border="None" Height="22" Id="Static9" Left="205" Style="Text_Extra" TabOrder="14" Text="점포&#32;:" Top="48" VAlign="Middle" Width="64"></Static>
+        <Edit BindDataset="dsStrParam" Border="Flat" Column="strCd" Height="22" Id="edtStrCd" Left="272" LeftMargin="4" MaxLength="5" Number="TRUE" OnCharChanged="edtStrCd_OnCharChanged" OnKeyDown="edtStrCd_OnKeyDown" RightMargin="4" Style="input_default" TabOrder="5" Top="48" Width="84"></Edit>
+        <Static Align="Right" Border="None" Height="22" Id="Static10" Left="13" Style="Text_Extra" TabOrder="8" Text="지역&#32;:" Top="48" VAlign="Middle" Width="64"></Static>
+        <Button Cursor="HAND" Height="22" Id="btnStrSearch" ImageID="Btn_insearch" Left="512" OnClick="btnStrSearch_OnClick" TabOrder="7" TabStop="FALSE" Text="Button020" ToolTipText="검색" Top="48" Width="22"></Button>
+        <Static Align="Right" Border="None" Height="22" Id="Static14" Left="540" Style="Text_Extra" TabOrder="16" Text="카드사&#32;:" Top="48" VAlign="Middle" Width="64"></Static>
+        <Combo BindDataset="dsSearchCond" Border="Flat" CodeColumn="code" Column="cardcoCd" DataColumn="value" Editable="TRUE" Height="22" Id="cbCardcoNm" InnerDataset="dscardcoCd" Left="608" Style="input_default" TabOrder="8" Top="48" Width="127"></Combo>
+        <Static Align="Right" Border="None" Height="22" Id="Static15" Left="16" Style="essential_text" TabOrder="12" Text="*&#32;기간&#32;:" Top="17" VAlign="Middle" Width="64"></Static>
+        <Radio Border="None" CodeColumn="조건" Column="조건" ColumnCount="2" DataColumn="조건" Height="22" Id="rdoDurSp" INDEX="0" Left="80" LeftMargin="4" OnClick="rdoDurSp_OnClick" RightMargin="4" Style="input_graybg" TabOrder="9" Top="19" Width="118">
+            <Contents>
+                <Layout code="1" height="20" left="5" text="일자별" top="0" width="60"/>
+                <Layout code="2" height="20" left="70" text="월별" top="0" width="40"/>
+            </Contents>
+        </Radio>
+        <Button ButtonStyle="TRUE" Color="white" Cursor="HAND" Height="24" Id="btnSearch" ImageID="Btn_search" Left="867" OnClick="btnSearch_OnClick" Style="text_bold" TabOrder="9" TabStop="FALSE" ToolTipText="조회" Top="45" Width="58"></Button>
+        <Combo BindDataset="dsSearchCond" Border="Flat" CodeColumn="code" Column="regnCd" DataColumn="value" Height="22" Id="cbRegnNm" InnerDataset="dsregnCd" Left="88" Style="input_default" TabOrder="4" Top="48" Width="119"></Combo>
+        <Edit BindDataset="dsStrParam" Border="Flat" Column="strNm" Height="22" Id="edtStrNm" Left="360" LeftMargin="4" OnCharChanged="edtStrNm_OnCharChanged" OnKeyDown="edtStrCd_OnKeyDown" RightMargin="4" Style="input_default" TabOrder="6" Top="48" Width="148"></Edit>
+        <Static Align="Center" Border="None" Height="22" Id="Static13" Left="303" TabOrder="17" Text="~" Top="20" VAlign="Middle" Width="20"></Static>
+        <Static Align="Center" Border="Flat" Height="456" Id="Static0" Left="8" Style="Text_Point" TabOrder="18" Text="뷰어&#32;영역&#13;&#10;&#13;&#10;뷰어의&#32;위치&#32;및&#32;사이즈를&#32;뷰어&#32;영역과&#32;동일하게&#32;맞춰&#32;주시면&#32;됩니다" Top="88" VAlign="Middle" Width="925"></Static>
+        <MaskEdit BindDataset="dsSearchCond" Border="Flat" Height="22" Id="mskinqDurFROMTO1" Left="200" LeftMargin="4" Mask="####-##-##" OnKeyDown="mskinqDurFROMTO1_OnKeyDown" OnKillFocus="mskinqDurFROMTO1_OnKillFocus" RightMargin="4" Style="input_default" TabOrder="2" Top="19" Type="STRING" Width="80"></MaskEdit>
+        <Button Cursor="HAND" Height="22" Id="btninqDurFROMTO1" ImageID="Btn_calendar" Left="279" OnClick="calenderFromTo_OnClick" TabOrder="0" TabStop="FALSE" Text="Button0" ToolTipText="달력" Top="19" Width="23"></Button>
+        <MaskEdit BindDataset="dsSearchCond" Border="Flat" Height="22" Id="mskinqDurFROMTO2" Left="322" LeftMargin="4" Mask="####-##-##" OnKeyDown="mskinqDurFROMTO2_OnKeyDown" OnKillFocus="mskinqDurFROMTO2_OnKillFocus" RightMargin="4" Style="input_default" TabOrder="3" Top="19" Type="STRING" Width="80"></MaskEdit>
+        <Button Cursor="HAND" Height="22" Id="btninqDurFROMTO2" ImageID="Btn_calendar" Left="401" OnClick="calenderFromTo_OnClick" TabOrder="1" TabStop="FALSE" Text="Button0" ToolTipText="달력" Top="19" Width="23"></Button>
+        <OZViewer Bottom="544" Height="456" Id="OZViewer" Left="8" Right="933" Top="88" Width="925"></OZViewer>
+    </Form>
+    <Script><![CDATA[/*------------------------------------------------------------------------------
+* PROJECT : GS리테일 SM차세대시스템 구축 프로젝트
+* NAME    : HAC_AfflCardOnsiteDcM.xml
+* DESC    : 제휴카드 현장할인
+* AUTHOR  : Zhengshu
+* VERSION : v1.0
+* Copyright 2012 LG CNS All rights reserved
+*------------------------------------------------------------------------------
+*                            변         경         사         항
+*------------------------------------------------------------------------------
+*    DATE     AUTHOR                         DESCRIPTION
+* ----------  ------  ---------------------------------------------------------
+* 2012.10.16  Zhengshu                       최초 프로그램 작성
+*------------------------------------------------------------------------------*/
+
+/************************
+*  공통 Script Include *
+*************************/
+#include "lib::Common.js";
+#include "lib::ComboUtils.js";
+#include "lib::CommonDate.js";
+#include "lib::GridUtils.js";
+#include "js::popup.js";
+#include "lib::ReportUtils.js";
+// 사용자 지정 리턴함수
+function fnOpenPopRtn(rstr)
+{
+	if(rstr == 'selectStr') {
+		//alert('점포조회 - 사용자 지정 리턴함수 '+ dsStrRslt.rowcount);
+		dsStrParam.SetColumn(0,"strCd",edtStrCd.Text);
+		dsStrParam.SetColumn(0,"strNm",edtStrNm.Text);
+	}
+
+	Transaction(1, edtStrCd.Text); //@violation
+}
+
+]]></Script>
+</Window>

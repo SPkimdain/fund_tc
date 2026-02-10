@@ -1,0 +1,10 @@
+obj = new XMLHttpRequest();
+obj.open('GET','/fetchusers.jsp?id='+form.id.value,'true','scott','HARDCODED'); //@violation
+var c = "2";
+obj.open('GET','/fetchusers.jsp?id='+form.id.value,'true','scott', c); //@violation
+var e = "";
+obj.open('GET','/fetchusers.jsp?id='+form.id.value,'true','scott', ""); //@violation
+d = c;
+obj.open('GET','/fetchusers.jsp?id='+form.id.value,'true','scott', d); //@violation
+var cc = 2;
+obj.open('GET','/fetchusers.jsp?id='+form.id.value,'true','scott', cc); //no @violation

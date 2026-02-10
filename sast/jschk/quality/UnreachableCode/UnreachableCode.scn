@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="euc-kr" ?>
+<SCREEN InheritMode="0">
+    <MENU>
+        <node m1="02" m2="0201" m3="020104" />
+    </MENU>
+    <BODY ScreentTitle="�䱸����" ScreenNo="KHC034">
+        <COMMON>
+            <CmmBtn Type="CommonButton1" Caption="test"/>
+            <CmmBtn Type="CommonButton2" Caption="test"/>
+            <CmmBtn Type="CommonButton3" Caption="test"/>
+            <CmmBtn Type="CommonButton4" Caption="test"/>
+            <CmmBtn Type="CommonButton5" Caption="test"/>
+            <CmmBtn Type="CommonButton6" Caption="test"/>
+            <CmmBtn Type="CommonButton7" Caption="test"/>
+            <CmmBtn Type="CommonButton8" Caption="test"/>
+            <CmmBtn Type="CommonButton9" Caption="test"/>
+        </COMMON>
+        <CONTROL CType="GroupBox" X="764" Y="0" Windows="123">
+            <Font H="-12" W="0" WE="700" Na="����ü" />
+            <CONTROL CType="Text" X="4" Y="20" Width="200">
+                <Font H="-12" W="0" WE="400" Na="�������" />
+            </CONTROL>
+        </CONTROL>
+    </BODY>
+    <MapInfo>
+        <TranID TranId="KGA0404341" TranClass="MCI">
+            <INPUT>
+                <Item TranItem="inhabBzno" CtrlId="cunie" />
+            </INPUT>
+            <OUTPUT>
+                <Device/>
+            </OUTPUT>
+        </TranID>
+    </MapInfo>
+    <script><![CDATA[
+function Test2() {
+   var x = 1;
+   a();
+   throw new err();
+   function a() {}
+}
+
+// Ok
+function foo() {
+   return 1;
+}
+// Bad
+function bar() {
+   var x = 1;
+   return x;
+   x = 2;  // @violation
+}
+
+// Bad
+function Test2() {
+   var x = 1;
+   throw new err();
+   x = 2;  // @violation
+}
+
+
+
+function Test3() {
+    var a = 2;
+    var c = 3;
+    for(var i=0; i<10; i++) {
+        if( i == 0) {
+            continue;
+            c = 4; //@violation
+        }
+    }
+}
+
+function Test4() {
+    var a = 3;
+    var d = a;
+    var e = 22;
+    for(var i=0; i<10; i++) {
+        if( i == 0) {
+            continue;
+            c = 4; //@violation
+        } else if ( i == 2) {
+            break;
+            e = 21; //@violation
+        }
+    }
+}
+
+]]></script>
+</SCREEN>

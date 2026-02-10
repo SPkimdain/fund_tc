@@ -1,0 +1,1 @@
+localStorage.setItem('password', 1) //@violation

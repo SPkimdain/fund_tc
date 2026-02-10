@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+    <Form Height="511" Id="frmFreegftStkMgntT1" Left="8" OnLoadCompleted="fnFrmOnLoadCompleted" PidAttrib="7" Title="발주" Top="8" Ver="1.0" Width="942" WorkArea="false">
+        <Datasets>
+            <Dataset DataSetType="Dataset" Id="dsOrderList" UseClientLayout="1">
+                <Contents>
+                    <colinfo id="strCd" size="5" summ="default" type="STRING"/>
+                    <colinfo id="orderDt" size="256" summ="default" type="STRING"/>
+                    <colinfo id="orderPeriod" size="256" summ="default" type="STRING"/>
+                    <colinfo id="evntCd" size="12" summ="default" type="DECIMAL"/>
+                    <colinfo id="evntNm" size="100" summ="default" type="STRING"/>
+                    <colinfo id="freegftCd" size="256" summ="default" type="STRING"/>
+                    <colinfo id="freegftNm" size="256" summ="default" type="STRING"/>
+                    <colinfo id="strOrderQty" size="256" summ="default" type="STRING"/>
+                    <colinfo id="rtnYn" size="256" summ="default" type="STRING"/>
+                    <colinfo id="minRtnQty" size="256" summ="default" type="STRING"/>
+                    <colinfo id="etc" size="256" summ="default" type="STRING"/>
+                    <record>
+                        <etc></etc>
+                        <evntCd/>
+                        <evntNm>이벤트명입니다ㅇㅇㅇㅇㅇ</evntNm>
+                        <freegftCd></freegftCd>
+                        <freegftNm></freegftNm>
+                        <minRtnQty></minRtnQty>
+                        <orderDt>20121112</orderDt>
+                        <orderPeriod>2012-12-12&#32;~&#32;2012-12-31</orderPeriod>
+                        <rtnYn></rtnYn>
+                        <strCd>11001</strCd>
+                        <strOrderQty></strOrderQty>
+                    </record>
+                </Contents>
+            </Dataset>
+            <Dataset DataSetType="Dataset" Id="dsSearchCond">
+                <Contents>
+                    <colinfo id="inqFromDt" size="256" summ="default" type="STRING"/>
+                    <colinfo id="inqToDt" size="256" summ="default" type="STRING"/>
+                    <colinfo id="strCd" size="256" summ="default" type="STRING"/>
+                </Contents>
+            </Dataset>
+        </Datasets>
+        <Shape BKColor="user2" Bottom="52" Height="44" Id="Shape2" Left="0" LineColor="user17" LineWidth="2" Right="942" RoundHeight="4" RoundUnit="Pixel" RoundWidth="4" TabOrder="3" Top="8" Type="RoundRect" Width="942"></Shape>
+        <Static Align="Right" Border="None" Color="user0" Height="22" Id="Static11" Left="6" Style="Text_Extra" TabOrder="5" Text="*&#32;발주가능일자&#32;:" Top="19" VAlign="Middle" Width="100"></Static>
+        <Button ButtonStyle="TRUE" Color="white" Cursor="HAND" Height="24" Id="btnSearchOrderList" ImageID="Btn_search" Left="877" Style="text_bold" TabOrder="4" ToolTipText="발주내역조회" Top="18" Width="58"></Button>
+        <Div Height="25" Id="Sum_info" Style="input_default" TabOrder="2" Text="Div0" Top="58" Width="942">
+            <Contents>
+                <Button ButtonStyle="TRUE" Color="white" Cursor="HAND" DisableBKColor="#888888" Height="25" Id="btnSaveOrderList" ImageID="BtnCRUD" Left="891" Style="Text_Extra" TabOrder="1" Text="저장" ToolTipText="발주내역저장" Transparent="TRUE" Width="52"></Button>
+                <Static Border="None" Height="17" Id="Static00" Left="12" Style="Text_10pt_Extra" TabOrder="3" Text="발주내역" Top="4" Width="248"></Static>
+                <Image Height="17" Id="Image00" ImageID="icon_bullet01" TabOrder="2" Top="4" Width="7"></Image>
+            </Contents>
+        </Div>
+        <Grid AutoEnter="TRUE" AutoFit="TRUE" AutoFitEndLine="Hide" BindDataset="dsOrderList" BkColor2="user2" BoldHead="true" Border="Flat" Bottom="507" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillArea="TRUE" HeadBorder="Default" HeadHeight="25" Height="416" Id="grdOrderList" InputPanel="FALSE" LineColor="user8" MinWidth="100" Right="942" RowHeight="26" Style="default_grid" TabOrder="7" TabStop="true" Top="91" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="silver" WheelScrollRow="1" Width="942">
+            <contents>
+                <format id="Default">
+                    <columns>
+                        <col width="35"/>
+                        <col width="160"/>
+                        <col width="238"/>
+                        <col width="135"/>
+                        <col width="79"/>
+                        <col width="102"/>
+                        <col width="109"/>
+                        <col width="79"/>
+                    </columns>
+                    <head>
+                        <cell bkimageid="gridbg" col="0" display="text" text="번호"/>
+                        <cell bkimageid="gridbg" col="1" display="text" text="발주가능기간"/>
+                        <cell bkimageid="gridbg" col="2" display="text" text="행사명"/>
+                        <cell bkimageid="gridbg" col="3" display="text" text="사은품명"/>
+                        <cell bkimageid="gridbg" col="4" display="text" text="*발주수량"/>
+                        <cell bkimageid="gridbg" col="5" display="text" text="반품가능여부"/>
+                        <cell bkimageid="gridbg" col="6" display="text" text="반품가능최소수량"/>
+                        <cell bkimageid="gridbg" col="7" display="text" text="비고"/>
+                    </head>
+                    <body>
+                        <cell align="center" col="0" display="text" expr="currow&#32;+&#32;1"/>
+                        <cell align="center" col="1" colid="orderPeriod" display="text"/>
+                        <cell col="2" colid="evntNm" display="text"/>
+                        <cell col="3" colid="freegftNm" display="text"/>
+                        <cell align="right" bkcolor="user5" col="4" colid="strOrderQty" cursor="hand" display="number" edit="number" Mask="#,##0"/>
+                        <cell align="center" col="5" colid="rtnYn" display="text"/>
+                        <cell align="right" col="6" colid="minRtnQty" display="text"/>
+                        <cell align="center" col="7" colid="etc" display="text"/>
+                    </body>
+                </format>
+            </contents>
+        </Grid>
+        <Shape Bottom="91" Height="2" Id="Shape1" Left="-1" LineColor="user17" LineWidth="2" Right="941" TabOrder="6" Top="89" Width="942"></Shape>
+        <MaskEdit Border="Flat" Height="22" Id="medtOrderFromDt" Left="109" LeftMargin="4" Mask="####-##-##" RightMargin="4" Style="input_default" TabOrder="1" Top="19" Type="STRING" UserData="required;name=발주가능시작일자;dateformat=yyyy-mm-dd;" Width="80"></MaskEdit>
+        <Button Cursor="HAND" Height="22" Id="btnOrderFromDt" ImageID="Btn_calendar" Left="188" TabOrder="11" Text="Button0" ToolTipText="달력" Top="19" Width="23"></Button>
+        <Static Align="Center" Border="None" Height="17" Id="Static2" Left="211" Style="Text_Basic" TabOrder="10" Text="~" Top="21" VAlign="Middle" Width="20"></Static>
+        <MaskEdit Border="Flat" Height="22" Id="medtOrderToDt" Left="231" LeftMargin="4" Mask="####-##-##" RightMargin="4" Style="input_default" TabOrder="9" Top="19" Type="STRING" UserData="required;name=발주가능종료일자;dateformat=yyyy-mm-dd;" Width="80"></MaskEdit>
+        <Button Cursor="HAND" Height="22" Id="btnOrderToDt" ImageID="Btn_calendar" Left="310" TabOrder="8" ToolTipText="달력" Top="19" Width="23"></Button>
+    </Form>
+    <Script><![CDATA[/*------------------------------------------------------------------------------
+* PROJECT : GS리테일 SM차세대시스템 구축 프로젝트
+* NAME    : SSA_FreegftStkMgntT1.xml
+* DESC    : 사은품재고관리-탭1(발주)
+* AUTHOR  : 정행룡
+* VERSION : v1.0
+* Copyright 2012 LG CNS All rights reserved
+*------------------------------------------------------------------------------
+*                            변         경         사         항
+*------------------------------------------------------------------------------
+*    DATE     AUTHOR                         DESCRIPTION
+* ----------  ------  ---------------------------------------------------------
+* 2012.12.07  정행룡    최초 프로그램 작성
+*------------------------------------------------------------------------------*/
+/************************
+*  공통 Script          *
+************************/
+#include "lib::Common.js";
+#include "lib::ComboUtils.js";
+#include "lib::CommonDate.js";
+#include "lib::CommonGrid.js";
+#include "lib::GridUtils.js";
+#include "lib::OSC_COM.js";
+
+#include "js::popup.js";
+
+/****************************
+ 변수선언
+****************************/
+
+// 기본경로
+var f_sAppBasePath = "gssm/sal/ssa/gft/freegftStkMgntNav/"; // good
+var gSessionStrCd = "11001"; //GdsUserInfo.GetColumn(0,"sessionStrCd"); //@violation
+
+/****************************
+ 초기화
+****************************/
+function fnInit()   //@violation
+{
+    // 1. 버튼초기화
+    this.Sum_info.btnSaveOrderList.Enable = false; //저장버튼 비활성화
+
+    // 2. DataSet 초기화
+    dsOrderList.ClearData();
+
+    // 3. 이벤트함수 정의
+    var arr = gfnGetObjectArray("BUTTON", this);
+    var eventFunc = "";
+
+    for ( var i = 0; i < arr.length(); i++ ) {
+         if (arr[i].ToolTipText == "달력") {
+             eventFunc = "fnCalendarClick"; // 달력 이벤트 정의
+         } else {
+             eventFunc = "fnSubmit";        // 처리버튼 이벤트 정의
+         }
+         arr[i].OnClick = eventFunc;
+	}
+
+	this.grdOrderList.OnHeadClick = "gfnGridOnHeadClick"; //OSC_COM.js
+
+	// 4. 초기값 설정
+	sSysDate = gfnGetSysDate("YYYYMMDD");
+    medtOrderFromDt.Value = sSysDate; //발주가능일자(시작)
+    medtOrderToDt.Value   = sSysDate; //발주가능일자(종료)
+
+    //임시
+    medtOrderFromDt.Value = "20120501";
+
+}
+
+/****************************
+ 오브젝트 이벤트 함수 시작
+****************************/
+// 폼 OnLoad
+function fn_FrmOnLoadCompleted(obj) // good
+{
+	fnInit();
+}
+
+
+// 달력버튼-Click
+function fnCalendarClick(pObj) //@violation
+{
+	var arg = " p_StandFromDt="+ quote(medtOrderFromDt.Value) +
+	          " p_StandToDt="  + quote(medtOrderToDt.Value);
+
+	var arrRslt = gfnCalendarDual_Dialog(arg, medtOrderFromDt, medtOrderToDt);
+	medtOrderFromDt.value = arrRslt[0];
+	medtOrderToDt.value   = arrRslt[1];
+}
+
+/****************************
+ 오브젝트 이벤트 함수 끝
+****************************/
+
+
+/****************************
+ Validation 체크
+****************************/
+function fnChkValidate(pSvcId) //@violation
+{
+	switch (pSvcId) {
+      case "발주내역조회" :
+           if (gfnModifiedDS(dsOrderList)) {
+             if (confirm(gfnGetMsg(domain.gssm_com_cfm_001))) {
+			 	  return false;
+			 }
+           }
+           var arrObj = array();
+           arrObj[0] = medtOrderFromDt;
+           arrObj[1] = medtOrderToDt;
+
+           if (!gfnValidateByExprByArr(arrObj)) {
+               return false;
+           }
+
+		   if (medtOrderFromDt.Value > medtOrderToDt.Value) {
+				alert(gfnGetMsg(domain.gssm_com_warn_007));
+				medtOrderFromDt.SetFocus();
+				return false;
+		   }
+           break;
+      case "발주내역저장" :
+
+		   for (var i = 0; i < dsOrderList.RowCount; i++) {
+		       if (dsOrderList.GetRowType(i) == "update") {
+				  if (ToNumber(dsOrderList.GetColumn(i, "strOrderQty")) <= 0) {
+						alert("발주수량값 입력 오류");
+						dsOrderList.row = i;
+						grdOrderList.SetCellPos(4);
+						grdOrderList.SetFocus();
+						return false;
+				  }
+			   }
+			}
+
+           break;
+      default:
+           break;
+    }
+
+	return true;
+}
+
+/*****************************************
+ 서비스 실행
+******************************************/
+function fn_Submit(pObj) // good
+{
+    var sSvcId = pObj.ToolTipText;
+
+    if (!fnChkValidate(sSvcId)) {
+        return;
+    }
+
+    var sUrl        = "";
+    var sInDataSet  = "";
+    var sOutDataSet = "";
+    var sArgument   = "";
+
+
+    SetWaitCursor(true);
+
+    switch (sSvcId) {
+      case "발주내역조회" :
+           dsSearchCond.ClearData();
+	       dsSearchCond.AddRow();
+	       dsSearchCond.SetColumn(0, "inqFromDt", medtOrderFromDt.Value);
+           dsSearchCond.SetColumn(0, "inqToDt"  , medtOrderToDt.Value);
+           dsSearchCond.SetColumn(0, "strCd"    , gSessionStrCd);
+
+           sUrl        = "Svl::" + sAppBasePath + "retrieveFreegftOrderList.mip";
+	       sInDataSet  = "dsSearchCond=dsSearchCond";
+	       sOutDataSet = "dsOrderList=dsOrderList";
+           break;
+      case "발주내역저장" :
+           sUrl        = "Svl::" + sAppBasePath + "saveFreegftOrderList.mip";
+	       sInDataSet  = "dsOrderList=dsOrderList:u";
+           break;
+      default:
+           alert("정의되지 않은 서비스ID입니다");
+           return;
+           break;
+    }
+
+	gfnCallService(sSvcId, sURL, sInDataSet, sOutDataSet, sArgument, "fnCallBack");
+
+}
+
+/*****************************************
+CallBack 함수
+******************************************/
+function fn_CallBack(sSvcId, strErrCode, strErrMsg) // good
+{
+	SetWaitCursor(false);
+
+	if (strErrCode <> 0) {
+		gfnErrorHandler( strErrCode, gfnGetMsg(strErrMsg) );
+		return;
+	}
+
+	switch (sSvcId) {
+      case "발주내역조회" :
+           if (dsOrderList.GetRowCount() == 0) {
+				gfnNoData(grdOrderList);
+				return;
+		   }
+
+           this.Sum_info.btnSaveOrderList.Enable = true; //저장버튼 활성화
+	       break;
+	  case "발주내역저장" :
+	       alert(gfnGetMsg(domain.dev_suc_com_save));
+	       fnSubmit(btnSearchOrderList);
+	       break;
+	}
+}
+
+
+
+
+]]></Script>
+</Window>

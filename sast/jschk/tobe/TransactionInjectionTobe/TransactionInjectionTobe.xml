@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+    <Form Height="1024" Id="form" Left="8" PidAttrib="7" Title="New&#32;Form" Top="8" Ver="1.0" Width="1280" WorkArea="true">
+        <Datasets>
+            <Dataset DataSetType="Dataset" Id="dsEmployeeInfo" OnColumnChanged="dsEmployeeInfo_OnColumnChanged">
+                <Contents>
+                    <colinfo id="num" size="256" summ="default" type="STRING"/>
+                    <colinfo id="name" size="256" summ="default" type="STRING"/>
+                    <colinfo id="birthdate" size="256" summ="default" type="STRING"/>
+                    <colinfo id="sex" size="256" summ="default" type="STRING"/>
+                    <colinfo id="ssn" size="256" summ="default" type="STRING"/>
+                    <colinfo id="address" size="256" summ="default" type="STRING"/>
+                    <colinfo id="postal" size="256" summ="default" type="STRING"/>
+                    <colinfo id="telephone" size="256" summ="default" type="STRING"/>
+                    <colinfo id="joblevelCode" size="256" summ="default" type="STRING"/>
+                    <colinfo id="departmentCode" size="256" summ="default" type="STRING"/>
+                    <colinfo id="skillCode" size="256" summ="default" type="STRING"/>
+                    <colinfo id="job" size="256" summ="default" type="STRING"/>
+                    <colinfo id="department" size="256" summ="default" type="STRING"/>
+                    <colinfo id="skill" size="256" summ="default" type="STRING"/>
+                    <colinfo id="chk" size="256" summ="default" type="STRING"/>
+                </Contents>
+            </Dataset>
+            <Dataset DataSetType="Dataset" Id="dsSkillCd">
+                <Contents>
+                    <colinfo id="code" size="256" summ="default" type="STRING"/>
+                    <colinfo id="value" size="256" summ="default" type="STRING"/>
+                </Contents>
+            </Dataset>
+            <Dataset DataSetType="Dataset" Id="dsJobLevelCd">
+                <Contents>
+                    <colinfo id="code" size="256" summ="default" type="STRING"/>
+                    <colinfo id="value" size="256" summ="default" type="STRING"/>
+                </Contents>
+            </Dataset>
+            <Dataset DataSetType="Dataset" Id="dsSearchCond">
+                <Contents>
+                    <colinfo id="skillCd" size="256" summ="default" type="STRING"/>
+                    <colinfo id="jobLevelCd" size="256" summ="default" type="STRING"/>
+                    <record>
+                        <jobLevelCd></jobLevelCd>
+                        <skillCd></skillCd>
+                    </record>
+                </Contents>
+            </Dataset>
+            <Dataset DataSetType="Dataset" Id="dsOutRet"></Dataset>
+        </Datasets>
+        <Tab Height="199" Id="Tab0" Left="56" TabOrder="1" Top="128" Width="604">
+            <Contents>
+                <TabPage Height="173" Id="tab1" Left="2" SyncContents="true" TabOrder="1" Text="tab1" Top="24" Url="sample::PopupTest" Width="600"></TabPage>
+                <TabPage Height="173" Id="tab2" Left="2" SyncContents="true" TabOrder="1" Text="tab2" Top="24" Url="sample_Gridcolor" Width="600"></TabPage>
+            </Contents>
+        </Tab>
+        <Button Height="34" Id="Button0" Left="277" OnClick="Button0_OnClick" TabOrder="2" Text="Button0" Top="75" Width="173"></Button>
+        <Button Height="36" Id="Button1" Left="83" OnClick="Button1_OnClick" TabOrder="3" Text="Button1" Top="74" Width="154"></Button>
+    </Form>
+    <Script><![CDATA[
+function fnInqDtFRomTo_OnClick(obj)
+{
+	//Do something
+
+	var sRtnVar = Dialog(sUrl, sArg, iWidth, iHeight, sStatus, -1, -1);
+	var sSplit = Split(sRtnVar, VCAT_TEMP);
+
+	var USER_ID = sSplit[1];
+	var USER_NAME = sSplit[2];
+
+	sParam = gcat_Basic_Param();
+	sParam += "ACT_ID=" += quote(VCAT_ACT);
+	sParam += "USER_ID=" += quote(USER_ID);
+	sParam += "USER_NAME=" += quote(USER_NAME);
+
+	tit_callService("qpmcAction", "execute", "dscond=dscond dcA=dsB","dscond=dscond dcA=dsB", sParam ,"fn...", true, false, false);
+}
+
+
+
+]]></Script>
+</Window>

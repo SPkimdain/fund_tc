@@ -1,0 +1,36 @@
+
+
+<html>
+<head>
+    <script type="text/javascript">
+        function notEmpty(){
+	var myTextField = document.getElementById('user_name');
+        forbidden(); // @violation
+
+		alert("You entered: " + myTextField.value);
+}
+    </script>
+</head>
+
+<body>
+
+
+@{
+if (IsPost) {
+string user_name = Request["user_name"];
+<p>You entered: <br />
+    User Name: @user_name<br />
+    }
+    else
+    {
+
+<form method="post" action="">
+    user name:<br />
+    <input type="text" name="user_name" value="" /><br />
+    <br />
+    <input type="submit" value='notEmpty' onclick="notEmpty()" onkeypress="notEmpty()" class="submit" />
+</form>
+}
+}
+</body>
+</html>

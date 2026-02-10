@@ -1,0 +1,36 @@
+//From https://github.com/rwebaz/CshtmlData/blob/master/Javascript/Javascript-template.cshtml
+
+@{
+  Page.Title = "CGBA|Unknown";
+}
+<!--Javascript: Show Two Variable Types-->
+<script type="text/javascript">
+function write(message){
+  document.getElementById('message').innerHTML += message + '<br />';
+}
+
+var streetNumber = 49;//Declare the 'number' type variable 'streetNumber' and it's value
+var streetName = "Brunswick";//Declare the 'string' type variable 'streetName and it's value
+
+write(typeof streetNumber + "nbsp;" + streetNumber);
+write(typeof streetName + "nbsp;" + streetName);
+
+forbidden();//@violation
+
+</script>
+<body>
+
+<hgroup>
+  <h2>Declare A 'Unknown'</h2>
+  <h4>Choose your syntax...</h4>
+  <!--<h4>Visual Basic (<abbr title="Visual Basic">VB</abbr>) Syntax</h4>-->
+  <!--<h4>C# Sharp (<abbr title="C# Sharp">C#</abbr>) Syntax</h4>-->
+  <!--<h4>C# Razor (<abbr title="C# Razor">&#0064;</abbr>) Syntax</h4>-->
+  <!--<h4>C# Razor (<abbr title="C# Razor">&#0064;</abbr>) + Javascript (<abbr title="Javascript">js</abbr>)</h4>-->
+</hgroup>
+  @RenderPage("/Shared/_TweeterTweet.cshtml")
+<article>
+  <h5>The 'Javascript' Inline Script</h5>
+    <p>This output from the Javascript goes here.</p>
+  @RenderPage("/Shared/_RallyRound.cshtml")
+</article>

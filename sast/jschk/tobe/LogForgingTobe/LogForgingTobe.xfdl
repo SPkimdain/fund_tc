@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="form" classname="Menu" left="0" top="0" width="1055" height="758" titletext="Auction Data Entry" onload="form_onload">
+    <Layouts>
+      <Layout>
+        <Div id="div_search" taborder="0" left="0" top="0" right="15" height="51" cssclass="div_WF_SearchBg">
+          <Layouts>
+            <Layout>
+              <Static id="Static23" taborder="54" text="Auction Date" cssclass="sta_WF_Label2" left="20" top="13" width="103" height="21"/>
+              <Button id="btn_search" taborder="55" text="Search" cssclass="btn_WF_Search2" top="13" right="20" width="77" height="23" onclick="div_search_btn_search_onclick"/>
+              <Static id="Static00" taborder="56" text="Item" cssclass="sta_WF_Label2" left="364" top="13" width="103" height="21"/>
+              <Edit id="txt_item_nm" taborder="57" left="409" top="13" width="226" height="21" onkeyup="fn_onkeyup"/>
+              <Calendar id="cal_start_dt" taborder="59" left="118" top="13" width="100" height="21" dateformat="MM/dd/yyyy" value="null" editformat="MM/dd/yyyy"/>
+              <Static id="Static02" taborder="60" text="~" left="223" top="13" width="10" height="21"/>
+              <Calendar id="cal_end_dt" taborder="61" left="238" top="13" width="100" height="21" dateformat="MM/dd/yyyy" value="null" editformat="MM/dd/yyyy"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="div_grid_top" taborder="8" left="0" top="60" height="23" right="0">
+          <Layouts>
+            <Layout>
+              <Static id="Static23" taborder="5" text="Records Found" cssclass="sta_WF_GridFound2" left="50" top="3" width="132" height="16"/>
+              <Static id="sta_total_cnt" taborder="7" cssclass="sta_WF_GridFound" left="0" top="3" width="46" height="16" text="0"/>
+              <Static id="Static16" taborder="10" text="| Display" left="165" top="2" width="62" height="18"/>
+              <Combo id="cmb_page_line" taborder="11" codecolumn="codecolumn" datacolumn="datacolumn" index="0" left="225" top="1" width="50" height="21" value="10" text="10" onitemchanged="div_grid_top_cmb_page_line_onitemchanged">
+                <Dataset id="innerdataset">
+                  <ColumnInfo>
+                    <Column id="codecolumn" size="256"/>
+                    <Column id="datacolumn" size="256"/>
+                  </ColumnInfo>
+                  <Rows>
+                    <Row>
+                      <Col id="codecolumn">30</Col>
+                      <Col id="datacolumn">30</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">40</Col>
+                      <Col id="datacolumn">40</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">50</Col>
+                      <Col id="datacolumn">50</Col>
+                    </Row>
+                  </Rows>
+                </Dataset>
+              </Combo>
+              <Static id="Static17" taborder="12" text="Records per page" left="282" top="2" width="132" height="18"/>
+              <Button id="btn_add" taborder="13" text="Add" onclick="div_grid_top_btn_add_onclick" cssclass="btn_WF_GridControl" top="1" right="89" width="50" height="22"/>
+              <Button id="btn_delete" taborder="14" text="Delete" onclick="div_grid_top_btn_delete_onclick" cssclass="btn_WF_GridControl" top="1" right="15" width="70" height="22"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="div_grid_bottom" taborder="9" left="0" right="15" bottom="34" height="20" scrollbars="none">
+          <Layouts>
+            <Layout>
+              <Static id="sta_bg" taborder="18" cssclass="sta_WF_GridDis" left="0" top="0" right="0" bottom="0"/>
+              <Static id="sta_grid_cnt" taborder="19" top="0" right="0" width="90" height="20" text="Rows : 0"/>
+              <Static id="sta_msg" taborder="20" left="6" top="0" right="129" height="20" style="color:#444444ff;" text="There is no data."/>
+              <Button id="btn_find" taborder="21" cssclass="btn_WF_find" top="2" right="168" width="29" height="16" _find="this.grd_list"/>
+              <Button id="btn_excel" taborder="22" cssclass="btn_WF_xls" top="2" right="135" width="29" height="16" _excel="this.grd_list"/>
+              <Button id="btn_page" taborder="23" onclick="div_grid_bottom_btn_page_onclick" cssclass="btn_WF_next" enable="false" top="2" right="98" width="29" height="16"/>
+              <Button id="btn_format" taborder="24" cssclass="btn_WF_format" top="2" right="201" width="29" height="16" _format="this.grd_list"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Grid id="grd_list" taborder="11" binddataset="ds_list" useinputpanel="false" cellsizingtype="col" left="0" top="87" right="15" bottom="54">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="120"/>
+                <Column size="70"/>
+                <Column size="70"/>
+                <Column size="120"/>
+                <Column size="60"/>
+                <Column size="120"/>
+                <Column size="70"/>
+                <Column size="140"/>
+                <Column size="120"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell style="background:#348ddf18;color:#1f5ca7ff;color2:#1f5ca7ff;backgroundimage:URL('theme://images/img_WF_LabelEssential.png');" text="Location"/>
+                <Cell col="1" style="background:#348ddf18;color:#1f5ca7ff;color2:#1f5ca7ff;backgroundimage: ;" text="Lot#"/>
+                <Cell col="2" style="background:#348ddf18;color:#1f5ca7ff;color2:#1f5ca7ff;backgroundimage: ;" text="Qty."/>
+                <Cell col="3" style="background:#348ddf18;color:#1f5ca7ff;color2:#1f5ca7ff;backgroundimage: ;" text="Model"/>
+                <Cell col="4" style="background:#348ddf18;color:#1f5ca7ff;color2:#1f5ca7ff;backgroundimage: ;" text="Year"/>
+                <Cell col="5" style="background:#348ddf18;color:#1f5ca7ff;color2:#1f5ca7ff;backgroundimage: ;" text="Manufacturer"/>
+                <Cell col="6" style="background:#348ddf18;color:#1f5ca7ff;color2:#1f5ca7ff;backgroundimage: ;" text="Capacity"/>
+                <Cell col="7" style="background:#348ddf18;color:#1f5ca7ff;color2:#1f5ca7ff;backgroundimage: ;" text="Item"/>
+                <Cell col="8" style="background:#348ddf18;color:#1f5ca7ff;color2:#1f5ca7ff;backgroundimage: ;" text="Auction Price($)"/>
+                <Cell col="9" style="background:#348ddf18;color:#1f5ca7ff;color2:#1f5ca7ff;backgroundimage: ;" text="Auction Date"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="normal" edittype="normal" style="align:left;" text="bind:AUCTION_LOCATION"/>
+                <Cell col="1" edittype="normal" style="align:left;" text="bind:LOT_NUM" maskchar=" " suppress="0"/>
+                <Cell col="2" edittype="normal" style="align:left;" text="bind:AUCTION_QTY" maskchar=" " suppress="0"/>
+                <Cell col="3" edittype="normal" style="align:left;" text="bind:AUCTION_TYPE" maskchar=" " suppress="0"/>
+                <Cell col="4" edittype="normal" style="align:left;" text="bind:AUCTION_YEAR" maskchar=" " suppress="0"/>
+                <Cell col="5" edittype="normal" style="align:left;" text="bind:MFG_NM" maskchar=" " suppress="0"/>
+                <Cell col="6" edittype="normal" style="align:left;" text="bind:ITEM_CAPACITY" maskchar=" " suppress="0"/>
+                <Cell col="7" edittype="normal" style="align:left;" text="bind:ITEM_NM" maskchar=" " suppress="0"/>
+                <Cell col="8" edittype="normal" style="align:left;" text="bind:AUCTION_PRICE" maskchar=" " suppress="0"/>
+                <Cell col="9" edittype="normal" style="align:left;" text="bind:AUCTION_DATE" maskchar=" " suppress="0"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="div_bottom" taborder="12" left="0" right="0" bottom="0" height="24" text="Div00">
+          <Layouts>
+            <Layout>
+              <Button id="btn_save" taborder="0" text="Save" cssclass="btn_WF_Save" top="0" right="15" width="60" height="24" onclick="div_bottom_btn_save_onclick"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_list" firefirstcount="0" firenextcount="0" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false"/>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[
+
+
+
+this.fn_test = function() {
+    var objExt = new ExtCommon();
+    trace(div_search.txt_item_nm.value); //@violation
+}
+
+this.fn_test2 = function() {
+    var objExt = new ExtCommon();
+    objExt.OutDebugStr(div_search.txt_item_nm.value); //@violation
+
+}
+
+this.fn_test3 = function() {
+    var taint = getReg();
+    var objExt = new ExtCommon();
+
+    objExt.OutDebugStr(taint); //@violation
+
+}
+]]></Script>
+  </Form>
+</FDL>
