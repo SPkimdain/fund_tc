@@ -1,0 +1,8 @@
+
+
+
+ func debug() {
+ }
+
+
+ debug() //@violation
