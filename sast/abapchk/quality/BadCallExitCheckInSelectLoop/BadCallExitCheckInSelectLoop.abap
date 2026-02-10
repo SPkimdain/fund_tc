@@ -1,0 +1,21 @@
+REPORT ZX_DD.
+
+" non-compliant codes
+SELECT * FROM SBOOK INTO SBOOK_WA.
+  CHECK: SBOOK_WAS-CARRID = 'LH' AND SBOOK_WAS-CONNID = '0400'. "@violation
+ENDSELECT.
+
+" non-compliant codes 2
+SELECT * FROM SBOOK INTO SBOOK_WA.
+  EXIT. "@violation
+ENDSELECT.
+
+" compliant codes
+SELECT * FROM SBOOK INTO SBOOK_WA WHERE CARRID = 'LH' AND CONNID = '0400'.
+ENDSELECT.
+
+" false-alarm test
+EXIT.
+
+" false-alarm test 2
+CHECK: SBOOK_WAS-CARRID = 'LH' AND SBOOK_WAS-CONNID = '0400'.
