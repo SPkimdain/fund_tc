@@ -1,0 +1,31 @@
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.3//EN"
+        "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+
+<validators>
+    <field name="startDate">
+        <field-validator type="requiredstring">
+            <message>Start Date is required.</message>
+        </field-validator>
+        <field-validator type="date">
+            <param name="dateFormat">yyyy-MM-dd</param>
+            <message>Invalid Start Date format. Please use yyyy-MM-dd.</message>
+        </field-validator>
+    </field>
+    <field name="endDate">
+        <field-validator type="requiredstring">
+            <message>End Date is required.</message>
+        </field-validator>
+        <field-validator type="date">
+            <param name="dateFormat">yyyy-MM-dd</param>
+            <message>Invalid End Date format. Please use yyyy-MM-dd.</message>
+        </field-validator>
+    </field>
+    <field name="scale">
+        <field-validator type="requiredstring">
+            <message>Scale is required.</message>
+        </field-validator>
+        <field-validator type="int">
+            <message>Scale must be an integer.</message>
+        </field-validator>
+    </field>
+</validators>

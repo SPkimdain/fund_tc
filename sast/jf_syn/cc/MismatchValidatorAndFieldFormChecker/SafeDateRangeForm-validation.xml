@@ -1,0 +1,20 @@
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.3//EN"
+        "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+
+<validators>
+    <field name="startDate">
+        <field-validator type="required">
+            <message>Start Date is required.</message>
+        </field-validator>
+    </field>
+    <field name="endDate">
+        <field-validator type="required">
+            <message>End Date is required.</message>
+        </field-validator>
+    </field>
+    <field name="scale">
+        <field-validator type="required">
+            <message>Scale is required.</message>
+        </field-validator>
+    </field>
+</validators>
