@@ -1,0 +1,6 @@
+//@checker MISSING_FUNCTION_RETURN_TYPE 
+
+MISFUNCRETTYPE_001(int x) { //@violation MISSING_FUNCTION_RETURN_TYPE
+  
+  return 10;
+}
