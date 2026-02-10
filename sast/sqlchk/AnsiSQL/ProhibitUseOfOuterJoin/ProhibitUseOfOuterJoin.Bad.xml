@@ -1,0 +1,18 @@
+<queries>
+    <query id="employee_department_query" description="Join employee and department tables with conditions">
+        <sql>
+            <![CDATA[
+            SELECT a.empno
+                 , a.ename
+                 , a.deptno
+                 , b.deptno
+                 , b.dname
+            FROM emp a
+               , dept b
+            WHERE a.deptno(+) = b.deptno --@violation
+              AND (a.job = 'MANAGER'
+                OR a.job IS NULL)
+            ]]>
+        </sql>
+    </query>
+</queries>

@@ -1,0 +1,1 @@
+SELECT DECODE('ABC', 'ABD', 1, 'BCD', 2, 'ABC', 0, 99) FROM TB_DUMMY --@violation

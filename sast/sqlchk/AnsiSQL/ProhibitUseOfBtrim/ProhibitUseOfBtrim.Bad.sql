@@ -1,0 +1,1 @@
+SELECT BTRIM('<<<trim_me>>>', '><') FROM TB_CHAR --@violation

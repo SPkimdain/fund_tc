@@ -1,0 +1,1 @@
+SELECT id, JSONB_ARRAY_ELEMENTS(employees) AS employees FROM company --@violation

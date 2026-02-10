@@ -1,0 +1,1 @@
+SELECT NVL2(col1, 'Is not null', 'Is null') FROM TB_DUMMY --@violation

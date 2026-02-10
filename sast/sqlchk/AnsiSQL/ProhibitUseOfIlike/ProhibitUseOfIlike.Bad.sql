@@ -1,0 +1,1 @@
+SELECT user_id FROM user WHERE nick_name ilike '%MOD%' --@violation

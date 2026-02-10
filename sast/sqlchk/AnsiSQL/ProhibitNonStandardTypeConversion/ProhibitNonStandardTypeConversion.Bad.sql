@@ -1,0 +1,1 @@
+SELECT col1 FROM TB_DUMMY WHERE D_DATE = '2025-01-01 12:00:00'::timestamp  --@violation
