@@ -1,0 +1,9 @@
+public static class StreamUtil
+{
+    const int bufferSize = 8192;
+    public static void CopyTo(this Stream input,
+                              Stream output)
+    {
+        byte[] buffer = new byte[BufferSize];
+    }
+}
