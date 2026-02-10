@@ -1,0 +1,12 @@
+//@checker BAD_NAME.GLOBAL_IDENTIFIER_NAME.MISRA2012
+extern int BadNameGlobalIdentifierNameMisra2012_BadNameGlobalIdentifierNameMisra2012_1;	//@violation BAD_NAME.GLOBAL_IDENTIFIER_NAME.MISRA2012
+static int BadNameGlobalIdentifierNameMisra2012_BadNameGlobalIdentifierNameMisra2012_2;	//@violation BAD_NAME.GLOBAL_IDENTIFIER_NAME.MISRA2012
+
+void BNGINM_func()
+{
+	int BadNameGlobalIdentifierNameMisra2012_BadNameGlobalIdentifierNameMisra2012_3;
+}
+
+int BadNameGlobalIdentifierNameMisra2012_1;
+static int BadNameGlobalIdentifierNameMisra2012_2;
+

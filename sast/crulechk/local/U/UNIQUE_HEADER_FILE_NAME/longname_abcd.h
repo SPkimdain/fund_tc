@@ -1,0 +1,2 @@
+#ifdef _LONGNAME_ABCD_H_
+#endif //_LONGNAME_ABCD_H_

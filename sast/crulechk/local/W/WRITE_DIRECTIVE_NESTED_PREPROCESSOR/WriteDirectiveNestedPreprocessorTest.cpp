@@ -1,0 +1,25 @@
+//@checker WRITE_DIRECTIVE_NESTED_PREPROCESSOR
+
+#include <stdio.h>
+
+#ifdef SOME_FLAG
+#	define SOME_OTHER_FLAG
+#else 
+#	define YET_ANOTHER_FLAG
+#endif
+
+ #ifdef SOME_FLAG2 //@violation WRITE_DIRECTIVE_NESTED_PREPROCESSOR
+#define SOME_OTHER_FLAG2 //@violation WRITE_DIRECTIVE_NESTED_PREPROCESSOR
+#else
+#	ifdef SOME_FLAG_DEPTH2
+#define SOME_OTHER_FLAG_DEPTH2 //@violation WRITE_DIRECTIVE_NESTED_PREPROCESSOR
+#	else
+#endif //@violation WRITE_DIRECTIVE_NESTED_PREPROCESSOR
+#endif
+
+int main()
+{
+	return 1;
+
+}
+
