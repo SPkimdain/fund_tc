@@ -1,0 +1,164 @@
+
+buildscript {
+    repositories {
+        maven { url 'http://repo.spring.io/plugins-release' }
+    }
+    dependencies {
+        classpath 'org.springframework.build.gradle:propdeps-plugin:0.0.7'
+    }
+}
+
+plugins {
+    id "com.jfrog.bintray" version "1.3.1"
+}
+
+apply plugin: 'java'
+apply plugin: 'groovy'
+apply plugin: 'idea'
+apply plugin: 'signing'
+apply plugin: 'maven'
+apply plugin: 'maven-publish'
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'propdeps'
+apply plugin: 'propdeps-maven'
+apply plugin: 'propdeps-idea'
+apply plugin: 'propdeps-eclipse'
+
+configurations {
+    source {
+        extendsFrom archives
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile gradleApi()
+    compile localGroovy()
+
+    def CUCUMBER_VERSION = '1.2.2'
+    provided 'info.cukes:cucumber-core:' + CUCUMBER_VERSION
+
+    testCompile 'junit:junit:4.11'
+    testCompile 'info.cukes:cucumber-junit:' + CUCUMBER_VERSION
+    testCompile 'info.cukes:cucumber-java:' + CUCUMBER_VERSION
+    testCompile 'commons-io:commons-io:2.4'
+    testCompile 'org.hamcrest:hamcrest-all:1.3'
+}
+
+task jarSources(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+task jarJavadoc(type: Jar, dependsOn: 'javadoc') {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives jarSources
+    archives jarJavadoc
+}
+
+signing {
+    sign configurations.archives
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+
+            artifact jarSources {
+                classifier 'sources'
+            }
+
+            artifact jarJavadoc {
+                classifier 'javadoc'
+            }
+        }
+    }
+}
+
+bintray {
+    user = project.properties['bintrayUsername']
+    key = project.properties['bintrayApiKey']
+    publications = ['mavenJava']
+    pkg {
+        repo = 'maven'
+        name = 'gradle-cucumber-plugin'
+        desc = 'A Gradle plugin to run Cucumber tests'
+        licenses = ['MIT ']
+        labels = ['gradle', 'cucumber', 'test', 'acceptance']
+        version.attributes = [ 'gradle-plugin': 'com.github.samueltbrown.cucumber:com.github.samueltbrown:gradle-cucumber-plugin' ]
+    }
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+            repository(url: project.version.contains('-SNAPSHOT') ? "https://oss.sonatype.org/content/repositories/snapshots" : "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+                authentication(userName: project.properties['sonatypeUsername'], password: project.properties['sonatypePassword'])
+            }
+
+            pom.project {
+                name 'gradle-cucumber-plugin'
+                packaging 'jar'
+                description 'A Gradle plugin to run Cucumber tests'
+                url 'https://github.com/samueltbrown/gradle-cucumber-plugin/'
+
+                scm {
+                    url 'scm:git@github.com:samueltbrown/gradle-cucumber-plugin.git'
+                    connection 'scm:git@github.com:samueltbrown/gradle-cucumber-plugin.git'
+                    developerConnection 'scm:git@github.com:samueltbrown/gradle-cucumber-plugin.git'
+                }
+
+                licenses {
+                    license {
+                        name 'The MIT License'
+                        url 'https://raw.github.com/samueltbrown/gradle-cucumber-plugin/master/LICENSE'
+                        distribution 'repo'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id 'samueltbrown'
+                        name 'Samuel Brown'
+                    }
+                    developer {
+                        id 'lucas1000001'
+                        name 'Matthew Lucas'
+                    }
+                    developer {
+                        id 'viphe'
+                        name 'Philippe Vosges'
+                    }
+                    developer {
+                        id 'pbellchambers'
+                        name 'Paul Bellchambers'
+                    }
+                    developer {
+                        id 'klunk'
+                        name 'Simon Wiehe'
+                    }
+                }
+            }
+        }
+    }
+}
+
+task createWrapper(type: Wrapper) {
+    gradleVersion = '2.3'
+}
+
+task printMainRuntimeClasspath {
+    description 'Prints the runtime classpath of the built artifact (used by Cucumber acceptance tests)'
+} << {
+    sourceSets.main.runtimeClasspath.each { println it }
+}
