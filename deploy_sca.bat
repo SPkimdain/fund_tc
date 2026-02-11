@@ -2,7 +2,7 @@
 setlocal enabledelayedexpansion
 
 :: 1. Folder list
-set FOLDERS=binary_TC cocoapods_src conda dependency_TC go Gradle_TC luarocks maven npm nuget pypi packagist rna-star-debian pub.dev rubygems
+set FOLDERS=android
 
 :: Set user config
 git config user.name "Dain"
