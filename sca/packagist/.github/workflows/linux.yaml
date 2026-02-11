@@ -1,0 +1,45 @@
+name: Linux
+
+on:
+  pull_request:
+    types: [opened, reopened, edited, synchronize]
+    paths:
+      - .github/workflows/linux.yaml
+      - bolt.gemspec
+      - Gemfile
+      - Puppetfile
+      - bolt-modules/**
+      - lib/bolt/**
+      - libexec/**
+      - rakelib/tests.rake
+      - spec/**
+
+jobs:
+  integration:
+    name: Integration
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby: [3.1]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+      - name: Update gems
+        run: bundle update
+      - name: Cache modules
+        id: modules
+        uses: actions/cache@v1
+        with:
+          path: modules
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/Puppetfile') }}
+      - name: Install modules
+        if: steps.modules.outputs.cache-hit != 'true'
+        run: bundle exec r10k puppetfile install
+      - uses: ./.github/actions/sudo_setup
+      - name: Run tests
+        run: bundle exec rake ci:linux:integration

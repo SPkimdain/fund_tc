@@ -2,7 +2,7 @@
 setlocal enabledelayedexpansion
 
 :: 1. Folder list
-set FOLDERS=Gradle_TC
+set FOLDERS=packagist
 
 :: Set user config
 git config user.name "SPkimdain"

@@ -1,0 +1,39 @@
+name: Docs
+
+on:
+  pull_request:
+    types: [opened, reopened, edited, synchronize]
+    paths:
+      - .github/workflows/docs.yaml
+      - bolt.gemspec
+      - Gemfile
+      - Puppetfile
+      - bolt-modules/**
+      - documentation/**
+      - lib/bolt/**
+      - modules/**
+      - pwsh_module/**
+      - rakelib/docs.rake
+
+jobs:
+
+  docs:
+    name: Docs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7
+          bundler-cache: true
+      - name: Update gems
+        run: bundle update
+      - name: Generate docs
+        run: bundle exec rake docs:all
+      - name: Run DITA
+        uses: dita-ot/dita-ot-action@master
+        with:
+          dita-ot-version: 4.1.2
+          build: dita -i documentation/bolt.ditamap -o out -f html5 --processing-mode=strict

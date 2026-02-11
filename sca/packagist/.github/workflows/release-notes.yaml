@@ -1,0 +1,23 @@
+name: Release Notes
+
+on:
+  pull_request:
+    types: [opened, reopened, edited, synchronize]
+    paths:
+      - Puppetfile
+      - bolt-modules/**
+      - lib/bolt/**
+      - modules/**
+
+jobs:
+
+  release-notes:
+    name: Release Notes
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Check for release notes
+        uses: rulesets/rulesets@v1.0.0-beta
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,65 @@
+# `bolt-project.yaml` options
+
+This page lists the configuration options that are available in the `bolt-project.yaml`.
+For more information, see [Configuring Bolt](configuring_bolt.md).
+
+## Options
+
+<% @opts.each do |option, data| -%>
+### <% if data.key?(:_deprecation) %>⛔ <% end %>`<%= option %>`
+
+<% if data.key?(:_deprecation) -%>
+_This option is deprecated._
+<% end -%>
+
+<%= data[:description] %>
+
+- **Type:** <%= data[:type] %>
+<% if data.key?(:enum) -%>
+- **Available values:** `<%= data[:enum].join('`, `') %>`
+<% end -%>
+<% if data.key?(:_default) -%>
+- **Default:** `<%= data[:_default] %>`
+<% end -%>
+<% if data[:_plugin] == true -%>
+- **Pluggable:** true
+<% end -%>
+
+<% if data.key?(:properties) -%>
+<% data[:properties].each do |option, data| -%>
+#### <% if data.key?(:_deprecation) %>⛔ <% end %>`<%= option %>`
+
+<% if data.key?(:_deprecation) -%>
+_This option is deprecated._
+<% end -%>
+
+<%= data[:description] %>
+
+- **Type:** <%= data[:type] %>
+<% if data.key?(:enum) -%>
+- **Available values:** `<%= data[:enum].join('`, `') %>`
+<% end -%>
+<% if data.key?(:_default) -%>
+- **Default:** `<%= data[:_default] %>`
+<% end -%>
+<% if data[:_plugin] == true -%>
+- **Pluggable:** true
+<% end -%>
+<% end %>
+<% end -%>
+
+```yaml
+<%= @yaml.slice(option).to_yaml(indentation: 2).split("\n").drop(1).join("\n") %>
+```
+<% end -%>
+
+## Example file
+
+```yaml
+# bolt-project.yaml
+<%= @yaml.to_yaml(indentation: 2).split("\n").drop(1).join("\n") %>
+```
+
+📖 **Related information**  
+
+- [Bolt projects](projects.md)

@@ -1,0 +1,57 @@
+# Plan functions
+
+Plans can use functions that are built into Bolt and Puppet, or custom
+functions included in modules. This reference
+page includes a list of built-in Bolt functions. To see a list of built-in
+Puppet functions, see Puppet's [built-in function
+reference](https://puppet.com/docs/puppet/latest/function.html). To learn how
+to write custom Puppet functions, see [the Puppet documentation on writing
+functions](https://puppet.com/docs/puppet/latest/writing_custom_functions.html).
+
+<% for func in @functions %>
+## `<%= func['name'] %>`
+
+<%= func['desc'] %>
+
+<% for sig in func['signatures'] -%>
+<% unless func['signatures'].count == 1 -%>
+**<%= sig['desc'].lines.first.strip.chomp('.') %>**
+<%= sig['desc'].lines.drop(1).join %>
+<% end -%>
+
+```
+<%= sig['signature'] %>
+```
+
+This function<%= func['signatures'].count == 1 ? '' : ' signature' %> returns
+an object with the type `<%= sig['return'] %>` and accepts the following
+parameter<%= sig['params'].count == 1 ? '' : 's' %>:
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+<% sig['params'].each do |name, data| -%>
+| `<%= name %>` | `<%= data['type'] %>` | <%= data['desc'] %> |
+<% end %>
+
+<% if sig['options'].any? -%>
+This function<%= func['signatures'].count == 1 ? '' : ' signature' %> accepts the following option<%= sig['options'].count == 1 ? '' : 's' %>:
+
+| Option | Type | Description |
+| --- | --- | --- |
+<% sig['options'].each do |name, data| -%>
+| `<%= name %>` | `<%= data['type'] %>` | <%= data['desc'] %> |
+<% end %>
+<% end -%>
+<% end -%>
+
+<% if func['examples'].any? -%>
+**Example usage**
+
+<% for example in func['examples'] -%>
+<%= example['desc'] %>
+```
+<%= example['exmp'] %>
+```
+<% end -%>
+<% end -%>
+<% end -%>
