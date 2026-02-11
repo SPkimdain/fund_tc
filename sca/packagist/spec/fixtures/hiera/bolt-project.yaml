@@ -1,3 +1,0 @@
-name: hiera
-log:
-  bolt-debug.log: disable

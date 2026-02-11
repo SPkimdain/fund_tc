@@ -1,5 +1,0 @@
-.bundle/
-.git/
-# If we start shipping this we may reevaluate
-Gemfile.lock
-vendor/bundle
